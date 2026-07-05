@@ -140,7 +140,22 @@ body {
   text-decoration: none;
 }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
+.download-btn {
+  background-color: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.download-btn:hover {
+  background-color: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+}
 .card {
   background-color: var(--card);
   border: 1px solid var(--border);

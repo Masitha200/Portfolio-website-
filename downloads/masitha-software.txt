@@ -1,0 +1,5 @@
+Project Name: Masitha Portfolio Software
+Version: 1.0
+Description: This is a downloadable project file linked from the Work section of the portfolio.
+Status: Ready for review
+Note: Replace this file with your actual software package or build archive when available.
