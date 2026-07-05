@@ -1,0 +1,3 @@
+Project: Folio Finance App
+Type: Product UI/UX Case Study
+Download Note: This is the downloadable project file for the Folio Finance App work card.
