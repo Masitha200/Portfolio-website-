@@ -27,6 +27,15 @@
   transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
+body.software-page,
+body.software-page * {
+  cursor: auto !important;
+}
+body.software-page .cursor-dot,
+body.software-page .cursor-outline {
+  display: none !important;
+}
+
 html { scroll-behavior: smooth; }
 
 body {

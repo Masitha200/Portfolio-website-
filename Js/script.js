@@ -26,7 +26,7 @@ if (themeToggle) {
 const cursorDot = document.querySelector('[data-cursor-dot]');
 const cursorOutline = document.querySelector('[data-cursor-outline]');
 
-if (cursorDot && cursorOutline) {
+if (cursorDot && cursorOutline && !document.body.classList.contains('software-page')) {
   window.addEventListener('mousemove', (e) => {
     const posX = e.clientX;
     const posY = e.clientY;
