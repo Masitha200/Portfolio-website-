@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Download</title>
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="cursor-dot" data-cursor-dot></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+  <div class="bg-grid"></div>
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b" style="background: var(--bg-nav); border-color: var(--border);">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-display text-2xl font-bold" style="color: var(--fg); text-decoration: none;">Masitha Bandara <span style="color: var(--accent);">.</span></a>
+      <a href="work.html" class="btn-outline">Back to Work</a>
+    </div>
+  </nav>
+
+  <section class="min-h-screen flex items-center justify-center px-6 py-32">
+    <div class="max-w-6xl w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+      <div>
+        <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">Software Download</span>
+        <h1 class="font-display text-4xl md:text-6xl font-bold mt-4">Get the software package for this project</h1>
+        <p class="mt-6 text-lg" style="color: var(--muted);">This dedicated page gives visitors a clean place to review project details, see what’s included, and download the software file.</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="downloads/lumen-studios.zip" download class="btn-primary"><i class="fas fa-download"></i> Download ZIP</a>
+          <a href="work.html" class="btn-outline"><i class="fas fa-arrow-left"></i> Back</a>
+        </div>
+      </div>
+
+      <div class="card p-8">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <p class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">Included</p>
+            <h2 class="font-display text-2xl font-bold mt-2">Project Package</h2>
+          </div>
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background: rgba(249,115,22,0.15); color: var(--accent);">
+            <i class="fas fa-box-open text-2xl"></i>
+          </div>
+        </div>
+
+        <ul class="space-y-4" style="color: var(--muted);">
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1" style="color: var(--accent);"></i><span>Ready-to-download software archive</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1" style="color: var(--accent);"></i><span>Project overview and package details</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1" style="color: var(--accent);"></i><span>Simple and modern portfolio experience</span></li>
+        </ul>
+
+        <div class="mt-8 p-4 rounded-2xl border" style="border-color: var(--border); background: var(--bg-elevated);">
+          <p class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">File Info</p>
+          <p class="mt-2 font-semibold">Name: Lumen Studios Software Package</p>
+          <p class="mt-1" style="color: var(--muted);">Size: 1.2 MB • Format: ZIP</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="Js/script.js"></script>
+</body>
+</html>
