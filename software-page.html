@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CoreBurner X11 — Standalone PC Benchmark & Hardware Monitor Download</title>
-  <meta name="description" content="Download CoreBurner X11, a premium native Windows hardware tracking, benchmarking, and real-time dashboard application built with Python and PyQt5." />
+  <meta name="description"
+    content="Download CoreBurner X11, a premium native Windows hardware tracking, benchmarking, and real-time dashboard application built with Python and PyQt5." />
   <script>
-    (function() {
+    (function () {
       try {
         var savedTheme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
@@ -17,9 +19,12 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body class="software-page">
   <div class="cursor-dot" data-cursor-dot></div>
   <div class="cursor-outline" data-cursor-outline></div>
@@ -28,9 +33,12 @@
   <div class="bg-blob blob-2"></div>
   <div class="bg-blob blob-3"></div>
 
-  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b" style="background: var(--bg-nav); border-color: var(--border);">
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b"
+    style="background: var(--bg-nav); border-color: var(--border);">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html" class="font-display text-2xl font-bold" style="color: var(--fg); text-decoration: none;">Masitha Bandara <span style="color: var(--accent);">.</span></a>
+      <a href="index.html" class="font-display text-2xl font-bold"
+        style="color: var(--fg); text-decoration: none;">Masitha Bandara <span
+          style="color: var(--accent);">.</span></a>
       <a href="work.html" id="navBackWorkBtn" class="btn-outline">Back to Work</a>
     </div>
   </nav>
@@ -42,55 +50,108 @@
         <h1 class="font-display text-4xl md:text-6xl font-bold mt-4">CoreBurner X11</h1>
         <p class="text-xl font-medium mt-2" style="color: var(--fg);">Standalone PC Benchmark & Hardware Monitor</p>
         <p class="mt-4 text-base leading-relaxed" style="color: var(--muted);">
-          A premium, native Windows system telemetry tracking, benchmarking, and real-time dashboard application built in Python and PyQt5. Designed to mimic the high-tech cockpit feeling of advanced overclocking tools like MSI Afterburner, CoreBurner X11 offers deep hardware insights and interactive performance tests.
+          A premium, native Windows system telemetry tracking, benchmarking, and real-time dashboard application built
+          in Python and PyQt5. Designed to mimic the high-tech cockpit feeling of advanced overclocking tools like MSI
+          Afterburner, CoreBurner X11 offers deep hardware insights and interactive performance tests.
         </p>
 
         <div class="mt-6 space-y-4">
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(249,115,22,0.1); color: var(--accent);">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+              style="background: rgba(249,115,22,0.1); color: var(--accent);">
               <i class="fas fa-gauge-high text-lg"></i>
             </div>
             <div>
               <h3 class="font-semibold text-lg">Cyberpunk Dashboard UI</h3>
-              <p class="text-sm" style="color: var(--muted);">Frameless, draggable dark-themed console with neon orange accents, glowing dial gauges, and animated rolling telemetry charts.</p>
+              <p class="text-sm" style="color: var(--muted);">Frameless, draggable dark-themed console with neon orange
+                accents, glowing dial gauges, and animated rolling telemetry charts.</p>
             </div>
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(249,115,22,0.1); color: var(--accent);">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+              style="background: rgba(249,115,22,0.1); color: var(--accent);">
               <i class="fas fa-microchip text-lg"></i>
             </div>
             <div>
               <h3 class="font-semibold text-lg">100% Accurate Hardware Telemetry</h3>
-              <p class="text-sm" style="color: var(--muted);">Monitors Nvidia GPU load, core temp, and VRAM via driver-level queries; CPU load & core frequencies; system memory; storage I/O, and active network speeds.</p>
+              <p class="text-sm" style="color: var(--muted);">Monitors Nvidia GPU load, core temp, and VRAM via
+                driver-level queries; CPU load & core frequencies; system memory; storage I/O, and active network
+                speeds.</p>
             </div>
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(249,115,22,0.1); color: var(--accent);">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+              style="background: rgba(249,115,22,0.1); color: var(--accent);">
               <i class="fas fa-chart-line text-lg"></i>
             </div>
             <div>
               <h3 class="font-semibold text-lg">Comprehensive Benchmark Suite</h3>
-              <p class="text-sm" style="color: var(--muted);">Includes a multi-threaded mathematical sieve CPU solver, particles-stress 2D/3D GPU render test, and binary buffer Disk write/read speed benchmark.</p>
+              <p class="text-sm" style="color: var(--muted);">Includes a multi-threaded mathematical sieve CPU solver,
+                particles-stress 2D/3D GPU render test, and binary buffer Disk write/read speed benchmark.</p>
             </div>
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(249,115,22,0.1); color: var(--accent);">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+              style="background: rgba(249,115,22,0.1); color: var(--accent);">
               <i class="fas fa-window-restore text-lg"></i>
             </div>
             <div>
               <h3 class="font-semibold text-lg">Floating OSD Overlay</h3>
-              <p class="text-sm" style="color: var(--muted);">A transparent, draggable floating monitor widget (similar to RivaTuner RTSS) to inspect hardware performance live while gaming.</p>
+              <p class="text-sm" style="color: var(--muted);">A transparent, draggable floating monitor widget (similar
+                to RivaTuner RTSS) to inspect hardware performance live while gaming.</p>
             </div>
           </div>
         </div>
 
         <div class="mt-8 flex flex-wrap gap-4">
-          <a href="downloads/CoreBurner_X11.exe" download id="downloadExeBtn" class="btn-primary"><i class="fas fa-download"></i> Download Portable (.exe)</a>
-          <a href="https://github.com/Masitha200/CoreBurner_Pc_Benchmark_Softwere/archive/refs/heads/main.zip" id="downloadZipBtn" class="btn-outline"><i class="fas fa-file-archive"></i> Source Code (.zip)</a>
-          <a href="https://github.com/Masitha200/CoreBurner_Pc_Benchmark_Softwere" target="_blank" rel="noopener" id="githubRepoBtn" class="btn-outline"><i class="fab fa-github"></i> GitHub Repo</a>
+          <a href="downloads/CoreBurner_X11.exe" download id="downloadExeBtn" class="btn-primary"><i
+              class="fas fa-download"></i> Download Portable (.exe)</a>
+          <a href="https://github.com/Masitha200/CoreBurner_Pc_Benchmark_Softwere/archive/refs/heads/main.zip"
+            id="downloadZipBtn" class="btn-outline"><i class="fas fa-file-archive"></i> Source Code (.zip)</a>
+          <a href="https://github.com/Masitha200/CoreBurner_Pc_Benchmark_Softwere" target="_blank" rel="noopener"
+            id="githubRepoBtn" class="btn-outline"><i class="fab fa-github"></i> GitHub Repo</a>
+        </div>
+
+        <!-- Windows Defender SmartScreen Notice -->
+        <div class="mt-12 p-6 rounded-2xl border" style="border-color: var(--border); background: var(--bg-elevated);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+              style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+              <i class="fas fa-shield-halved text-base"></i>
+            </div>
+            <h3 class="font-bold text-lg">Windows SmartScreen Note (False Positive)</h3>
+          </div>
+
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">
+            When launching the software for the first time, Windows Defender SmartScreen might show a warning message
+            saying <strong>"Windows protected your PC"</strong>. This is <strong>100% normal</strong> and is not a virus
+            or malware.
+          </p>
+
+          <div class="my-4 border rounded-xl overflow-hidden" style="border-color: var(--border); max-width: 450px;">
+            <img src="img/smartscreen_warning.png" alt="Windows SmartScreen Warning Screen" class="w-full h-auto">
+          </div>
+
+          <h4 class="font-semibold text-sm mb-1 mt-4" style="color: var(--fg);">Why does this happen?</h4>
+          <p class="text-xs leading-relaxed mb-4" style="color: var(--muted);">
+            This happens because CoreBurner X11 is a newly compiled standalone desktop application in Python (packaged
+            via PyInstaller) that is not signed with an expensive Microsoft Developer Certificate. As a result, Windows
+            reputation-based protection flags it temporarily until more users download and run it.
+          </p>
+
+          <h4 class="font-semibold text-sm mb-2" style="color: var(--fg);">How to run the software safely:</h4>
+          <ol class="list-decimal pl-4 text-xs space-y-1.5" style="color: var(--muted);">
+            <li>Double-click the downloaded <strong>CoreBurner_X11.exe</strong> file.</li>
+            <li>In the blue popup window, click on the <strong
+                style="color: var(--fg); cursor: pointer; text-decoration: underline;">"More info"</strong> link under
+              the text.</li>
+            <li>A new button called <strong style="color: var(--accent);">"Run anyway"</strong> will appear at the
+              bottom right.</li>
+            <li>Click <strong style="color: var(--accent);">"Run anyway"</strong> to launch the application safely.</li>
+          </ol>
         </div>
       </div>
 
@@ -100,19 +161,25 @@
             <p class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">Download Package</p>
             <h2 class="font-display text-2xl font-bold mt-2">CoreBurner X11</h2>
           </div>
-          <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background: rgba(249,115,22,0.15); color: var(--accent);">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+            style="background: rgba(249,115,22,0.15); color: var(--accent);">
             <i class="fas fa-box-open text-2xl"></i>
           </div>
         </div>
 
         <ul class="space-y-4 text-sm" style="color: var(--muted);">
-          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1" style="color: var(--accent);"></i><span>Compile-free standalone portable build</span></li>
-          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1" style="color: var(--accent);"></i><span>No installation required - download & launch</span></li>
-          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1" style="color: var(--accent);"></i><span>Includes full source code archive</span></li>
-          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1" style="color: var(--accent);"></i><span>Clean and secure package signature</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+              style="color: var(--accent);"></i><span>Compile-free standalone portable build</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+              style="color: var(--accent);"></i><span>No installation required - download & launch</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+              style="color: var(--accent);"></i><span>Includes full source code archive</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+              style="color: var(--accent);"></i><span>Clean and secure package signature</span></li>
         </ul>
 
-        <div class="mt-8 p-4 rounded-2xl border text-sm space-y-2" style="border-color: var(--border); background: var(--bg-elevated);">
+        <div class="mt-8 p-4 rounded-2xl border text-sm space-y-2"
+          style="border-color: var(--border); background: var(--bg-elevated);">
           <p class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">File Info</p>
           <div class="flex justify-between">
             <span style="color: var(--muted);">Filename:</span>
@@ -141,4 +208,5 @@
 
   <script src="Js/script.js"></script>
 </body>
+
 </html>
