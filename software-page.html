@@ -200,14 +200,6 @@
             </span>
           </div>
           <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
-            <span style="color: var(--muted);">GitHub Stars:</span>
-            <span id="githubStars" class="font-semibold text-right">--</span>
-          </div>
-          <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
-            <span style="color: var(--muted);">GitHub Forks:</span>
-            <span id="githubForks" class="font-semibold text-right">--</span>
-          </div>
-          <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
             <span style="color: var(--muted);">Platform:</span>
             <span class="font-semibold text-right">Windows 10 / 11 (64-bit)</span>
           </div>
@@ -225,15 +217,9 @@
     document.addEventListener("DOMContentLoaded", function () {
       const repoOwner = "Masitha200";
       const repoName = "CoreBurner_Pc_Benchmark_Softwere";
-
       const downloadCountEl = document.getElementById("downloadCount");
-      const starsCountEl = document.getElementById("githubStars");
-      const forksCountEl = document.getElementById("githubForks");
 
-      // Baseline estimate for downloads if releases aren't set up yet
-      const baselineDownloads = 138;
-
-      // 1. Fetch Github Releases to count release asset downloads
+      // Fetch Github Releases to count actual release asset downloads
       fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`)
         .then(res => {
           if (!res.ok) throw new Error("API rate limit or network issue");
@@ -241,47 +227,20 @@
         })
         .then(releases => {
           let count = 0;
-          let hasReleaseAssets = false;
-
           if (Array.isArray(releases)) {
             releases.forEach(release => {
               if (release.assets && release.assets.length > 0) {
                 release.assets.forEach(asset => {
                   count += asset.download_count;
-                  hasReleaseAssets = true;
                 });
               }
             });
           }
-
-          const finalCount = hasReleaseAssets && count > 0 ? count : baselineDownloads;
-          downloadCountEl.innerHTML = `<span>${finalCount}</span>`;
+          downloadCountEl.innerHTML = `<span>${count}</span>`;
         })
         .catch(err => {
           console.warn("Failed to fetch release downloads:", err);
-          downloadCountEl.innerHTML = `<span>${baselineDownloads}</span>`;
-        });
-
-      // 2. Fetch Github Repository Details (stars, forks)
-      fetch(`https://api.github.com/repos/${repoOwner}/${repoName}`)
-        .then(res => {
-          if (!res.ok) throw new Error("API issue");
-          return res.json();
-        })
-        .then(repoData => {
-          if (repoData) {
-            if (starsCountEl && repoData.stargazers_count !== undefined) {
-              starsCountEl.textContent = repoData.stargazers_count;
-            }
-            if (forksCountEl && repoData.forks_count !== undefined) {
-              forksCountEl.textContent = repoData.forks_count;
-            }
-          }
-        })
-        .catch(err => {
-          console.warn("Failed to fetch repository statistics:", err);
-          if (starsCountEl) starsCountEl.textContent = "0";
-          if (forksCountEl) forksCountEl.textContent = "0";
+          downloadCountEl.textContent = "0";
         });
     });
   </script>
