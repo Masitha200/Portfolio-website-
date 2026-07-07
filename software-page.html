@@ -219,53 +219,61 @@
         </div>
 
         <!-- Changelog & Roadmap Card -->
-        <div class="card p-6 mt-8">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-              style="background: rgba(249, 115, 22, 0.1); color: var(--accent);">
-              <i class="fas fa-code-fork text-base"></i>
+        <div class="card p-8 mt-8">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <p class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">Development</p>
+              <h2 class="font-display text-2xl font-bold mt-2">Changelog & Roadmap</h2>
             </div>
-            <h3 class="font-bold text-lg">Changelog & Roadmap</h3>
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+              style="background: rgba(249,115,22,0.15); color: var(--accent);">
+              <i class="fas fa-route text-2xl"></i>
+            </div>
           </div>
 
-          <div class="space-y-4">
+          <div class="space-y-6">
             <!-- Current Version Details -->
             <div>
-              <h4 class="font-semibold text-xs font-mono uppercase tracking-wider mb-2" style="color: var(--accent);">
-                Current Version (v1.1.0)</h4>
-              <ul class="space-y-2 text-xs" style="color: var(--muted);">
-                <li class="flex items-start gap-2">
-                  <i class="fas fa-circle-check mt-0.5 text-emerald-500"></i>
+              <h4
+                class="font-semibold text-xs font-mono uppercase tracking-wider mb-3 text-orange-500 flex items-center gap-2">
+                <i class="fas fa-circle-play text-xs"></i> Current v1.1.0
+              </h4>
+              <ul class="space-y-3 text-xs" style="color: var(--muted);">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-circle-check mt-1 text-emerald-500 shrink-0"></i>
                   <span><strong>PyQt5 Engine:</strong> Fully migrated UI to PyQt5 native windows for lag-free
                     rendering.</span>
                 </li>
-                <li class="flex items-start gap-2">
-                  <i class="fas fa-circle-check mt-0.5 text-emerald-500"></i>
-                  <span><strong>Nvidia Telemetry:</strong> Added direct nvidia-smi telemetry query layer.</span>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-circle-check mt-1 text-emerald-500 shrink-0"></i>
+                  <span><strong>Nvidia Telemetry:</strong> Added direct Driver-level queries via nvidia-smi
+                    engine.</span>
                 </li>
-                <li class="flex items-start gap-2">
-                  <i class="fas fa-circle-check mt-0.5 text-emerald-500"></i>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-circle-check mt-1 text-emerald-500 shrink-0"></i>
                   <span><strong>Float OSD:</strong> Fully draggable/resizable overlays with configurable opacity.</span>
                 </li>
               </ul>
             </div>
 
             <!-- Future Roadmap -->
-            <div class="border-t pt-4" style="border-color: var(--border);">
-              <h4 class="font-semibold text-xs font-mono uppercase tracking-wider mb-2" style="color: #3b82f6;">Upcoming
-                Updates (v1.2.0)</h4>
-              <ul class="space-y-2 text-xs" style="color: var(--muted);">
-                <li class="flex items-start gap-2">
-                  <i class="fas fa-clock mt-0.5 text-blue-400"></i>
+            <div class="border-t pt-5" style="border-color: var(--border);">
+              <h4
+                class="font-semibold text-xs font-mono uppercase tracking-wider mb-3 text-blue-400 flex items-center gap-2">
+                <i class="fas fa-ellipsis text-xs"></i> Upcoming v1.2.0
+              </h4>
+              <ul class="space-y-3 text-xs" style="color: var(--muted);">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-clock mt-1 text-blue-400 shrink-0"></i>
                   <span><strong>AMD GPU Support:</strong> Direct telemetry query integration for Radeon GPUs.</span>
                 </li>
-                <li class="flex items-start gap-2">
-                  <i class="fas fa-clock mt-0.5 text-blue-400"></i>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-clock mt-1 text-blue-400 shrink-0"></i>
                   <span><strong>Custom Skins:</strong> Color theme switcher (Cyan Neon, Carbon black, and Forest
                     green).</span>
                 </li>
-                <li class="flex items-start gap-2">
-                  <i class="fas fa-clock mt-0.5 text-blue-400"></i>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-clock mt-1 text-blue-400 shrink-0"></i>
                   <span><strong>CSV Export:</strong> Ability to log system performance to spreadsheets for testing
                     analysis.</span>
                 </li>
