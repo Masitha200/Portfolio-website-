@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://masitha200.github.io/Portfolio-website-/sitemap.xml
