@@ -798,16 +798,32 @@
                 }
             });
 
-            // Listen for browser fullscreen exit events to toggle the button visual
+            // Listen for browser fullscreen exit events to toggle the button visual and relocate cursor
             document.addEventListener("fullscreenchange", function () {
                 const fullscreenIcon = fullscreenBtn.querySelector("i");
                 if (document.fullscreenElement) {
                     fullscreenIcon.className = "fas fa-compress";
                     // Add slight padding adjustments to controls in fullscreen
                     customOverlay.classList.add("md:p-8");
+
+                    // Move custom cursor elements inside the fullscreen container so they render on top layer
+                    const cursorDot = document.querySelector('[data-cursor-dot]');
+                    const cursorOutline = document.querySelector('[data-cursor-outline]');
+                    if (cursorDot && cursorOutline) {
+                        wrapper.appendChild(cursorDot);
+                        wrapper.appendChild(cursorOutline);
+                    }
                 } else {
                     fullscreenIcon.className = "fas fa-expand";
                     customOverlay.classList.remove("md:p-8");
+
+                    // Move custom cursor elements back to document body
+                    const cursorDot = document.querySelector('[data-cursor-dot]');
+                    const cursorOutline = document.querySelector('[data-cursor-outline]');
+                    if (cursorDot && cursorOutline) {
+                        document.body.appendChild(cursorDot);
+                        document.body.appendChild(cursorOutline);
+                    }
                 }
             });
         }
