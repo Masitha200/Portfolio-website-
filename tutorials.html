@@ -123,6 +123,43 @@
         input[type="range"]::-moz-range-thumb:hover {
             transform: scale(1.3);
         }
+
+        /* Course tab selector styles */
+        .course-tab {
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+        }
+
+        .course-tab:hover {
+            border-color: var(--accent);
+            color: var(--fg);
+        }
+
+        .course-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Hide scrollbars for tabs track */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 
@@ -163,15 +200,32 @@
         <div class="max-w-7xl mx-auto">
 
             <!-- Video Header -->
-            <div class="mb-12">
-                <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">06 —
-                    Lessons</span>
-                <h1 class="font-display text-4xl md:text-6xl font-bold mt-2">HTML5 Video Academy<span class="text-glow"
-                        style="color: var(--accent);">.</span></h1>
-                <p class="mt-4 text-lg max-w-3xl" style="color: var(--muted);">
+            <div class="mb-8">
+                <span class="text-sm font-mono uppercase tracking-widest" id="courseSubtitle"
+                    style="color: var(--accent);">06 — HTML5 Basics</span>
+                <h1 class="font-display text-4xl md:text-6xl font-bold mt-2" id="courseTitle">HTML Video Academy<span
+                        class="text-glow animate-pulse" style="color: var(--accent);">.</span></h1>
+                <p class="mt-4 text-base max-w-3xl" id="courseDescription" style="color: var(--muted);">
                     Learn how to build modern, stable, and semantic structures for websites. This comprehensive tutorial
                     series takes you step-by-step from beginner tags to search-optimized front-end markup.
                 </p>
+            </div>
+
+            <!-- Series/Course Tabs Selector -->
+            <div class="flex items-center gap-3 overflow-x-auto pb-4 mb-8 border-b scrollbar-hide select-none"
+                style="border-color: var(--border);">
+                <button class="course-tab active" data-course="html">
+                    <i class="fab fa-html5 mr-2"></i> HTML5 Basics
+                </button>
+                <button class="course-tab" data-course="css">
+                    <i class="fab fa-css3-alt mr-2"></i> CSS3 Layouts
+                </button>
+                <button class="course-tab" data-course="js">
+                    <i class="fab fa-js mr-2"></i> JS Essentials
+                </button>
+                <button class="course-tab" data-course="git">
+                    <i class="fab fa-git-alt mr-2"></i> Git & GitHub
+                </button>
             </div>
 
             <!-- Video Workshop Layout -->
@@ -307,117 +361,202 @@
                     <div class="flex items-center justify-between border-b pb-4" style="border-color: var(--border);">
                         <h3 class="font-display text-lg font-bold">Lessons Playlist</h3>
                         <span class="text-xs font-mono uppercase px-2.5 py-1 rounded-md"
-                            style="background: rgba(249, 115, 22, 0.15); color: var(--accent);">6 Chapters</span>
+                            style="background: rgba(249, 115, 22, 0.15); color: var(--accent);" id="chaptersCount">6
+                            Chapters</span>
                     </div>
 
                     <!-- Playlist Items list -->
                     <div class="space-y-3 max-h-[550px] overflow-y-auto pr-1" id="playlistContainer">
 
-                        <!-- Video #1 (Active Initially) -->
-                        <div class="playlist-item active card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
-                            data-video-id="yJdN8SM5hNM" data-index="LESSON 01"
-                            data-title="Introduction to HTML & Web Design Fundamentals"
-                            data-desc="Welcome to the HTML5 video series. In this introductory lesson, we explore how the web works behind the scenes, how search engines read documents, and install essential developer tools like Visual Studio Code to write clean code from day one."
-                            data-code="&lt;!DOCTYPE html&gt;&#10;&lt;html lang=&quot;en&quot;&gt;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;UTF-8&quot;&gt;&#10;    &lt;title&gt;My First Webpage&lt;/title&gt;&#10;&lt;/head&gt;&#10;&lt;body&gt;&#10;    &lt;h1&gt;Hello World!&lt;/h1&gt;&#10;&lt;/body&gt;&#10;&lt;/html&gt;">
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
-                                style="background: var(--bg); border-color: var(--border);">
-                                <i class="fas fa-play text-xs"></i>
+                        <!-- HTML5 Basics Playlist Container -->
+                        <div id="playlist-html" class="course-playlist space-y-3">
+                            <!-- Video #1 (Active Initially) -->
+                            <div class="playlist-item active card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
+                                data-video-id="yJdN8SM5hNM" data-index="LESSON 01"
+                                data-title="Introduction to HTML & Web Design Fundamentals"
+                                data-desc="Welcome to the HTML5 video series. In this introductory lesson, we explore how the web works behind the scenes, how search engines read documents, and install essential developer tools like Visual Studio Code to write clean code from day one."
+                                data-code="&lt;!DOCTYPE html&gt;&#10;&lt;html lang=&quot;en&quot;&gt;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;UTF-8&quot;&gt;&#10;    &lt;title&gt;My First Webpage&lt;/title&gt;&#10;&lt;/head&gt;&#10;&lt;body&gt;&#10;    &lt;h1&gt;Hello World!&lt;/h1&gt;&#10;&lt;/body&gt;&#10;&lt;/html&gt;">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
+                                    style="background: var(--bg); border-color: var(--border);">
+                                    <i class="fas fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-sm leading-tight text-white mb-1">01. Web Setup &
+                                        Basics</h4>
+                                    <p class="text-xs" style="color: var(--muted);">What is HTML? Standard folder
+                                        hierarchy, configuring editor extensions.</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="font-semibold text-sm leading-tight text-white mb-1">01. Web Setup & Basics
-                                </h4>
-                                <p class="text-xs" style="color: var(--muted);">What is HTML? Standard folder hierarchy,
-                                    configuring editor extensions.</p>
+
+                            <!-- Video #2 -->
+                            <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
+                                data-video-id="916GWv2Qs08" data-index="LESSON 02"
+                                data-title="HTML Headings, Text Formatting, and Structure"
+                                data-desc="Mastering typography elements in HTML. In this lesson, we study header hierarchy levels (h1-h6), paragraph structures, paragraph breaks, and physical relative emphasis tags."
+                                data-code="&lt;h1&gt;Main Page Header&lt;/h1&gt;&#10;&lt;h2&gt;Subheading Section&lt;/h2&gt;&#10;&lt;p&gt;This is text inside a paragraph.&lt;/p&gt;&#10;&lt;p&gt;Use &lt;strong&gt;bold text&lt;/strong&gt; and &lt;em&gt;italics&lt;/em&gt; elements.&lt;/p&gt;">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
+                                    style="background: var(--bg); border-color: var(--border);">
+                                    <i class="fas fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-sm leading-tight text-white mb-1">02. Heading &
+                                        Paragraphs</h4>
+                                    <p class="text-xs" style="color: var(--muted);">Using h1-h6 tags, spacing breaks,
+                                        formatting emphasis tags.</p>
+                                </div>
+                            </div>
+
+                            <!-- Video #3 -->
+                            <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
+                                data-video-id="Y-tL_j1t2hA" data-index="LESSON 03"
+                                data-title="Lists, Anchor Links, and Image Attributes"
+                                data-desc="How to link sites together and insert images. We discuss relative vs absolute links, attributes (src, alt, target), ordered lists (ol), and unordered lists (ul)."
+                                data-code="&lt;!-- Hyperlink tag --&gt;&#10;&lt;a href=&quot;https://google.com&quot; target=&quot;_blank&quot;&gt;Visit Google&lt;/a&gt;&#10;&#10;&lt;!-- Image Tag --&gt;&#10;&lt;img src=&quot;img/photo.jpg&quot; alt=&quot;Descriptive Alternate Text&quot;&gt;&#10;&#10;&lt;!-- Lists --&gt;&#10;&lt;ul&gt;&#10;    &lt;li&gt;First item&lt;/li&gt;&#10;&lt;/ul&gt;">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
+                                    style="background: var(--bg); border-color: var(--border);">
+                                    <i class="fas fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-sm leading-tight text-white mb-1">03. Lists, Links &
+                                        Images</h4>
+                                    <p class="text-xs" style="color: var(--muted);">Anchor target structures,
+                                        alternative alt descriptors, item loops.</p>
+                                </div>
+                            </div>
+
+                            <!-- Video #4 -->
+                            <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
+                                data-video-id="916GWv2Qs08" data-index="LESSON 04"
+                                data-title="Creating Tables and Collecting User Input via Forms"
+                                data-desc="How to register data grids and input fields. In this chapter, we outline HTML tabular syntax, form inputs types (text, email, password), and form submission handlers."
+                                data-code="&lt;form action=&quot;/submit&quot; method=&quot;POST&quot;&gt;&#10;  &lt;label&gt;Name:&lt;/label&gt;&#10;  &lt;input type=&quot;text&quot; placeholder=&quot;Enter name&quot; required&gt;&#10;  &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;&#10;&lt;/form&gt;">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
+                                    style="background: var(--bg); border-color: var(--border);">
+                                    <i class="fas fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-sm leading-tight text-white mb-1">04. HTML Tables &
+                                        Forms</h4>
+                                    <p class="text-xs" style="color: var(--muted);">Inputs, buttons, form validations,
+                                        and tabular grid records.</p>
+                                </div>
+                            </div>
+
+                            <!-- Video #5 -->
+                            <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
+                                data-video-id="Y-tL_j1t2hA" data-index="LESSON 05"
+                                data-title="Semantic HTML5 Elements for SEO Rankings"
+                                data-desc="Understanding HTML layout semantics. We switch from generic divs to search-engine friendly tags like main, section, header, articles, footer, and navigation bars."
+                                data-code="&lt;header&gt;&#10;    &lt;nav&gt;Site Directory&lt;/nav&gt;&#10;&lt;/header&gt;&#10;&lt;main&gt;&#10;    &lt;section&gt;Main Article Content&lt;/section&gt;&#10;&lt;/main&gt;&#10;&lt;footer&gt;Copyright Info&lt;/footer&gt;">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
+                                    style="background: var(--bg); border-color: var(--border);">
+                                    <i class="fas fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-sm leading-tight text-white mb-1">05. Semantic HTML &
+                                        Layouts</h4>
+                                    <p class="text-xs" style="color: var(--muted);">Main, nav, header, article tags to
+                                        optimize Google Crawler reading.</p>
+                                </div>
+                            </div>
+
+                            <!-- Video #6 -->
+                            <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
+                                data-video-id="ok-plXXH5Wg" data-index="LESSON 06"
+                                data-title="Embedded Media, Frame Tags, and Advanced Meta Tools"
+                                data-desc="Exploring advanced HTML features. This video teaches how to embed YouTube videos (iframes), native audio players, video source controls, and crucial SEO meta tags."
+                                data-code="&lt;!-- Embedded Frame --&gt;&#10;&lt;iframe src=&quot;https://www.youtube.com/embed/...&quot;&gt;&lt;/iframe&gt;&#10;&#10;&lt;!-- Meta Description --&gt;&#10;&lt;meta name=&quot;description&quot; content=&quot;Search description preview&quot;&gt;">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
+                                    style="background: var(--bg); border-color: var(--border);">
+                                    <i class="fas fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-sm leading-tight text-white mb-1">06. Multimedia & SEO
+                                        Metas</h4>
+                                    <p class="text-xs" style="color: var(--muted);">Audio/Video embeds, viewport
+                                        configurations, and description setups.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Video #2 -->
-                        <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
-                            data-video-id="916GWv2Qs08" data-index="LESSON 02"
-                            data-title="HTML Headings, Text Formatting, and Structure"
-                            data-desc="Mastering typography elements in HTML. In this lesson, we study header hierarchy levels (h1-h6), paragraph structures, paragraph breaks, and physical relative emphasis tags."
-                            data-code="&lt;h1&gt;Main Page Header&lt;/h1&gt;&#10;&lt;h2&gt;Subheading Section&lt;/h2&gt;&#10;&lt;p&gt;This is text inside a paragraph.&lt;/p&gt;&#10;&lt;p&gt;Use &lt;strong&gt;bold text&lt;/strong&gt; and &lt;em&gt;italics&lt;/em&gt; elements.&lt;/p&gt;">
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
-                                style="background: var(--bg); border-color: var(--border);">
-                                <i class="fas fa-play text-xs"></i>
+                        <!-- CSS3 Layouts Playlist Container (Hidden Initially) -->
+                        <div id="playlist-css" class="course-playlist space-y-3 hidden">
+                            <!-- CSS Lesson #1 -->
+                            <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
+                                data-video-id="1PnVor36_40" data-index="LESSON 01"
+                                data-title="CSS Intro & Adding Styles to Your Webpage"
+                                data-desc="Welcome to CSS3 Layouts. Learn how to style HTML using inline, external, and internal styling methods, syntax selectors, and basic color declarations."
+                                data-code="&lt;style&gt;&#10;  body {&#10;    background-color: #0b0f19;&#10;    color: var(--fg);&#10;  }&#10;  h1 {&#10;    color: var(--accent);&#10;  }&#10;&lt;/style&gt;">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
+                                    style="background: var(--bg); border-color: var(--border);">
+                                    <i class="fas fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-sm leading-tight text-white mb-1">01. CSS Introduction
+                                    </h4>
+                                    <p class="text-xs" style="color: var(--muted);">Selector rules, fonts, box colors.
+                                    </p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="font-semibold text-sm leading-tight text-white mb-1">02. Heading & Paragraphs
-                                </h4>
-                                <p class="text-xs" style="color: var(--muted);">Using h1-h6 tags, spacing breaks,
-                                    formatting emphasis tags.</p>
+
+                            <!-- CSS Lesson #2 -->
+                            <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
+                                data-video-id="yfoY53QXEnI" data-index="LESSON 02"
+                                data-title="Box Model, Padding, Margins and Borders"
+                                data-desc="Understanding the CSS Box Model layout. Learn how properties like content width, border bounds, margin gaps, and padding spacing govern box sizing."
+                                data-code="div {&#10;  width: 300px;&#10;  padding: 20px;&#10;  margin: 15px;&#10;  border: 2px solid orange;&#10;  box-sizing: border-box;&#10;}">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
+                                    style="background: var(--bg); border-color: var(--border);">
+                                    <i class="fas fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-sm leading-tight text-white mb-1">02. CSS Box Model
+                                    </h4>
+                                    <p class="text-xs" style="color: var(--muted);">Padding, margin gaps, border bounds.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Video #3 -->
-                        <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
-                            data-video-id="Y-tL_j1t2hA" data-index="LESSON 03"
-                            data-title="Lists, Anchor Links, and Image Attributes"
-                            data-desc="How to link sites together and insert images. We discuss relative vs absolute links, attributes (src, alt, target), ordered lists (ol), and unordered lists (ul)."
-                            data-code="&lt;!-- Hyperlink tag --&gt;&#10;&lt;a href=&quot;https://google.com&quot; target=&quot;_blank&quot;&gt;Visit Google&lt;/a&gt;&#10;&#10;&lt;!-- Image Tag --&gt;&#10;&lt;img src=&quot;img/photo.jpg&quot; alt=&quot;Descriptive Alternate Text&quot;&gt;&#10;&#10;&lt;!-- Lists --&gt;&#10;&lt;ul&gt;&#10;    &lt;li&gt;First item&lt;/li&gt;&#10;&lt;/ul&gt;">
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
-                                style="background: var(--bg); border-color: var(--border);">
-                                <i class="fas fa-play text-xs"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-sm leading-tight text-white mb-1">03. Lists, Links &
-                                    Images</h4>
-                                <p class="text-xs" style="color: var(--muted);">Anchor target structures, alternative
-                                    alt descriptors, item loops.</p>
-                            </div>
-                        </div>
-
-                        <!-- Video #4 -->
-                        <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
-                            data-video-id="916GWv2Qs08" data-index="LESSON 04"
-                            data-title="Creating Tables and Collecting User Input via Forms"
-                            data-desc="How to register data grids and input fields. In this chapter, we outline HTML tabular syntax, form inputs types (text, email, password), and form submission handlers."
-                            data-code="&lt;form action=&quot;/submit&quot; method=&quot;POST&quot;&gt;&#10;  &lt;label&gt;Name:&lt;/label&gt;&#10;  &lt;input type=&quot;text&quot; placeholder=&quot;Enter name&quot; required&gt;&#10;  &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;&#10;&lt;/form&gt;">
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
-                                style="background: var(--bg); border-color: var(--border);">
-                                <i class="fas fa-play text-xs"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-sm leading-tight text-white mb-1">04. HTML Tables & Forms
-                                </h4>
-                                <p class="text-xs" style="color: var(--muted);">Inputs, buttons, form validations, and
-                                    tabular grid records.</p>
+                        <!-- JS Essentials Playlist Container (Hidden Initially) -->
+                        <div id="playlist-js" class="course-playlist space-y-3 hidden">
+                            <!-- JS Lesson #1 -->
+                            <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
+                                data-video-id="W6NZfCO5SIk" data-index="LESSON 01"
+                                data-title="JavaScript Basics - Variables, Data Types & Operations"
+                                data-desc="Start writing JavaScript code. Understand variables (let, const, var), basic console operations, math declarations, and primitive types."
+                                data-code="const message = 'Hello JavaScript';&#10;let count = 10;&#10;console.log(message, count);&#10;&#10;// Basic operations&#10;count += 5;">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
+                                    style="background: var(--bg); border-color: var(--border);">
+                                    <i class="fas fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-sm leading-tight text-white mb-1">01. JS Setup & Vars
+                                    </h4>
+                                    <p class="text-xs" style="color: var(--muted);">Declaring variables, logs,
+                                        operations.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Video #5 -->
-                        <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
-                            data-video-id="Y-tL_j1t2hA" data-index="LESSON 05"
-                            data-title="Semantic HTML5 Elements for SEO Rankings"
-                            data-desc="Understanding HTML layout semantics. We switch from generic divs to search-engine friendly tags like main, section, header, articles, footer, and navigation bars."
-                            data-code="&lt;header&gt;&#10;    &lt;nav&gt;Site Directory&lt;/nav&gt;&#10;&lt;/header&gt;&#10;&lt;main&gt;&#10;    &lt;section&gt;Main Article Content&lt;/section&gt;&#10;&lt;/main&gt;&#10;&lt;footer&gt;Copyright Info&lt;/footer&gt;">
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
-                                style="background: var(--bg); border-color: var(--border);">
-                                <i class="fas fa-play text-xs"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-sm leading-tight text-white mb-1">05. Semantic HTML &
-                                    Layouts</h4>
-                                <p class="text-xs" style="color: var(--muted);">Main, nav, header, article tags to
-                                    optimize Google Crawler reading.</p>
-                            </div>
-                        </div>
-
-                        <!-- Video #6 -->
-                        <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
-                            data-video-id="ok-plXXH5Wg" data-index="LESSON 06"
-                            data-title="Embedded Media, Frame Tags, and Advanced Meta Tools"
-                            data-desc="Exploring advanced HTML features. This video teaches how to embed YouTube videos (iframes), native audio players, video source controls, and crucial SEO meta tags."
-                            data-code="&lt;!-- Embedded Frame --&gt;&#10;&lt;iframe src=&quot;https://www.youtube.com/embed/...&quot;&gt;&lt;/iframe&gt;&#10;&#10;&lt;!-- Meta Description --&gt;&#10;&lt;meta name=&quot;description&quot; content=&quot;Search description preview&quot;&gt;">
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
-                                style="background: var(--bg); border-color: var(--border);">
-                                <i class="fas fa-play text-xs"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-sm leading-tight text-white mb-1">06. Multimedia & SEO
-                                    Metas</h4>
-                                <p class="text-xs" style="color: var(--muted);">Audio/Video embeds, viewport
-                                    configurations, and description setups.</p>
+                        <!-- Git & GitHub Playlist Container (Hidden Initially) -->
+                        <div id="playlist-git" class="course-playlist space-y-3 hidden">
+                            <!-- Git Lesson #1 -->
+                            <div class="playlist-item card p-4 flex gap-4 items-start cursor-pointer border hover:border-orange-500"
+                                data-video-id="RGOj5yH7evk" data-index="LESSON 01"
+                                data-title="Git Initialization, Commits, and Branching"
+                                data-desc="Master file versioning using Git. Learn git init, staging files (git add), logging history (git status), creating commits, and merging code branches."
+                                data-code="git init&#10;git add .&#10;git commit -m 'Initial commit'&#10;&#10;# Create a branch&#10;git checkout -b feature-dev">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border play-indicator"
+                                    style="background: var(--bg); border-color: var(--border);">
+                                    <i class="fas fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-sm leading-tight text-white mb-1">01. Git CLI Commands
+                                    </h4>
+                                    <p class="text-xs" style="color: var(--muted);">Init setup, staging files, branch
+                                        merges.</p>
+                                </div>
                             </div>
                         </div>
 
@@ -673,6 +812,30 @@
             });
         }
 
+        // Course Info Definitions
+        const courseMetadata = {
+            html: {
+                subtitle: "06 — HTML5 Basics",
+                title: "HTML5 Video Academy",
+                desc: "Learn how to build modern, stable, and semantic structures for websites. This comprehensive tutorial series takes you step-by-step from beginner tags to search-optimized front-end markup."
+            },
+            css: {
+                subtitle: "06 — CSS3 Layouts",
+                title: "CSS3 Typography & Layouts",
+                desc: "Dive deep into CSS styling. Master the box model, flexbox, grids, and advanced media queries to build beautifully responsive and premium layouts."
+            },
+            js: {
+                subtitle: "06 — JS Essentials",
+                title: "Modern JavaScript Academy",
+                desc: "Learn the core fundamentals of JavaScript. Build dynamic interactions, interact with the DOM, fetch data, and manage frontend applications."
+            },
+            git: {
+                subtitle: "06 — Git & GitHub",
+                title: "Git Version Control Guide",
+                desc: "Master version tracking using Git and release your projects to GitHub. Command line basics, staging commits, branching, merging, and host deploy configuration."
+            }
+        };
+
         // Setup playlist dynamic cards load video by id
         document.addEventListener("DOMContentLoaded", function () {
             const playlistItems = document.querySelectorAll(".playlist-item");
@@ -683,7 +846,12 @@
 
             playlistItems.forEach(item => {
                 item.addEventListener("click", () => {
-                    // Remove active style classes
+                    // Remove active style classes from parent container siblings
+                    const parent = item.parentElement;
+                    const siblings = parent.querySelectorAll(".playlist-item");
+                    siblings.forEach(i => i.classList.remove("active"));
+
+                    // Also clear active styles from ALL other playlist items
                     playlistItems.forEach(i => i.classList.remove("active"));
 
                     // Add active style to selected card
@@ -711,6 +879,49 @@
                     videoTitle.textContent = title;
                     videoDescription.textContent = desc;
                     videoCheatSheet.innerHTML = code;
+                });
+            });
+
+            // Course Tabs Controller
+            const courseTabs = document.querySelectorAll(".course-tab");
+            const playlists = document.querySelectorAll(".course-playlist");
+            const courseSubtitle = document.getElementById("courseSubtitle");
+            const courseTitle = document.getElementById("courseTitle");
+            const courseDescription = document.getElementById("courseDescription");
+            const chaptersCount = document.getElementById("chaptersCount");
+
+            courseTabs.forEach(tab => {
+                tab.addEventListener("click", () => {
+                    // Remove active tab style
+                    courseTabs.forEach(t => t.classList.remove("active"));
+                    tab.classList.add("active");
+
+                    const courseKey = tab.getAttribute("data-course");
+
+                    // Toggle playlist visibility
+                    playlists.forEach(pl => {
+                        if (pl.id === `playlist-${courseKey}`) {
+                            pl.classList.remove("hidden");
+
+                            // Update chapters count tag
+                            const items = pl.querySelectorAll(".playlist-item");
+                            chaptersCount.textContent = items.length + " Chapters";
+
+                            // Auto click the first item in this newly visible playlist
+                            if (items.length > 0) {
+                                items[0].click();
+                            }
+                        } else {
+                            pl.classList.add("hidden");
+                        }
+                    });
+
+                    // Update main Course title & description
+                    if (courseMetadata[courseKey]) {
+                        courseSubtitle.textContent = courseMetadata[courseKey].subtitle;
+                        courseTitle.innerHTML = courseMetadata[courseKey].title + '<span class="text-glow animate-pulse" style="color: var(--accent);">.</span>';
+                        courseDescription.textContent = courseMetadata[courseKey].desc;
+                    }
                 });
             });
         });
