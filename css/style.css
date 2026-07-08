@@ -202,6 +202,20 @@ body {
 .nav-link.active { color: var(--fg); }
 .nav-link.active::after { width: 100%; }
 
+/* ===== Mobile Navigation Drawer CSS ===== */
+.mobile-nav-link {
+  color: var(--muted);
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.mobile-nav-link:hover, .mobile-nav-link.active {
+  color: var(--accent);
+  background-color: rgba(249, 115, 22, 0.08);
+}
+
 ::selection { background: var(--accent); color: white; }
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }

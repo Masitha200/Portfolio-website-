@@ -17,7 +17,7 @@ if (themeToggle) {
     const currentTheme = htmlElement.getAttribute('data-theme');
     let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     htmlElement.setAttribute('data-theme', newTheme);
-    try { localStorage.setItem('theme', newTheme); } catch(e) {}
+    try { localStorage.setItem('theme', newTheme); } catch (e) { }
     updateIcon();
   });
 }
@@ -37,6 +37,32 @@ if (cursorDot && cursorOutline && !document.body.classList.contains('software-pa
       top: `${posY}px`
     }, { duration: 300, fill: 'forwards' });
   });
+
+  // ===== Mobile Menu Logic =====
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIcon = document.getElementById('menuIcon');
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.className = 'fas fa-times';
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIcon.className = 'fas fa-bars';
+      }
+    });
+
+    // Close menu when clicking a link
+    mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.className = 'fas fa-bars';
+      });
+    });
+  }
 
   document.querySelectorAll('a, button, .card').forEach(el => {
     el.addEventListener('mouseenter', () => {

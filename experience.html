@@ -64,11 +64,29 @@
         <a href="tutorials.html" class="nav-link">Lessons</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
-      <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
-        <i id="themeIcon" class="fas fa-sun"></i>
-      </button>
+      <div class="flex items-center gap-4">
+        <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
+          <i id="themeIcon" class="fas fa-sun"></i>
+        </button>
+        <button id="menuToggle" class="md:hidden theme-btn flex items-center justify-center" aria-label="Toggle Menu">
+          <i id="menuIcon" class="fas fa-bars"></i>
+        </button>
+      </div>
     </div>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu"
+    class="hidden md:hidden fixed top-[73px] left-0 right-0 z-40 border-b backdrop-blur-xl transition-all duration-300 p-6 flex flex-col gap-4 text-center animate-fade-in"
+    style="background: var(--bg-nav); border-color: var(--border);">
+    <a href="index.html" class="mobile-nav-link py-2 font-medium">Home</a>
+    <a href="work.html" class="mobile-nav-link py-2 font-medium">Work</a>
+    <a href="about.html" class="mobile-nav-link py-2 font-medium">About</a>
+    <a href="services.html" class="mobile-nav-link py-2 font-medium">Services</a>
+    <a href="experience.html" class="mobile-nav-link active py-2 font-medium">Experience</a>
+    <a href="tutorials.html" class="mobile-nav-link py-2 font-medium">Lessons</a>
+    <a href="contact.html" class="mobile-nav-link py-2 font-medium">Contact</a>
+  </div>
 
   <section class="py-32 px-6 border-t" style="border-color: var(--border);">
     <div class="max-w-7xl mx-auto">
