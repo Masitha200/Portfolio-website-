@@ -1,85 +1,104 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Masitha Bandara — About</title>
-<script>
-  (function() {
-    try { var savedTheme = localStorage.getItem('theme') || 'dark'; document.documentElement.setAttribute('data-theme', savedTheme); } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
-  })();
-</script>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masitha Bandara — About</title>
+  <script>
+    (function () {
+      try { var savedTheme = localStorage.getItem('theme') || 'dark'; document.documentElement.setAttribute('data-theme', savedTheme); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="cursor-dot" data-cursor-dot></div>
-<div class="cursor-outline" data-cursor-outline></div>
-<div class="bg-grid"></div>
-<div class="bg-blob blob-1"></div>
-<div class="bg-blob blob-2"></div>
-<div class="bg-blob blob-3"></div>
+  <div class="cursor-dot" data-cursor-dot></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+  <div class="bg-grid"></div>
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
 
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b" style="background: var(--bg-nav); border-color: var(--border);">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="font-display text-2xl font-bold" style="color: var(--fg); text-decoration: none;">
-       Masitha Bandara <span style="color: var(--accent);">.</span>
-    </a>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="work.html" class="nav-link">Work</a>
-      <a href="about.html" class="nav-link active">About</a>
-      <a href="services.html" class="nav-link">Services</a>
-      <a href="experience.html" class="nav-link">Experience</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </div>
-    <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
-      <i id="themeIcon" class="fas fa-sun"></i>
-    </button>
-  </div>
-</nav>
-
-<section class="py-32 px-6 border-t" style="border-color: var(--border);">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid md:grid-cols-12 gap-12">
-      <div class="md:col-span-5">
-        <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">02 — About</span>
-        <h2 class="font-display text-5xl md:text-6xl font-bold mt-4 mb-8">Designer <br>who codes.</h2>
-        <div class="card p-2 inline-block">
-          <img src="../img/masitha.jpeg" alt="Portrait" class="w-full max-w-xs rounded-2xl">
-        </div>
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b"
+    style="background: var(--bg-nav); border-color: var(--border);">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-display text-2xl font-bold" style="color: var(--fg); text-decoration: none;">
+        Masitha Bandara <span style="color: var(--accent);">.</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="work.html" class="nav-link">Work</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="experience.html" class="nav-link">Experience</a>
+        <a href="contact.html" class="nav-link">Contact</a>
       </div>
-      
-      <div class="md:col-span-7">
-        <p class="text-xl leading-relaxed mb-6">
-          I'm Maya, a multidisciplinary creative with over 8 years of experience translating ambitious ideas into interfaces that feel alive. I work where engineering rigor meets design intuition.
-        </p>
-        <p class="text-lg leading-relaxed mb-12" style="color: var(--muted);">
-          Currently shaping design systems at Stripe. Previously at Linear and Framer. I care deeply about typography, performance budgets, accessibility, and the small details that turn a good product into a memorable one.
-        </p>
+      <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
+        <i id="themeIcon" class="fas fa-sun"></i>
+      </button>
+    </div>
+  </nav>
 
-        <div class="grid grid-cols-3 gap-6 py-8 border-y" style="border-color: var(--border);">
-          <div><div class="font-display text-4xl font-bold" style="color: var(--accent);">8+</div><div class="text-sm mt-2" style="color: var(--muted);">Years Exp.</div></div>
-          <div><div class="font-display text-4xl font-bold" style="color: var(--accent);">60+</div><div class="text-sm mt-2" style="color: var(--muted);">Projects Done</div></div>
-          <div><div class="font-display text-4xl font-bold" style="color: var(--accent);">12</div><div class="text-sm mt-2" style="color: var(--muted);">Awards Won</div></div>
+  <section class="py-32 px-6 border-t" style="border-color: var(--border);">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-12 gap-12">
+        <div class="md:col-span-5">
+          <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">02 — About</span>
+          <h2 class="font-display text-5xl md:text-6xl font-bold mt-4 mb-8">Designer <br>who codes.</h2>
+          <div class="card p-2 inline-block">
+            <img src="../img/masitha.jpeg" alt="Portrait" class="w-full max-w-xs rounded-2xl">
+          </div>
         </div>
 
-        <div class="mt-12">
-          <h4 class="font-display text-2xl font-bold mb-6">Tools & Skills</h4>
-          <div class="flex flex-wrap gap-3">
-            <span class="tag">Figma</span><span class="tag">React / Next.js</span><span class="tag">Tailwind CSS</span>
-            <span class="tag">TypeScript</span><span class="tag">Framer Motion</span><span class="tag">WebGL / Three.js</span>
-            <span class="tag">Node.js</span><span class="tag">Design Systems</span>
+        <div class="md:col-span-7">
+          <p class="text-xl leading-relaxed mb-6">
+            I'm Maya, a multidisciplinary creative with over 8 years of experience translating ambitious ideas into
+            interfaces that feel alive. I work where engineering rigor meets design intuition.
+          </p>
+          <p class="text-lg leading-relaxed mb-12" style="color: var(--muted);">
+            Currently shaping design systems at Stripe. Previously at Linear and Framer. I care deeply about typography,
+            performance budgets, accessibility, and the small details that turn a good product into a memorable one.
+          </p>
+
+          <div class="grid grid-cols-3 gap-6 py-8 border-y" style="border-color: var(--border);">
+            <div>
+              <div class="font-display text-4xl font-bold" style="color: var(--accent);">8+</div>
+              <div class="text-sm mt-2" style="color: var(--muted);">Years Exp.</div>
+            </div>
+            <div>
+              <div class="font-display text-4xl font-bold" style="color: var(--accent);">60+</div>
+              <div class="text-sm mt-2" style="color: var(--muted);">Projects Done</div>
+            </div>
+            <div>
+              <div class="font-display text-4xl font-bold" style="color: var(--accent);">12</div>
+              <div class="text-sm mt-2" style="color: var(--muted);">Awards Won</div>
+            </div>
+          </div>
+
+          <div class="mt-12">
+            <h4 class="font-display text-2xl font-bold mb-6">Tools & Skills</h4>
+            <div class="flex flex-wrap gap-3">
+              <span class="tag">Figma</span><span class="tag">React / Next.js</span><span class="tag">Tailwind
+                CSS</span>
+              <span class="tag">TypeScript</span><span class="tag">Framer Motion</span><span class="tag">WebGL /
+                Three.js</span>
+              <span class="tag">Node.js</span><span class="tag">Design Systems</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<script src="Js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
+
 </html>
