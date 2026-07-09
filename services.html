@@ -38,6 +38,7 @@
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chatbot.css">
 </head>
 
 <body>
@@ -88,54 +89,108 @@
     <a href="contact.html" class="mobile-nav-link py-2 font-medium">Contact</a>
   </div>
 
-  <section class="py-32 px-6 border-t" style="border-color: var(--border);">
+  <section class="py-28 md:py-32 px-4 md:px-6 border-t" style="border-color: var(--border);">
     <div class="max-w-7xl mx-auto">
       <div class="mb-16">
         <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">03 — Services</span>
         <h2 class="font-display text-5xl md:text-6xl font-bold mt-4">What I Do</h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 items-start">
-        <div class="card p-8">
-          <div class="text-4xl mb-6" style="color: var(--accent);"><i class="fas fa-pen-ruler"></i></div>
-          <h3 class="font-display text-2xl font-bold mb-4">Brand & Identity</h3>
-          <p class="mb-6" style="color: var(--muted);">Visual systems, logo design, typography selection, and brand
-            guidelines that scale across every touchpoint.</p>
-          <ul class="space-y-3 text-sm" style="color: var(--muted);">
-            <li class="flex items-center gap-3"><i class="fas fa-check" style="color: var(--accent);"></i> Logo & Mark
-              Design</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check" style="color: var(--accent);"></i> Type & Color
-              Systems</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check" style="color: var(--accent);"></i> Brand
-              Guidelines</li>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <div class="card p-6 md:p-8 h-full flex flex-col justify-between">
+          <div>
+            <div class="text-4xl mb-6" style="color: var(--accent);"><i class="fas fa-palette"></i></div>
+            <h3 class="font-display text-2xl font-bold mb-4">Graphic Design</h3>
+            <p class="mb-6" style="color: var(--muted);">Crafting premium visual identities, typography systems, vector
+              brand kits, and graphics that elevate look and feel.</p>
+          </div>
+          <ul class="space-y-3 text-sm mt-auto" style="color: var(--muted);">
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Brand Identity & Logo Systems</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Vector Assets & Graphic Sets</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Interactive Layout Prototyping</span></li>
           </ul>
         </div>
-        <div class="card p-8">
-          <div class="text-4xl mb-6" style="color: var(--accent);"><i class="fas fa-code"></i></div>
-          <h3 class="font-display text-2xl font-bold mb-4">Web Development</h3>
-          <p class="mb-6" style="color: var(--muted);">Custom-built, performant websites with thoughtful interactions
-            and accessibility baked in from day one.</p>
-          <ul class="space-y-3 text-sm" style="color: var(--muted);">
-            <li class="flex items-center gap-3"><i class="fas fa-check" style="color: var(--accent);"></i> Marketing
-              Sites</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check" style="color: var(--accent);"></i> Web Apps &
-              Dashboards</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check" style="color: var(--accent);"></i> CMS
-              Integrations</li>
+        <div class="card p-6 md:p-8 h-full flex flex-col justify-between">
+          <div>
+            <div class="text-4xl mb-6" style="color: var(--accent);"><i class="fas fa-globe"></i></div>
+            <h3 class="font-display text-2xl font-bold mb-4">Web Development</h3>
+            <p class="mb-6" style="color: var(--muted);">Designing landing pages, responsive layouts, theme-aware
+              navigation systems, and interactive static frontends.</p>
+          </div>
+          <ul class="space-y-3 text-sm mt-auto" style="color: var(--muted);">
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Responsive Landing Pages</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>CSS Variable Theme Systems</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Optimized SEO & Performance</span></li>
           </ul>
         </div>
-        <div class="card p-8">
-          <div class="text-4xl mb-6" style="color: var(--accent);"><i class="fas fa-wand-magic-sparkles"></i></div>
-          <h3 class="font-display text-2xl font-bold mb-4">Motion & Interaction</h3>
-          <p class="mb-6" style="color: var(--muted);">Micro-interactions, scroll-driven storytelling, and animation
-            systems that bring interfaces to life.</p>
-          <ul class="space-y-3 text-sm" style="color: var(--muted);">
-            <li class="flex items-center gap-3"><i class="fas fa-check" style="color: var(--accent);"></i> Interaction
-              Design</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check" style="color: var(--accent);"></i> Prototyping &
-              Motion</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check" style="color: var(--accent);"></i> WebGL & 3D
-            </li>
+        <div class="card p-6 md:p-8 h-full flex flex-col justify-between">
+          <div>
+            <div class="text-4xl mb-6" style="color: var(--accent);"><i class="fas fa-code"></i></div>
+            <h3 class="font-display text-2xl font-bold mb-4">Full-Stack Web Dev</h3>
+            <p class="mb-6" style="color: var(--muted);">Transforming structural concepts into high-performance web
+              systems using responsive frontends, local state management, and robust database integrations.</p>
+          </div>
+          <ul class="space-y-3 text-sm mt-auto" style="color: var(--muted);">
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>React & Tailwind Interfaces</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>LMS & Villa Booking Portals</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Local State Caching & REST APIs</span></li>
+          </ul>
+        </div>
+        <div class="card p-6 md:p-8 h-full flex flex-col justify-between">
+          <div>
+            <div class="text-4xl mb-6" style="color: var(--accent);"><i class="fas fa-desktop"></i></div>
+            <h3 class="font-display text-2xl font-bold mb-4">Desktop Engineering</h3>
+            <p class="mb-6" style="color: var(--muted);">Designing native and standalone cross-platform applications.
+              Packaged executable tools engineered using Electron-builder and Python PyQt5.</p>
+          </div>
+          <ul class="space-y-3 text-sm mt-auto" style="color: var(--muted);">
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>PyQt5 Dashboard Interfaces</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Electron Desktop Application Packaging</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Standalone Distribution & Installers</span></li>
+          </ul>
+        </div>
+        <div class="card p-6 md:p-8 h-full flex flex-col justify-between">
+          <div>
+            <div class="text-4xl mb-6" style="color: var(--accent);"><i class="fas fa-gauge-high"></i></div>
+            <h3 class="font-display text-2xl font-bold mb-4">Telemetry & Systems</h3>
+            <p class="mb-6" style="color: var(--muted);">Engineering low-latency hardware data pipelines and registries.
+              High polling specs and system-level caching layers for visual speed trackers.</p>
+          </div>
+          <ul class="space-y-3 text-sm mt-auto" style="color: var(--muted);">
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Real-Time Telemetry Tracking</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>0.25s High-Frequency Data Polling</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Clean Caching & Memory Opts</span></li>
+          </ul>
+        </div>
+        <div class="card p-6 md:p-8 h-full flex flex-col justify-between">
+          <div>
+            <div class="text-4xl mb-6" style="color: var(--accent);"><i class="fas fa-chalkboard-user"></i></div>
+            <h3 class="font-display text-2xl font-bold mb-4">Tech Education</h3>
+            <p class="mb-6" style="color: var(--muted);">Creating structured coding tutorials, academic web design
+              course materials, and step-by-step guidance for modern frameworks.</p>
+          </div>
+          <ul class="space-y-3 text-sm mt-auto" style="color: var(--muted);">
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Coding Mentorship & Lessons</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Video Guides & Cheat Sheets</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check mt-1 text-xs shrink-0"
+                style="color: var(--accent);"></i> <span>Targeted Web Design Syllabus</span></li>
           </ul>
         </div>
       </div>
@@ -143,6 +198,7 @@
   </section>
 
   <script src="js/script.js"></script>
+  <script src="js/chatbot.js"></script>
 </body>
 
 </html>
