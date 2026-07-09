@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LankaStay — Discover Sri Lanka's Finest Stays</title>
+    <meta name="description"
+        content="LankaStay is a premium website for booking luxury hotels, villas, and holiday rooms in Sri Lanka. Designed for global travelers demanding smooth booking experiences." />
+    <meta name="keywords"
+        content="LankaStay, hotel booking Sri Lanka, travel website, rent villa Sri Lanka, resort booking platform, Sri Lanka rooms Netlify" />
+    <meta name="author" content="Masitha Bandara" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://masitha200.github.io/Portfolio-website-/lankastays-page.html" />
+    <meta property="og:title" content="LankaStay — Room Reservation & Travel Booking Platform" />
+    <meta property="og:description"
+        content="LankaStay is a premium website for booking luxury hotels, villas, and holiday rooms in Sri Lanka. Designed for global travelers demanding smooth booking experiences." />
+    <meta property="og:image"
+        content="https://masitha200.github.io/Portfolio-website-/img/lankastays_preview_1783579192540.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://masitha200.github.io/Portfolio-website-/lankastays-page.html" />
+    <meta property="twitter:title" content="LankaStay — Room Reservation & Travel Booking Platform" />
+    <meta property="twitter:description"
+        content="LankaStay is a premium website for booking luxury hotels, villas, and holiday rooms in Sri Lanka. Designed for global travelers demanding smooth booking experiences." />
+    <meta property="twitter:image"
+        content="https://masitha200.github.io/Portfolio-website-/img/lankastays_preview_1783579192540.png" />
+
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Override Theme Accents for Sand/Amber Holiday Aesthetic -->
+    <style>
+        :root[data-theme="dark"] {
+            --accent: #f59e0b;
+            --accent-hover: #fbbf24;
+        }
+
+        :root[data-theme="light"] {
+            --accent: #d97706;
+            --accent-hover: #f59e0b;
+        }
+
+        /* Custom styles for specific elements to match new accent */
+        .btn-primary {
+            background-color: var(--accent) !important;
+            color: #1e1b18 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover) !important;
+        }
+
+        .download-btn {
+            color: var(--accent) !important;
+            border-color: var(--accent) !important;
+        }
+
+        .download-btn:hover {
+            background-color: var(--accent) !important;
+            color: #1e1b18 !important;
+        }
+
+        input:focus {
+            border-color: var(--accent) !important;
+        }
+    </style>
+</head>
+
+<body class="software-page">
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1" style="background: #f59e0b;"></div>
+    <div class="bg-blob blob-2" style="background: #f97316;"></div>
+    <div class="bg-blob blob-3" style="background: #d97706;"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b"
+        style="background: var(--bg-nav); border-color: var(--border);">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="font-display text-2xl font-bold"
+                style="color: var(--fg); text-decoration: none;">Masitha Bandara <span
+                    style="color: var(--accent);">.</span></a>
+            <a href="work.html" id="navBackWorkBtn" class="btn-outline">Back to Work</a>
+        </div>
+    </nav>
+
+    <main class="min-h-screen flex items-center justify-center px-6 py-32">
+        <div class="max-w-6xl w-full grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
+            <div>
+                <div class="flex flex-col gap-6 mb-6">
+                    <div class="overflow-hidden rounded-2xl border" style="border-color: var(--border);">
+                        <img src="img/lankastays_preview_1783579192540.png" alt="LankaStay Site Screenshot"
+                            class="w-full h-auto object-cover">
+                    </div>
+                    <div class="flex items-center gap-5">
+                        <div>
+                            <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">Web
+                                Application Showcase</span>
+                            <h1 class="font-display text-4xl md:text-5xl font-bold mt-1">LankaStay</h1>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xl font-medium mt-2" style="color: var(--fg);">Discover Sri Lanka's Finest Stays</p>
+                <p class="mt-4 text-base leading-relaxed" style="color: var(--muted);">
+                    LankaStay is a premium web booking and reservation client platform designed to simplify trip
+                    planning and hotel finding across Sri Lanka. Built with responsive interfaces, verified property
+                    inventories, booking summary builders, and localized travel logs, the system connects travelers
+                    directly with luxury seaside resorts and mist-covered mountain bungalows.
+                </p>
+
+                <div class="mt-8 space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(245,158,11,0.1); color: var(--accent);">
+                            <i class="fas fa-hotel text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Verified Property Inventory</h3>
+                            <p class="text-sm" style="color: var(--muted);">Lists hand-inspected rooms, beachfront
+                                villas, and eco-friendly retreats with detailed pricing, review logs, and free
+                                cancellations.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(245,158,11,0.1); color: var(--accent);">
+                            <i class="fas fa-magnifying-glass-location text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Destination-Based Querying</h3>
+                            <p class="text-sm" style="color: var(--muted);">Quick-link filtering structures designed to
+                                showcase popular places such as Colombo, Kandy, Galle, and Ella instantly.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(245,158,11,0.1); color: var(--accent);">
+                            <i class="fas fa-file-invoice text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Secure Booking Summaries</h3>
+                            <p class="text-sm" style="color: var(--muted);">Transparent reservation logs featuring
+                                cancellation options, date-duration checks, and instant reservation receipts.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(245,158,11,0.1); color: var(--accent);">
+                            <i class="fas fa-mobile-screen-button text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Fully Responsive Layout</h3>
+                            <p class="text-sm" style="color: var(--muted);">Optimized using styling components for
+                                mobile-drawer menus, ensuring users have access to bookings on their mobile devices
+                                during active trips.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex flex-wrap gap-4 items-center">
+                    <a href="https://lankastays.netlify.app/" target="_blank" rel="noopener noreferrer"
+                        class="btn-primary shadow-lg" style="color: black !important;"><i class="fas fa-globe mr-2"></i>
+                        Visit Live Website</a>
+                </div>
+            </div>
+
+            <div> <!-- Right Column Wrapper starts -->
+                <div class="card p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <p class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">
+                                Live Project</p>
+                            <h2 class="font-display text-2xl font-bold mt-2">LankaStay</h2>
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+                            style="background: rgba(245,158,11,0.15); color: var(--accent);">
+                            <i class="fas fa-circle-check text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 text-sm" style="color: var(--muted);">
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+                                style="color: var(--accent);"></i><span>100% responsive cross-platform layout</span>
+                        </li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+                                style="color: var(--accent);"></i><span>Fast CDN delivery with Netlify
+                                architecture</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+                                style="color: var(--accent);"></i><span>Integrated destination booking catalog</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8 p-4 rounded-2xl border text-sm space-y-2"
+                        style="border-color: var(--border); background: var(--bg-elevated);">
+                        <p class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">Project
+                            Info
+                        </p>
+                        <div class="flex justify-between">
+                            <span style="color: var(--muted);">Project Type:</span>
+                            <span class="font-semibold text-right">Web Booking Platform</span>
+                        </div>
+                        <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
+                            <span style="color: var(--muted);">Hosted on:</span>
+                            <span class="font-semibold text-right">Netlify Host</span>
+                        </div>
+                        <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
+                            <span style="color: var(--muted);">Year:</span>
+                            <span class="font-semibold text-right">2025</span>
+                        </div>
+                        <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
+                            <span style="color: var(--muted);">Status:</span>
+                            <span class="font-semibold text-right text-emerald-500"><i
+                                    class="fas fa-circle text-[9px] mr-1.5 align-middle"></i>Active / Live</span>
+                        </div>
+                        <div class="flex justify-between border-t pt-1.5" style="border-color: var(--border);">
+                            <span style="color: var(--muted);">Language / Stack:</span>
+                            <span class="font-semibold text-right">HTML5, Tailwind CSS, JS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Changelog & Roadmap Card -->
+                <div class="card p-8 mt-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <p class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">
+                                Development</p>
+                            <h2 class="font-display text-2xl font-bold mt-2">Releases & History</h2>
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+                            style="background: rgba(245,158,11,0.15); color: var(--accent);">
+                            <i class="fas fa-route text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Current Version Details -->
+                        <div>
+                            <h4
+                                class="font-semibold text-xs font-mono uppercase tracking-wider mb-3 text-emerald-500 flex items-center gap-2">
+                                <i class="fas fa-cloud text-xs"></i> Shipped Live (v1.0)
+                            </h4>
+                            <ul class="space-y-3 text-xs" style="color: var(--muted);">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle-check mt-1 text-emerald-500/60 shrink-0"></i>
+                                    <span><strong>Interface:</strong> Launched responsive grid systems mapping Sri
+                                        Lankan stays.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle-check mt-1 text-emerald-500/60 shrink-0"></i>
+                                    <span><strong>Checkout Flow:</strong> Secure calculations widget compiling client
+                                        durations.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Right Column Wrapper ends -->
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

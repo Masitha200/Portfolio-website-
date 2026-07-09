@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AthenaLMS — Standalone Library Management System Coming Soon</title>
+    <meta name="description"
+        content="AthenaLMS is a premium, lightweight native Windows Library Management System (LMS). Coming soon for educational environments and private libraries." />
+    <meta name="keywords"
+        content="AthenaLMS, library management software, LMS desktop app, offline library database, book borrowing tracker, Windows library system PyQt5" />
+    <meta name="author" content="Masitha Bandara" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://masitha200.github.io/Portfolio-website-/lms-page.html" />
+    <meta property="og:title" content="AthenaLMS — Standalone Library Management System" />
+    <meta property="og:description"
+        content="AthenaLMS is a premium, lightweight native Windows Library Management System (LMS). Coming soon for educational environments and private libraries." />
+    <meta property="og:image" content="https://masitha200.github.io/Portfolio-website-/img/lms_img.svg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://masitha200.github.io/Portfolio-website-/lms-page.html" />
+    <meta property="twitter:title" content="AthenaLMS — Standalone Library Management System" />
+    <meta property="twitter:description"
+        content="AthenaLMS is a premium, lightweight native Windows Library Management System (LMS). Coming soon for educational environments and private libraries." />
+    <meta property="twitter:image" content="https://masitha200.github.io/Portfolio-website-/img/lms_img.svg" />
+
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="software-page">
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b"
+        style="background: var(--bg-nav); border-color: var(--border);">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="font-display text-2xl font-bold"
+                style="color: var(--fg); text-decoration: none;">Masitha Bandara <span
+                    style="color: var(--accent);">.</span></a>
+            <a href="work.html" id="navBackWorkBtn" class="btn-outline">Back to Work</a>
+        </div>
+    </nav>
+
+    <main class="min-h-screen flex items-center justify-center px-6 py-32">
+        <div class="max-w-6xl w-full grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
+            <div>
+                <div class="flex items-center gap-5 mb-6">
+                    <img src="img/lms_img.svg" alt="AthenaLMS Logo" class="w-16 h-16 rounded-2xl object-cover border"
+                        style="border-color: var(--border); background: var(--bg-elevated);">
+                    <div>
+                        <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">Under
+                            Development</span>
+                        <h1 class="font-display text-4xl md:text-5xl font-bold mt-1">AthenaLMS</h1>
+                    </div>
+                </div>
+                <p class="text-xl font-medium mt-2" style="color: var(--fg);">Standalone Library Management System</p>
+                <p class="mt-4 text-base leading-relaxed" style="color: var(--muted);">
+                    AthenaLMS is a premium, lightweight native desktop utility designed to streamline catalog
+                    operations.
+                    Engineered with speed and database integrity in mind, it provides librarians and administrators with
+                    offline
+                    tools to handle books checking, student registrations, catalog metadata inventory tracking, and
+                    borrow metrics.
+                </p>
+
+                <div class="mt-8 space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(249,115,22,0.1); color: var(--accent);">
+                            <i class="fas fa-barcode text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Fast Borrowing Workflow</h3>
+                            <p class="text-sm" style="color: var(--muted);">Implements real-time availability status
+                                indexes and dynamic search lookups for members & catalog files, replacing old drop-down
+                                setups.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(249,115,22,0.1); color: var(--accent);">
+                            <i class="fas fa-user-plus text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Instant Member Registration</h3>
+                            <p class="text-sm" style="color: var(--muted);">Integrated registration forms within
+                                checkouts allow new readers to be added in seconds, stored reliably in structured
+                                datasets.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(249,115,22,0.1); color: var(--accent);">
+                            <i class="fas fa-database text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Encrypted Offline Integrity</h3>
+                            <p class="text-sm" style="color: var(--muted);">Utilizes SQLite and secure local files. No
+                                remote cloud connection required, protecting student details from digital leaks.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(249,115,22,0.1); color: var(--accent);">
+                            <i class="fas fa-gauge-simple-high text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Telemetry & Borrowing Metrics</h3>
+                            <p class="text-sm" style="color: var(--muted);">Beautiful dashboards monitoring checkout
+                                records, overdues, and active reader cohorts, with export options to CSV sheets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex flex-wrap gap-4 items-center">
+                    <button disabled class="btn-primary opacity-60 cursor-not-allowed"><i class="fas fa-lock"></i>
+                        Coming Soon</button>
+                    <span class="text-sm font-mono text-orange-500 uppercase tracking-widest font-semibold"><i
+                            class="fas fa-hourglass-half animate-pulse mr-2"></i>Under Construction</span>
+                </div>
+
+                <!-- Launch Notification Email Card -->
+                <div class="mt-8 p-6 rounded-2xl border"
+                    style="border-color: var(--border); background: var(--bg-elevated);">
+                    <h4 class="font-bold text-lg mb-2 flex items-center gap-2">
+                        <i class="fas fa-paper-plane" style="color: var(--accent);"></i> Get Notified on Launch
+                    </h4>
+                    <p class="text-sm mb-4" style="color: var(--muted);">
+                        Submit your email address below to receive an exclusive notification when the AthenaLMS Beta
+                        build is ready for windows download.
+                    </p>
+                    <form class="flex flex-col sm:flex-row gap-3"
+                        onsubmit="event.preventDefault(); alert('Thank you! We will notify you when AthenaLMS launches.'); this.reset();">
+                        <input type="email" placeholder="Enter your email address" required
+                            class="px-4 py-3 rounded-full flex-grow text-sm border focus:outline-none bg-transparent text-white"
+                            style="border-color: var(--border); background: var(--bg);">
+                        <button type="submit" class="btn-primary whitespace-nowrap">Notify Me</button>
+                    </form>
+                </div>
+
+                <!-- Developer Status Notice -->
+                <div class="mt-8 p-6 rounded-2xl border"
+                    style="border-color: var(--border); background: var(--bg-elevated);">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                            style="background: rgba(249, 115, 22, 0.1); color: var(--accent);">
+                            <i class="fas fa-info-circle text-base"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Developer Status Note</h3>
+                    </div>
+
+                    <p class="text-sm leading-relaxed" style="color: var(--muted);">
+                        AthenaLMS backend engines are currently undergoing schema migrations, integrating multi-value
+                        indices for book tracking and borrower accounts. The user interface has been optimized to handle
+                        large catalogs exceeding 10,000+ titles without search lag.
+                    </p>
+
+                    <h4 class="font-semibold text-sm mb-1 mt-4" style="color: var(--fg);">Launch Schedule:</h4>
+                    <p class="text-xs leading-relaxed mb-4" style="color: var(--muted);">
+                        A public preview package is planned for release in <strong>Late 2026</strong>. Built using
+                        Python, PyQt5, and SQLite to keep dependencies light and guarantee 100% offline operations.
+                    </p>
+                </div>
+            </div>
+
+            <div> <!-- Right Column Wrapper starts -->
+                <div class="card p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <p class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">
+                                Upcoming Package</p>
+                            <h2 class="font-display text-2xl font-bold mt-2">AthenaLMS</h2>
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+                            style="background: rgba(249,115,22,0.15); color: var(--accent);">
+                            <i class="fas fa-clock text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 text-sm" style="color: var(--muted);">
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+                                style="color: var(--accent);"></i><span>Compile-free standalone desktop build</span>
+                        </li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+                                style="color: var(--accent);"></i><span>Integrated SQLite database schema</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+                                style="color: var(--accent);"></i><span>No external networks or cloud sync
+                                dependency</span>
+                        </li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1"
+                                style="color: var(--accent);"></i><span>Lightweight portable package setup</span></li>
+                    </ul>
+
+                    <div class="mt-8 p-4 rounded-2xl border text-sm space-y-2"
+                        style="border-color: var(--border); background: var(--bg-elevated);">
+                        <p class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">File Info
+                        </p>
+                        <div class="flex justify-between">
+                            <span style="color: var(--muted);">Filename:</span>
+                            <span class="font-semibold text-right">AthenaLMS_Setup.exe</span>
+                        </div>
+                        <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
+                            <span style="color: var(--muted);">File Size:</span>
+                            <span class="font-semibold text-right">~32.0 MB (Est)</span>
+                        </div>
+                        <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
+                            <span style="color: var(--muted);">Version:</span>
+                            <span class="font-semibold text-right">v1.0.0-alpha</span>
+                        </div>
+                        <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
+                            <span style="color: var(--muted);">Status:</span>
+                            <span class="font-semibold text-right" style="color: var(--accent);">Coming Soon</span>
+                        </div>
+                        <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
+                            <span style="color: var(--muted);">Platform:</span>
+                            <span class="font-semibold text-right">Windows 10 / 11 (64-bit)</span>
+                        </div>
+                        <div class="flex justify-between border-t pt-1.5" style="border-color: var(--border);">
+                            <span style="color: var(--muted);">Language / Stack:</span>
+                            <span class="font-semibold text-right">Python, PyQt5, SQLite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Changelog & Roadmap Card -->
+                <div class="card p-8 mt-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <p class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">Roadmap
+                            </p>
+                            <h2 class="font-display text-2xl font-bold mt-2">Planned Releases</h2>
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+                            style="background: rgba(249,115,22,0.15); color: var(--accent);">
+                            <i class="fas fa-map-signs text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Current Version Details -->
+                        <div>
+                            <h4
+                                class="font-semibold text-xs font-mono uppercase tracking-wider mb-3 text-orange-500 flex items-center gap-2">
+                                <i class="fas fa-hourglass-start text-xs animate-spin"
+                                    style="animation-duration: 3s;"></i> In Dev (v1.0.0-alpha)
+                            </h4>
+                            <ul class="space-y-3 text-xs" style="color: var(--muted);">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle-check mt-1 text-orange-500/60 shrink-0"></i>
+                                    <span><strong>Database Schema:</strong> Basic database schema and user management
+                                        models successfully designed.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle-check mt-1 text-orange-500/60 shrink-0"></i>
+                                    <span><strong>Search Algorithm:</strong> Implemented trie indexing for instant
+                                        catalog lookups.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Future Roadmap 1 -->
+                        <div class="border-t pt-5" style="border-color: var(--border);">
+                            <h4
+                                class="font-semibold text-xs font-mono uppercase tracking-wider mb-2 text-blue-400 flex items-center gap-2">
+                                <i class="fas fa-clock text-xs"></i> Scheduled for Beta v1.1.0
+                            </h4>
+                            <ul class="space-y-3 text-xs" style="color: var(--muted);">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-clock mt-1 text-blue-400/70 shrink-0"></i>
+                                    <span><strong>Multi-Branch Sync:</strong> Add local backup sync routines to preserve
+                                        logs across computers.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-clock mt-1 text-blue-400/70 shrink-0"></i>
+                                    <span><strong>Export formats:</strong> Automatic reports generator in PDF
+                                        format.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Right Column Wrapper ends -->
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
