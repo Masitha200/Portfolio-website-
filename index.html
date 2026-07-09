@@ -232,6 +232,107 @@
     </div>
   </section>
 
+
+  <!-- Featured Case Study: AetherPDF -->
+  <section class="py-24 md:py-32 px-4 md:px-6 border-t" style="border-color: var(--border);">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12">
+        <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">02 — FEATURED CASE
+          STUDY</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mt-2">Engineering AetherPDF</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Visual Column -->
+        <div class="lg:col-span-6 relative lg:order-last">
+          <!-- Glassmorphic Card Mockup -->
+          <div class="card overflow-hidden border p-4 md:p-6"
+            style="background: var(--bg-nav); border-color: var(--border);">
+            <div class="aspect-[16/10] rounded-xl overflow-hidden border mb-6 relative group"
+              style="border-color: var(--border);">
+              <img src="img/aetherpdf_img.svg" alt="AetherPDF Interface"
+                class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500 bg-stone-950/60">
+              <div
+                class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-orange-500/30 flex items-center gap-2">
+                <span class="relative flex h-2 w-2">
+                  <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-300"></span>
+                </span>
+                <span class="text-[10px] font-mono font-bold text-white uppercase tracking-wider">Stable Shipped</span>
+              </div>
+            </div>
+
+            <!-- Specs Chips grid -->
+            <div class="grid grid-cols-3 gap-4">
+              <div class="p-3 bg-stone-900/30 rounded-xl border border-stone-800 text-center">
+                <p class="text-xs text-stone-500 font-mono">WORKSPACE</p>
+                <p class="text-lg font-bold font-display mt-1" style="color: var(--accent);">Local</p>
+              </div>
+              <div class="p-3 bg-stone-900/30 rounded-xl border border-stone-800 text-center">
+                <p class="text-xs text-stone-500 font-mono">FRAMEWORK</p>
+                <p class="text-lg font-bold font-display mt-1" style="color: var(--accent);">Electron</p>
+              </div>
+              <div class="p-3 bg-stone-900/30 rounded-xl border border-stone-800 text-center">
+                <p class="text-xs text-stone-500 font-mono">FILE SIZE</p>
+                <p class="text-lg font-bold font-display mt-1" style="color: var(--accent);">~86.9 MB</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details Column -->
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <h3 class="font-display text-3xl font-bold leading-tight">Standalone PDF Page Organizer & Rotator</h3>
+            <p class="mt-4 text-base leading-relaxed" style="color: var(--muted);">
+              AetherPDF was built to solve common offline document manipulation issues. It provides a visual
+              drag-and-drop page workspace (reordering, duplicating, deleting, and rotating pages of files) built
+              entirely client-side.
+            </p>
+          </div>
+
+          <div class="space-y-4 border-l-2 pl-6" style="border-color: var(--border);">
+            <div>
+              <h4 class="text-xs font-mono uppercase tracking-wider" style="color: var(--accent);">The Architectural
+                Challenge</h4>
+              <p class="text-xs mt-1 leading-relaxed" style="color: var(--muted);">
+                Traditional tools rely on heavy cloud servers to process PDF pages which raises security issues and lags
+                for large documents. Native desktop utilities require an elegant UI combined with high-speed compilation
+                of assets without leaking document telemetry.
+              </p>
+            </div>
+            <div>
+              <h4 class="text-xs font-mono uppercase tracking-wider" style="color: var(--accent);">The Engineering
+                Solution</h4>
+              <p class="text-xs mt-1 leading-relaxed" style="color: var(--muted);">
+                We packaged React and TypeScript views within an Electron wrapper. By performing document segmentation
+                and rendering visually using client-side rendering engines, we eliminated network overhead and
+                guaranteed 100% offline security.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 pt-4">
+            <span class="tag">Electron</span>
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">PDF Engine</span>
+          </div>
+
+          <div class="pt-6 flex flex-wrap gap-4 select-none">
+            <a href="aetherpdf-page.html" class="btn-primary">
+              Explore Case Study <i class="fas fa-route"></i>
+            </a>
+            <a href="https://github.com/Masitha200/PDF_Editor_Softwere" target="_blank" class="btn-outline">
+              View Repository <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script src="js/script.js"></script>
   <script src="js/chatbot.js"></script>
 </body>
