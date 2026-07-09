@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AetherPDF — Standalone PDF-to-Word Editor & Reader</title>
+    <title>AetherPDF — Standalone PDF-to-Word Editor & Page Manager</title>
     <meta name="description"
-        content="AetherPDF is a premium, lightweight native Windows PDF reader, editor, and offline PDF-to-Word converter. Coming soon for digital professionals." />
+        content="AetherPDF Page Manager is a premium, lightweight native Windows PDF editor, page organizer, and offline PDF-to-Word converter." />
     <meta name="keywords"
-        content="AetherPDF, PDF editor, PDF reader, convert PDF desktop app, offline PDF to word converter, Windows PDF utility desktop" />
+        content="AetherPDF, PDF editor, page reordering, rotate PDF pages, offline PDF to word converter, Windows PDF utility desktop" />
     <meta name="author" content="Masitha Bandara" />
 
     <!-- Open Graph / Facebook -->
@@ -75,12 +75,14 @@
                         <h1 class="font-display text-4xl md:text-5xl font-bold mt-1">AetherPDF</h1>
                     </div>
                 </div>
-                <p class="text-xl font-medium mt-2" style="color: var(--fg);">Standalone PDF-to-Word Editor & Reader</p>
+                <p class="text-xl font-medium mt-2" style="color: var(--fg);">Standalone PDF-to-Word Editor, Page
+                    Organizer & Viewer</p>
                 <p class="mt-4 text-base leading-relaxed" style="color: var(--muted);">
-                    A premium, native Windows system application built to solve the frustration of messy PDF formatting.
-                    AetherPDF provides offline PDF viewer capabilities, full text editing tools, and an advanced
-                    PDF-to-Word conversion engine that preserves layouts, fonts, and images, keeping your files
-                    completely secure on your local machine.
+                    AetherPDF Page Manager is a standalone, lightweight system application built to solve common editing
+                    and layout organization headaches offline. It combines a visual drag-and-drop page workspace (for
+                    page reordering, duplication, deletion, and rotation) with an interactive split-screen HTML5
+                    document editor that allows you to edit text, bold, italicize, resize fonts, and export the final
+                    output as a Microsoft Word (.docx) file locally.
                 </p>
 
                 <div class="mt-8 space-y-4">
@@ -90,49 +92,48 @@
                             <i class="fas fa-file-word text-lg"></i>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-lg">High-Fidelity PDF-to-Word</h3>
-                            <p class="text-sm" style="color: var(--muted);">Preserves complex table structures, font
-                                embeddings, alignment, margins, and absolute image locations, outputting clean,
-                                ready-to-edit DOCX files.</p>
+                            <h3 class="font-semibold text-lg">Local PDF-to-Word Export</h3>
+                            <p class="text-sm" style="color: var(--muted);">Convert visual text layout blocks directly
+                                into Microsoft Word (.docx) files natively from the client UI helper scripts.</p>
                         </div>
                     </div>
 
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                             style="background: rgba(249,115,22,0.1); color: var(--accent);">
-                            <i class="fas fa-book-open text-lg"></i>
+                            <i class="fas fa-columns text-lg"></i>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-lg">Lightning-Fast PDF Reader</h3>
-                            <p class="text-sm" style="color: var(--muted);">A lightweight, performance-tuned navigation
-                                framework supporting multi-tab reading, page jumps, searching, and zoom without memory
-                                bloat.</p>
+                            <h3 class="font-semibold text-lg">Live Split-Screen Preview</h3>
+                            <p class="text-sm" style="color: var(--muted);">Compare files easily using a dual preview
+                                mode, showing the rich text editor dashboard on the left and the original document frame
+                                on the right.</p>
                         </div>
                     </div>
 
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                             style="background: rgba(249,115,22,0.1); color: var(--accent);">
-                            <i class="fas fa-pen-nib text-lg"></i>
+                            <i class="fas fa-grip text-lg"></i>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-lg">Native Text Editing & Ink Annotating</h3>
-                            <p class="text-sm" style="color: var(--muted);">Markup documents using highlighter tools,
-                                hand-drawn vector signatures, customizable sticky notes, and clean textbox injection
-                                options.</p>
+                            <h3 class="font-semibold text-lg">Drag &amp; Drop Page Manager</h3>
+                            <p class="text-sm" style="color: var(--muted);">Reorder template thumbnails, duplicate
+                                panels, remove invalid layouts, or rotate rotated scans by 90° clockwise in real-time.
+                            </p>
                         </div>
                     </div>
 
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                             style="background: rgba(249,115,22,0.1); color: var(--accent);">
-                            <i class="fas fa-user-shield text-lg"></i>
+                            <i class="fas fa-shield-halved text-lg"></i>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-lg">100% Privacy & Offline Integrity</h3>
-                            <p class="text-sm" style="color: var(--muted);">All translations, parsing, and rendering are
-                                handled strictly on your local processor. Zero cloud-server callbacks to ensure total
-                                user privacy.</p>
+                            <h3 class="font-semibold text-lg">100% Offline Client Execution</h3>
+                            <p class="text-sm" style="color: var(--muted);">No cloud server connections or REST
+                                callbacks required. The entire workflow works locally in the browser runtime environment
+                                using client hardware acceleration.</p>
                         </div>
                     </div>
                 </div>
@@ -228,15 +229,15 @@
                         </p>
                         <div class="flex justify-between">
                             <span style="color: var(--muted);">Filename:</span>
-                            <span class="font-semibold text-right">AetherPDF_Setup.exe</span>
+                            <span class="font-semibold text-right">AetherPDF_1.0.0.exe</span>
                         </div>
                         <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
                             <span style="color: var(--muted);">File Size:</span>
-                            <span class="font-semibold text-right">~75.0 MB (Est)</span>
+                            <span class="font-semibold text-right">~65.4 MB</span>
                         </div>
                         <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
                             <span style="color: var(--muted);">Version:</span>
-                            <span class="font-semibold text-right">v1.0.0-alpha</span>
+                            <span class="font-semibold text-right">v1.0.0 (Release Build)</span>
                         </div>
                         <div class="flex justify-between border-t py-1.5" style="border-color: var(--border);">
                             <span style="color: var(--muted);">Status:</span>
@@ -249,7 +250,7 @@
                         </div>
                         <div class="flex justify-between border-t pt-1.5" style="border-color: var(--border);">
                             <span style="color: var(--muted);">Language / Stack:</span>
-                            <span class="font-semibold text-right">Electron, React, Node</span>
+                            <span class="font-semibold text-right">React, Vite, Node, Electron</span>
                         </div>
                     </div>
                 </div>
@@ -273,18 +274,23 @@
                         <div>
                             <h4
                                 class="font-semibold text-xs font-mono uppercase tracking-wider mb-3 text-emerald-500 flex items-center gap-2">
-                                <i class="fas fa-cloud-check text-xs"></i> Shipped Live (v1.0.0)
+                                <i class="fas fa-circle-check text-xs"></i> Shipped Release (v1.0.0)
                             </h4>
                             <ul class="space-y-3 text-xs" style="color: var(--muted);">
                                 <li class="flex items-start gap-3">
                                     <i class="fas fa-circle-check mt-1 text-emerald-500/60 shrink-0"></i>
-                                    <span><strong>Offline Engine:</strong> Core PDF reading architecture has completed
-                                        internal speed tests.</span>
+                                    <span><strong>Visual Workspace:</strong> Full visual page reordering grid
+                                        panel.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <i class="fas fa-circle-check mt-1 text-emerald-500/60 shrink-0"></i>
-                                    <span><strong>Markdown Viewer:</strong> Added text highlighting and sticky note
-                                        annotations.</span>
+                                    <span><strong>Page Operations:</strong> Rotation (90° clockwise), duplication, and
+                                        quick delete.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle-check mt-1 text-emerald-500/60 shrink-0"></i>
+                                    <span><strong>Split-Screen Layout:</strong> Dual screen layout with live web code
+                                        text manipulation and layout viewer.</span>
                                 </li>
                             </ul>
                         </div>
