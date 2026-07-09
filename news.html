@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech News Feed — Masitha Bandara</title>
+    <meta name="description"
+        content="Stay up to date with live IT and technology news directly aggregated from Hacker News, TechCrunch, and Wired.">
+    <meta name="keywords"
+        content="Masitha Bandara news, IT news, tech feed, hacker news, techcrunch, wire tech news aggregator">
+    <meta name="author" content="Masitha Bandara">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://masitha200.github.io/Portfolio-website-/news.html">
+    <meta property="og:title" content="Tech News Feed — Masitha Bandara">
+    <meta property="og:description"
+        content="Stay up to date with live IT and technology news directly aggregated from Hacker News, TechCrunch, and Wired.">
+    <meta property="og:image" content="https://masitha200.github.io/Portfolio-website-/img/Masitha.jpeg">
+
+    <script>
+        (function () {
+            try { var savedTheme = localStorage.getItem('theme') || 'dark'; document.documentElement.setAttribute('data-theme', savedTheme); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <style>
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--muted);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--fg);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <!-- Navigation bar (Updates to include News link) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b"
+        style="background: var(--bg-nav); border-color: var(--border);">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="font-display text-2xl font-bold"
+                style="color: var(--fg); text-decoration: none;">
+                Masitha Bandara <span style="color: var(--accent);">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="work.html" class="nav-link">Work</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="tutorials.html" class="nav-link">Lessons</a>
+                <a href="news.html" class="nav-link active">News</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i id="themeIcon" class="fas fa-sun"></i>
+                </button>
+                <button id="menuToggle" class="md:hidden theme-btn flex items-center justify-center"
+                    aria-label="Toggle Menu">
+                    <i id="menuIcon" class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu"
+        class="hidden md:hidden fixed top-[73px] left-0 right-0 z-40 border-b backdrop-blur-xl p-6 flex flex-col gap-4 text-center animate-fade-in"
+        style="background: var(--bg-nav); border-color: var(--border);">
+        <a href="index.html" class="mobile-nav-link py-2 font-medium">Home</a>
+        <a href="work.html" class="mobile-nav-link py-2 font-medium">Work</a>
+        <a href="about.html" class="mobile-nav-link py-2 font-medium">About</a>
+        <a href="services.html" class="mobile-nav-link py-2 font-medium">Services</a>
+        <a href="experience.html" class="mobile-nav-link py-2 font-medium">Experience</a>
+        <a href="tutorials.html" class="mobile-nav-link py-2 font-medium">Lessons</a>
+        <a href="news.html" class="mobile-nav-link active py-2 font-medium">News</a>
+        <a href="contact.html" class="mobile-nav-link py-2 font-medium">Contact</a>
+    </div>
+
+    <!-- News Section -->
+    <main class="min-h-screen pt-28 md:pt-32 pb-16 px-4 md:px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+
+            <!-- Hero Header -->
+            <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <span class="text-sm font-mono uppercase tracking-widest flex items-center gap-2"
+                        style="color: var(--accent);">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                        </span>
+                        Live IT Feed & Intelligence
+                    </span>
+                    <h1 class="font-display text-4xl md:text-6xl font-bold mt-2">IT News Hub<span
+                            class="text-glow animate-pulse" style="color: var(--accent);">.</span></h1>
+                    <p class="mt-4 text-sm md:text-base max-w-2xl" style="color: var(--muted);">
+                        Real-time feed streaming top developer headlines and hardware technology indicators. Click on
+                        any item to view source context.
+                    </p>
+                </div>
+
+                <!-- Search input -->
+                <div class="w-full md:w-80 relative select-none">
+                    <input type="text" id="newsSearch" placeholder="Search tech headlines..."
+                        class="w-full px-4 py-2.5 rounded-xl border text-sm font-mono focus:outline-none"
+                        style="background: var(--bg-elevated); border-color: var(--border); color: var(--fg);">
+                    <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-stone-500"></i>
+                </div>
+            </div>
+
+            <!-- Filters & Refresh row -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-8 border-b pb-6 select-none"
+                style="border-color: var(--border);">
+                <div class="flex flex-wrap items-center gap-2" id="filterContainer">
+                    <button class="filter-btn active cursor-none" data-source="All" onclick="filterSource('All')">All
+                        Feeds</button>
+                    <button class="filter-btn cursor-none" data-source="Hacker News"
+                        onclick="filterSource('Hacker News')">Hacker News</button>
+                    <button class="filter-btn cursor-none" data-source="TechCrunch"
+                        onclick="filterSource('TechCrunch')">TechCrunch</button>
+                    <button class="filter-btn cursor-none" data-source="Wired" onclick="filterSource('Wired')">Wired
+                        News</button>
+                </div>
+
+                <button onclick="fetchNews()"
+                    class="btn-outline text-xs px-4 py-2 rounded-full cursor-none flex items-center gap-2">
+                    Sync Feed <i class="fas fa-sync" id="syncIcon"></i>
+                </button>
+            </div>
+
+            <!-- Feed Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch" id="newsGrid">
+                <!-- Skeleton loaders injected dynamically here initially -->
+            </div>
+
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script src="js/chatbot.js"></script>
+
+    <script>
+        const FEEDS = [
+            { name: 'Hacker News', url: 'https://news.ycombinator.com/rss', class: 'bg-[#ff6600]/10 text-[#ff6600] border-[#ff6600]/20' },
+            { name: 'TechCrunch', url: 'https://techcrunch.com/feed/', class: 'bg-green-500/10 text-green-500 border-green-500/20' },
+            { name: 'Wired', url: 'https://www.wired.com/feed/rss', class: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20' }
+        ];
+
+        let allArticles = [];
+        let currentSource = 'All';
+
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchNews();
+            document.getElementById('newsSearch').addEventListener('input', handleSearch);
+        });
+
+        async function fetchNews() {
+            const grid = document.getElementById('newsGrid');
+            const syncIcon = document.getElementById('syncIcon');
+
+            if (syncIcon) syncIcon.classList.add('animate-spin');
+
+            // Setup Skeletons
+            grid.innerHTML = Array(6).fill(0).map(() => `
+        <div class="card p-6 space-y-4 animate-pulse flex flex-col justify-between h-64">
+          <div>
+            <div class="h-4 bg-white/10 rounded w-1/4 mb-3"></div>
+            <div class="h-6 bg-white/10 rounded w-3/4 mb-4"></div>
+            <div class="space-y-2">
+              <div class="h-4 bg-white/10 rounded w-full"></div>
+              <div class="h-4 bg-white/10 rounded w-5/6"></div>
+            </div>
+          </div>
+          <div class="h-4 bg-white/10 rounded w-1/3 mt-4"></div>
+        </div>
+      `).join('');
+
+            let articles = [];
+
+            const fetchPromises = FEEDS.map(async (feed) => {
+                try {
+                    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`);
+                    const data = await res.json();
+                    if (data.status === 'ok') {
+                        return data.items.map(item => ({
+                            title: item.title,
+                            link: item.link,
+                            description: cleanDescription(item.description || item.content),
+                            pubDate: new Date(item.pubDate),
+                            source: feed.name,
+                            sourceClass: feed.class
+                        }));
+                    }
+                } catch (e) {
+                    console.error(`Feed fetch error for ${feed.name}:`, e);
+                }
+                return [];
+            });
+
+            const results = await Promise.allSettled(fetchPromises);
+            results.forEach(res => {
+                if (res.status === 'fulfilled') {
+                    articles = articles.concat(res.value);
+                }
+            });
+
+            // Sort newest first
+            articles.sort((a, b) => b.pubDate - a.pubDate);
+            allArticles = articles;
+
+            if (syncIcon) syncIcon.classList.remove('animate-spin');
+
+            filterSource(currentSource);
+        }
+
+        function cleanDescription(html) {
+            if (!html) return '';
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            let text = doc.body.textContent || "";
+            text = text.replace(/Feed\s*Proxy/gi, '').trim();
+            if (text.length > 140) {
+                text = text.substring(0, 140) + '...';
+            }
+            return text;
+        }
+
+        function timeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            let interval = Math.floor(seconds / 31536000);
+            if (interval >= 1) return interval + "y ago";
+            interval = Math.floor(seconds / 2592000);
+            if (interval >= 1) return interval + "mo ago";
+            interval = Math.floor(seconds / 86400);
+            if (interval >= 1) return interval + "d ago";
+            interval = Math.floor(seconds / 3600);
+            if (interval >= 1) return interval + "h ago";
+            interval = Math.floor(seconds / 60);
+            if (interval >= 1) return interval + "m ago";
+            return "just now";
+        }
+
+        function renderArticles(list) {
+            const grid = document.getElementById('newsGrid');
+            if (list.length === 0) {
+                grid.innerHTML = `
+          <div class="col-span-full text-center py-12">
+            <div class="text-4xl mb-4 text-stone-600"><i class="fas fa-newspaper"></i></div>
+            <p style="color: var(--muted);" class="font-mono text-sm">No articles match your search parameters.</p>
+          </div>
+        `;
+                return;
+            }
+
+            grid.innerHTML = list.map(art => `
+        <div class="card p-6 md:p-8 flex flex-col justify-between h-full hover:border-[#f97316]/50 transition-all duration-300">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono px-2.5 py-1 rounded-full border ${art.sourceClass}">${art.source}</span>
+              <span class="text-xs font-mono" style="color: var(--muted);"><i class="far fa-clock mr-1"></i> ${timeAgo(art.pubDate)}</span>
+            </div>
+            <h3 class="font-display text-xl font-bold leading-snug mb-3 hover:text-[#f97316] transition-colors">
+              <a href="${art.link}" target="_blank" class="cursor-none">${art.title}</a>
+            </h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">${art.description || 'View original source article for editorial updates.'}</p>
+          </div>
+          <div class="mt-6 pt-4 border-t" style="border-color: var(--border);">
+            <a href="${art.link}" target="_blank" class="text-xs font-mono uppercase tracking-wider flex items-center justify-between hover:text-[#f97316] transition-colors cursor-none">
+              Source Link <i class="fas fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+      `).join('');
+        }
+
+        function filterSource(source) {
+            currentSource = source;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-source') === source) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            const searchInput = document.getElementById('newsSearch');
+            const searchTerm = searchInput.value.toLowerCase();
+
+            let list = allArticles;
+            if (source !== 'All') {
+                list = allArticles.filter(art => art.source === source);
+            }
+
+            if (searchTerm) {
+                list = list.filter(art =>
+                    art.title.toLowerCase().includes(searchTerm) ||
+                    art.description.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            renderArticles(list);
+        }
+
+        function handleSearch() {
+            filterSource(currentSource);
+        }
+    </script>
+</body>
+
+</html>
