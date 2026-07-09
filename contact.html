@@ -180,12 +180,20 @@
                 Hey there! Let's talk about your next web app or custom utility project. You can choose a quick template
                 bubble below or write a custom message to start a chat directly on my WhatsApp!
               </p>
-              <div class="flex items-start gap-2 mt-3 pt-3 border-t border-dashed" style="border-color: var(--border);">
-                <i class="fas fa-clock text-xs mt-0.5" style="color: var(--accent);"></i>
-                <p class="text-[11px] leading-snug m-0 text-left" style="color: var(--muted);">
-                  Note: Since I'm often busy developing codes or designing interfaces, replies on WhatsApp might be
-                  slightly delayed at times. Thank you for your understanding!
-                </p>
+              <div class="flex flex-col gap-2 mt-3 pt-3 border-t border-dashed" style="border-color: var(--border);">
+                <div class="flex items-start gap-2">
+                  <i class="fas fa-clock text-xs mt-0.5" style="color: var(--accent);"></i>
+                  <p class="text-[11px] leading-snug m-0 text-left" style="color: var(--muted);">
+                    Note: Since I'm often busy developing codes or designing interfaces, replies on WhatsApp might be
+                    slightly delayed at times. Thank you for your understanding!
+                  </p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <i class="fas fa-phone-slash text-xs mt-0.5" style="color: var(--accent);"></i>
+                  <p class="text-[11px] leading-snug m-0 text-left font-bold" style="color: var(--accent);">
+                    Important: Please do NOT make voice/video calls. Text messages only!
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -215,7 +223,7 @@
                 <textarea id="waMessage" rows="3"
                   class="w-full rounded-2xl p-4 bg-stone-900/60 border text-sm outline-none resize-none transition-all placeholder:text-stone-500 cursor-none"
                   style="border-color: var(--border); color: var(--fg); background: var(--bg-elevated);"
-                  placeholder="Type your WhatsApp message here..."></textarea>
+                  placeholder="Type your WhatsApp message here... (Text messages only - no calls please)"></textarea>
               </div>
 
               <button onclick="redirectToWhatsApp()"
@@ -223,6 +231,9 @@
                 style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);">
                 <i class="fab fa-whatsapp text-lg"></i> Send WhatsApp Message
               </button>
+              <p class="text-center text-[10px] mt-2 font-mono" style="color: var(--muted);">
+                <i class="fas fa-phone-slash mr-1"></i> Text Messages Only — Calls are not monitored
+              </p>
             </div>
           </div>
         </div>
