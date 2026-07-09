@@ -328,7 +328,7 @@ def get_cpu_telemetry():
     "aetherpdf": {
         title: "AetherPDF (Masitha's Desktop Utility)",
         category: "Featured Portfolio Project",
-        desc: "AetherPDF is a lightweight desktop client that converts PDF templates to editable text documents. It was built using **Electron & React** to ensure the conversion happens locally on the desktop rather than on external web servers, guaranteeing 100% data security.",
+        desc: "AetherPDF is a lightweight standalone PDF page organizer and layout manager. It was built using **Electron & React** to handle page reordering, rotation, deletion, and merging locally on the desktop rather than on external web servers, guaranteeing 100% data security.",
         code: `// Desktop Electron Main Process integration sample
 const { app, BrowserWindow, ipcMain } = require('electron');
 
@@ -403,7 +403,7 @@ const KEYWORD_MAPS = {
 
     // Projects matches
     "coreburner": ["coreburner", "core burner", "x11", "telemetry", "hardware monitor", "dashboard", "cpu temperature"],
-    "aetherpdf": ["aetherpdf", "aether pdf", "pdf to word", "pdf converter", "pdf editor"],
+    "aetherpdf": ["aetherpdf", "aether pdf", "pdf page manager", "pdf organizer", "pdf editor", "pdf rotator"],
     "athenalms": ["athenalms", "athena lms", "learning management", "lms", "student portal", "athena"],
     "lankastay": ["lankastay", "lanka stay", "hotel booking", "boutique booking", "lanka stay project", "villa booking"]
 };
