@@ -1,0 +1,302 @@
+Comprehensive Research Report on Quantum Computing and the Future Technological Revolution
+Comprehensive Introduction and Background
+Quantum computing is not simply a faster version of existing classical computers, but an entirely new paradigm that takes the fundamental physical theories of information processing to a completely new dimension. For decades restricted to the realm of theoretical physics, this field has undergone a historic transition by the years 2025 and 2026, moving from the Noisy Intermediate-Scale Quantum (NISQ) era to the Fault-Tolerant Quantum Computing (FTQC) era. By utilizing the principles of quantum superposition and quantum entanglement, this technology has today proven capable of providing novel solutions to previously unsolvable problems in chemical simulation, materials science, and financial optimization.   
+
+The most significant milestone of this transition is that Quantum Error Correction (QEC) has moved beyond theoretical boundaries and has been successfully implemented at a practical hardware level. While classical computers secure data by copying information, quantum states cannot be copied in the same manner due to the "no-cloning theorem" in quantum mechanics. To circumvent this, Peter Shor introduced an alternative methodology in 1995: spreading the information across multiple physical qubits without directly measuring it. Although this remained a mere theory for over thirty years, recent massive advancements in the integration of hardware and software have made it practically viable. This research report presents a deep and comprehensive analysis of quantum error correction, the evolution of logical qubits, various hardware modalities, Post-Quantum Cryptography (PQC), Quantum Machine Learning (QML), recent discoveries in chemical simulation, and how Sri Lanka is adapting to this technological revolution.   
+
+Recent Breakthroughs in Quantum Error Correction (QEC)
+The primary weakness of quantum systems is decoherence, where information stored in qubits is destroyed due to the slightest environmental disturbance (temperature changes, electromagnetic waves, etc.). For fault-tolerant computing, it is essential to detect and correct these errors in real-time. By the year 2026, several organizations successfully achieved practical "exponential error suppression".   
+
+Google's Willow quantum processor practically confirmed that as the size of the surface-code lattice increases, the logical error rate decreases by a factor of 2.14x. This superconducting chip, consisting of 105 physical qubits, marks a historic moment where quantum error correction theories were proven at the practical hardware level. On the other hand, Quantinuum, in collaboration with NVIDIA, has taken a new step to execute real-time QEC decoding at extremely high speeds. Their H2 processor successfully completed 14,000 consecutive circuit operations without a single logical error. They utilized a Knill-inspired scheme alongside a 16-qubit tesseract color code featuring a four-dimensional structure. The specialty of this color code is its ability to catch both bit-flip and phase-flip errors simultaneously. Quantinuum's H2 processor was able to achieve this rapid error correction owing to its unique all-to-all connectivity architecture, where every ion can interact with any other.   
+
+The UK-based company Riverlane further accelerated the quantum error correction process by introducing the Local Clustering Decoder (LCD). According to their research paper published in the journal Nature Communications, this LCD technology allows systems to perform one million error-free operations while reducing the physical qubit requirement by a factor of four (4x). Their FPGA (Field Programmable Gate Arrays) hardware-based Deltaflow system is capable of processing terabytes of data per second in real-time. Riverlane's CEO, Steve Brierley, emphasizes that this advancement has brought the timeline for utility-scale quantum computers forward by about 3-5 years. Furthermore, Quantum Machines integrated their OPX1000 controllers with NVIDIA's DGX Quantum hybrid control system to maintain the roundtrip latency of the error correction cycle to under 4 microseconds. This is roughly 1000 times faster than alternative solutions.   
+
+Researchers at the University of Southern Denmark (SDU) are currently studying the behavior of surface codes at the scale of 48 logical qubits through topological methods. Although topological approaches are theoretically very rich, these studies aim to resolve the practical challenges of managing noise and stability in real systems. All these data confirm that quantum error correction is no longer just a physics experiment, but has become an ultra-precise engineering pipeline akin to transistor scaling.   
+
+Evolution of Logical Qubits and Hardware Modalities
+The fundamental building block of fault-tolerant quantum computing is the "logical qubit." This means binding several physical qubits together to create a single, error-free unit of information. By 2026, "Neutral Atom" technology has taken the lead in the race to create these logical qubits. Unlike classical hardware modalities, quantum hardware is developing across multiple physical methodologies.   
+
+1. Neutral Atom Technology
+In this modality, single atoms of alkaline metals like Rubidium or Strontium are trapped using focused laser beams known as optical tweezers. Since these atoms are electrically neutral, unwanted crosstalk between qubits is minimized. The most significant advantage of this technology is that, unlike in superconducting chips, the physical positions of the qubits are not fixed. The position and connectivity of the qubits (reconfigurability) can be dynamically altered via software while a circuit is running.   
+
+According to a January 2026 report in the journal Nature, QuEra Computing set a world record by creating 96 logical qubits using 448 physical atoms. They used [[16,6,4]] high-rate error correction codes, yielding 6 logical qubits from 16 physical qubits and bringing the physical-to-logical ratio down to an impressive 4.7:1. This has opened the pathway to obtaining large numbers of logical qubits from a relatively small number of physical atoms in the future. Atom Computing, in partnership with Microsoft's Azure Quantum system, successfully demonstrated 24 logical qubits (at a 49:1 ratio) using Bacon-Shor codes. They aim to achieve 50 logical qubits from 1,225 physical qubits through their next 'Magne' system.   
+
+In 2026, the French company Pasqal began deploying logical qubits for practical industry applications, and their upcoming QPU (Quantum Processing Unit) model, Vela, will feature over 256 qubits. Through a technology named "Local detuning," the Vela system has the capacity to control single atoms with extreme precision. A group of researchers in China demonstrated the flexibility of this technology by creating a defect-free 3D atomic lattice of 2024 atoms with a constant time overhead of 60 milliseconds, even creating an animation of Schrödinger's cat using optical tweezers. Even Google Quantum AI, after relying solely on superconducting technology for over a decade, has started investing in neutral atom quantum computing under the leadership of Dr. Adam Kaufman.   
+
+Company	Logical Qubit Count	Physical Qubit Ratio	Error Correction Code Used
+QuEra Computing	96	~4.7 : 1	
+[[16,6,4]] High-rate codes
+
+Quantinuum	48	~2 : 1	
+Color code + Iceberg concatenation
+
+Atom Computing + Microsoft	24	~49 : 1	
+Bacon-Shor codes
+
+Infleqtion	12	Not disclosed	
+Post-selection / Sqale platform
+
+  
+2. Superconducting Technology
+IBM and Google are the pioneers of this technology. The main advantage of superconducting circuits is their operational speed (nanosecond-level gate operations). However, they are highly noisy, and their gate fidelity is roughly 99.9%. Additionally, these systems require massive and expensive cryogenic infrastructure (Dilution refrigerators) as they must be maintained at temperatures near absolute zero (below 4 Kelvin). IBM's Nighthawk and Google's Willow are prime examples of this. As pointed out by Google's Hartmut Neven, superconducting systems are easier to scale in the time dimension (circuit depth), whereas neutral atoms are easier to scale in the space dimension (qubit count).   
+
+3. Trapped Ion Technology
+Organizations like Quantinuum and IonQ utilize this model. Although the operation speed is slower compared to superconducting qubits, this technology provides exceptionally high precision. IonQ's Tempo system has set a record by achieving a 99.99% two-qubit gate fidelity. To mark World Quantum Day on April 14, 2026, IonQ announced that two commercial quantum computers were successfully linked via quantum entanglement through light particles (photonically interconnected) for the first time. Quantinuum's Helios system created 48 logical qubits using 98 barium ions (a 2:1 ratio), leveraging this massive precision.   
+
+4. Photonic Technology
+The strongest advantage of this technology, which is based on light particles (Photons), is its ability to operate at room temperature. In 2025, Xanadu created 12 logical qubits through GKP (Gottesman-Kitaev-Preskill) error-resistant encoding. Their Aurora system successfully connected 35 photonic chips via a 13-kilometer optical fiber network, operating entirely at room temperature. The primary challenge here is optical loss—the leaking of light particles out of the system during computation. In 2025, Xanadu managed to reduce this loss by 60%. European company Quandela is also developing systems like Diadem (~100 qubits) and Sirius (100+ logical qubits) using a modular photonic architecture. While classical supercomputers consume over 100 megawatts, their systems are estimated to operate on less than 500 kilowatts of power.   
+
+IBM's Fault-Tolerant Roadmap and Software Integration
+IBM, currently leading the quantum race, has presented the industry's most detailed and ambitious roadmap. This seamlessly maps out simultaneous hardware development alongside the integration of quantum resources with classical HPC (High-Performance Computing) infrastructure.   
+
+In 2026, their "Nighthawk" processor is expected to execute circuits with a complexity of 7,500 gates, with plans to increase this to 10,000 in 2027 and 15,000 in 2028. The Nighthawk system utilizes a square lattice where each qubit is connected to up to 4 neighboring qubits. However, bypassing these limitations, the "Loon" chip introduced in 2025 showcases a remarkable technological leap. By employing "c-couplers" technology, it allows qubits to link beyond nearest neighbors, increasing the degrees of connectivity up to 6. This connectivity network is extremely crucial for implementing qLDPC (Quantum Low-Density Parity-Check) error-correcting codes.   
+
+In 2026, a multi-chip processor named "Kookaburra" consisting of 1,386 qubits will be introduced. The ultimate achievement targeted for 2029 will be the 'IBM Quantum Starling' system. Expected to contain roughly 10,000 physical qubits, this system plans to complete 100 million fault-tolerant operations (100 million gates) using 200 logical qubits. The US government has approved a $1 billion grant to support the construction of a domestic IBM quantum chip foundry, and IBM has formed a new company named "Anderon" precisely for this purpose.   
+
+On the software front, IBM has released the C-API to integrate quantum resources with classical HPC infrastructure. This allows developers to write Qiskit code in C, a language widely used in HPC. Moreover, throughout 2024 and 2025, error mitigation strategies were vastly improved via tools like AI Transpilation passes and Sample-based Quantum Diagonalization (SQD).   
+
+Post-Quantum Cryptography and Global Cybersecurity (PQC)
+With the physical expansion of quantum computers, the largest crisis facing the global IT sector is the collapse of current cybersecurity systems. Widespread public-key encryption methods like RSA and ECC (Elliptic Curve Cryptography), which are currently used for internet banking, email, and websites, rely on the complexity of factoring large prime numbers and discrete logarithms. However, a fault-tolerant quantum computer running Shor's algorithm could solve these mathematical problems in a matter of hours, destroying digital security worldwide. A major threat specifically faced by government and intelligence agencies is the "Harvest-Now, Decrypt-Later" (HNDL) concept. This involves hackers stealing and storing currently encrypted data with the intent to decrypt it later once a powerful quantum computer is built.   
+
+To avert this risk, the U.S. National Institute of Standards and Technology (NIST) officially announced a trio of post-quantum standards in August 2024, concluding an eight-year global competitive process.   
+
+NIST Standard (FIPS)	Algorithm	Primary Use Case	Mathematical Basis
+FIPS 203	ML-KEM	Key Encapsulation / TLS	
+Module-LWE (Lattice-based)
+
+FIPS 204	ML-DSA	Digital Signatures	
+Module-LWE (Lattice-based)
+
+FIPS 205	SLH-DSA	Digital Signatures (Specialized Gov Defense)	
+Hash-based
+
+  
+These new algorithms possess complex mathematical structures (such as Lattice-based methods) that are virtually unbreakable by both classical and quantum computers. However, this transition is much more challenging than a simple software update. The primary reason is the immense size of the data involved. For instance, while the public key of the traditional Ed25519 algorithm is 32 bytes and its signature is 64 bytes, the equivalent ML-DSA-65 standard requires a massive public key of 1,952 bytes and a signature of 3,309 bytes. This inflates TLS certificate chains from around 4,500 bytes to 15,000 bytes, directly impacting network latency and response times.   
+
+Software engineers can now easily integrate this technology into their systems via a single command (pip install) as the Python programming language's pyca/cryptography (v48) package already supports ML-KEM and ML-DSA. Nevertheless, utilizing these large keys on highly constrained hardware with limited memory and power, such as IoT (Internet of Things) devices, is a serious challenge. According to research, executing the ML-KEM-512 algorithm on an ARM Cortex-M0+ (RP2040) microcontroller (264 KB SRAM) takes 36.3 milliseconds and consumes 2.87 millijoules of energy for a full key exchange, which is actually 17 times faster and utilizes 94% less energy than the classical ECDH P-256. Yet, during ML-DSA signing, the Fiat-Shamir rejection sampling process causes a high latency variance (61-71% Coefficient of variation), sometimes spiking response times up to 1,115 milliseconds. These factors must be critically considered when rolling out software updates for IoT devices with a lifespan of 10 to 20 years.   
+
+According to the US National Security Agency's (NSA) CNSA 2.0 guidelines, all national security systems must fully transition to post-quantum technology by 2035. Heavyweight internet infrastructure providers like Cloudflare have already spearheaded this shift by utilizing ML-KEM for their data exchanges.   
+
+Quantum Breakthroughs in Chemical Simulation and Molecular Science
+Materials science and molecular simulation are considered among the most powerful and productive applications of quantum computing. Since the electrons within molecules are entangled, precisely calculating their behaviors is impossible for classical computers.
+
+The most widely discussed classic example here is the simulation of the Nitrogenase enzyme and its active center, the FeMo-cofactor. Currently, the agricultural fertilizer required by the world is produced through the Haber-Bosch process discovered in 1909, which demands a high temperature of 450 degrees Celsius and 200 atmospheric pressures. About 1% to 2% of the total global energy output is consumed by this single industry. However, the Nitrogenase enzyme found inside ordinary soil bacteria converts atmospheric nitrogen (N2) into ammonia at room temperature and normal atmospheric pressure. The secret behind this lies in the highly complex quantum behavior through which the iron and molybdenum atoms interact within the FeMo-co center.   
+
+In 2017, researchers at Microsoft (Reiher et al.) calculated that simulating FeMo-co would require 10 
+14
+  T-gates and 111 logical qubits. At the time, it was assumed this process would take years to complete. But between 2025 and 2026, exponential advancements in quantum algorithms completely altered this landscape. Through the 'Sparse qubitization' technique introduced by Berry and colleagues in 2019, the T-gate requirement was reduced to 10 
+10
+ , and in 2021, Lee and his team further minimized this to 5.3 billion gates via 'Tensor hypercontraction'. By 2025, Low, Berry, and their team achieved a 195x speedup using Spectrum amplification. This means a research simulation once thought to take years has advanced to the point where algorithms can complete it in a matter of days.   
+
+The use of quantum computers to calculate free energy (Free Energy Perturbation) in the drug discovery process has also widened. The binding energy between a protein and a pharmaceutical molecule is calculated using the following equation:
+
+ΔG 
+binding
+​
+ =G 
+bound
+​
+ −G 
+unbound
+​
+ 
+Because classical modeling cannot cover the vast chemical space between these two states, researchers have turned to alchemical pathways using hybrid classical-quantum systems (like the FreeQuantum pipeline) to accurately calculate this energy difference. Furthermore, in May 2026, Q-CTRL utilized IBM's Heron hardware to execute a 1D Fermi-Hubbard model through a 120-qubit digital simulation comprising 9000 gates. A calculation that takes 100 hours for classical tensor networks was completed with a 1% error rate (RMSE) in under 3 minutes.   
+
+Practical Applications of Quantum Machine Learning (QML)
+By the year 2026, Quantum Machine Learning (QML)—the fusion of artificial intelligence and quantum computing—has shifted from theoretical research to practical commercial application. The entire QML market is expected to reach $162.6 million by 2030, showing a Compound Annual Growth Rate (CAGR) of 36.4%.   
+
+The foundation of QML is mapping classical data into an extremely high-dimensional quantum Hilbert space. Quantum Feature Maps and Quantum Kernels are heavily used for this purpose. In 2021, Yunchao Liu and a team mathematically proved that a quantum machine learning model has a definite and provable speed-up over classical models for classification tasks based on the discrete logarithm problem. Similarly, in 2022, Hsin-Yuan Huang and fellow researchers demonstrated that QML offers an exponential advantage when analyzing systems with a quantum nature, such as molecular structures.   
+
+At a practical corporate level, in September 2025, HSBC bank, in partnership with IBM, showcased a quantum-powered algorithmic trading model. They achieved a 34% improvement in accurately predicting client Request for Quotes (RFQ) within the European corporate bond market. Deutsche Bank has been using QML for Portfolio Optimization, achieving a 30% - 40% improvement in the risk-return ratio over classical models, and plans to bring this into full production in 2026. Siemens is also testing this technology for supply chain optimization.   
+
+However, the practical deployment of QML still faces massive theoretical hurdles. In particular, the phenomenon known as "Barren Plateaus," where the gradient vanishes when training parameterized quantum circuits, acts as a primary obstacle. Additionally, problems like the Orthonormal Desert and Measurement Sparsity have been identified. To overcome these challenges, the European Union has allocated a 6 million Euro fund under the Horizon Europe (2026-2027) project to develop Quantum Convolutional Neural Networks, Reinforcement Learning, and Hybrid Models. To bridge the quantum skills gap, the Fraunhofer Institute has also commenced professional certifications titled "Certified Data Scientist Specialized in Quantum Machine Learning" starting October 2025.   
+
+The Advancement of Quantum Computing in Sri Lanka
+In tandem with this global quantum race, Sri Lanka has also taken significant steps forward. Rather than investing in prohibitively expensive superconducting infrastructure, Sri Lanka has opted for a theoretical and educational approach.
+
+The official inauguration of Sri Lanka's first quantum computer on January 21, 2026, by the University of Colombo is a historic milestone. Installed at the Centre for Mathematical Modelling (CMM), this computer is based on Nuclear Magnetic Resonance (NMR) technology. Manufactured by the Chinese company SpinQ, the device features two physical qubits alongside a powerful quantum simulator and is capable of operating at room temperature. The project was spearheaded by the Vice-Chancellor of the University of Colombo, Prof. Indika Karunathilake, Dean of the Faculty of Science, Prof. Upul Sonnadara, and Prof. Anuradha Mahasinghe of the Department of Mathematics. As Prof. Mahasinghe points out, this establishes the foundational steps in Sri Lanka for a technology capable of solving problems in hours that have remained unsolved for centuries. Furthermore, the University of Colombo has now included quantum computing as a core subject in its special degree program in Computational Mathematics.   
+
+Beyond university education, the National Institute of Fundamental Studies (NIFS) located in Kandy has been conducting fundamental research on quantum physics since 2016. Their research has notably focused on the Quantum to Classical Transition, quantum entanglement, and single bubble sonoluminescence. Additionally, on October 3, 2019, the IEEE Sri Lanka Section organized a Techno Meetup on quantum computing at the SLIIT metropolitan campus, fostering broad discussions on both corporate and academic approaches. The Knowledge Academy, an international training provider based in Colombo, is also currently conducting training courses on quantum computing algorithms and circuit design. Such initiatives are incredibly vital in building a quantum-ready workforce in the country before the fault-tolerant quantum era expands globally.   
+
+Conclusion
+Fulfilling decades of theoretical aspirations, quantum computing has fully transitioned into practical engineering and a commercial industry by the year 2026. The exponential advancement in error correction codes and the rapid response times of software decoders (LCD) confirm that the Fault-Tolerant Quantum Computing (FTQC) era will become a reality before 2030.
+
+Specifically, owing to the exceptional performance of Neutral Atom technology in creating logical qubits, the challenges of hardware scaling have largely been conquered. Conversely, with the establishment of Post-Quantum Cryptography (PQC) standards by NIST, the global cybersecurity architecture is undergoing rapid transformation. Managing the memory and power constraints of classical IoT devices while implementing these large algorithm keys (Keys/Signatures) will be the foremost technical challenge for software engineers over the coming years.
+
+Quantum computing is already contributing toward minimizing massive energy wastes in industrial processes like Haber-Bosch through chemical simulation, and rapidly calculating Free Energy in drug discovery. Quantum Machine Learning (QML) has expanded into industrial applications such as financial portfolio optimization. Without being restricted to highly expensive cryogenic hardware, it is an extremely positive trend that developing nations like Sri Lanka are joining this global knowledge economy via NMR technology and quantum simulators. There is no doubt that over the next decade, hybrid classical-quantum computing models will provide unprecedented, sustainable solutions to the most complex scientific, medical, and technological challenges faced by humanity.
+
+
+bqpsim.com
+5 Key Quantum Computing Breakthroughs in 2026
+Opens in a new window
+
+andisama.medium.com
+Quantum Computing: The Promise of Quantum Machine Learning/QML | by Andi Sama
+Opens in a new window
+
+wissenresearch.com
+Quantum Computing: Breakthroughs, Software Innovations, and Strategic Partnerships 2026
+Opens in a new window
+
+academic.oup.com
+ASAS-NANP SYMPOSIUM: MATHEMATICAL MODELING IN ANIMAL NUTRITION: quantum computing in agricultural sciences: from theory to reality - Oxford Academic
+Opens in a new window
+
+medium.com
+Quantum Error Correction Just Worked - The 800× Breakthrough That Makes Fault-Tolerant Computing Real | by Techtonic Times | Jun, 2026 | Medium
+Opens in a new window
+
+arxiv.org
+Developments in superconducting erasure qubits for hardware-efficient quantum error correction - arXiv
+Opens in a new window
+
+quantum-machines.co
+Scalable Quantum Error Correction
+Opens in a new window
+
+quantumzeitgeist.com
+Quantum Logical Qubit Leaderboard 2026: The Definitive Verified Ranking
+Opens in a new window
+
+quantinuum.com
+Real Time Error Correction at Increased Scale - Quantinuum
+Opens in a new window
+
+riverlane.com
+Riverlane publishes QEC Technology Roadmap that can accelerate quantum computing's path to utility scale by 3–5 years
+Opens in a new window
+
+ibm.com
+Quantum 2026 — IBM Technology Atlas
+Opens in a new window
+
+quera.com
+Understanding Fault-Tolerant Quantum Computing for Government - QuEra
+Opens in a new window
+
+researchandmarkets.com
+The Global Neutral-Atom Quantum Computing Market 2026-2036 - Research and Markets
+Opens in a new window
+
+quantumzeitgeist.com
+Top Neutral Atom Quantum Computing Companies and Rydberg Array Vendor Guide
+Opens in a new window
+
+4m4.it
+IBM Quantum Roadmap
+Opens in a new window
+
+hightoweradvisors.com
+IBM Quantum Day Roadmap and Scalability - Hightower Advisors
+Opens in a new window
+
+pasqal.com
+Inside Pasqal's 2026 Vision on Quantum for Industry and Research
+Opens in a new window
+
+en.ustc.edu.cn
+Neutral Atom Quantum Computation Achievement Listed in“Highlights of the Year 2025” in Physics - University of Science and Technology of China
+Opens in a new window
+
+blog.google
+Building superconducting and neutral atom quantum computers - Google Blog
+Opens in a new window
+
+ibm.com
+IBM Quantum Computing | Hardware and roadmap
+Opens in a new window
+
+wisdomtree.com
+The Pure Plays: Five Companies Building Quantum from the Ground Up | WisdomTree
+Opens in a new window
+
+quandela.com
+Roadmap 2026–2033 - Quandela
+Opens in a new window
+
+postquantum.com
+IBM - PostQuantum - Quantum Computing, Quantum Security, PQC
+Opens in a new window
+
+scribd.com
+2025 IBM Quantum Development Roadmap | PDF - Scribd
+Opens in a new window
+
+paloaltonetworks.com
+What Are NIST PQC Standards? - Palo Alto Networks
+Opens in a new window
+
+blog.cloudflare.com
+Why we cannot wait for better post-quantum signature algorithms - The Cloudflare Blog
+Opens in a new window
+
+qcecuring.com
+NIST PQC Standards Explained: FIPS 203, FIPS 204, and FIPS 205 Deep Dive - QCecuring
+Opens in a new window
+
+arxiv.org
+Benchmarking NIST-Standardised ML-KEM and ML-DSA on ARM Cortex-M0+: Performance, Memory, and Energy on the RP2040 - arXiv
+Opens in a new window
+
+cisa.gov
+Product Categories for Technologies That Use Post-Quantum Cryptography Standards
+Opens in a new window
+
+blog.trailofbits.com
+Shipping post-quantum cryptography to Python - The Trail of Bits Blog
+Opens in a new window
+
+pubs.acs.org
+How to Use Quantum Computers for Biomolecular Free Energies - ACS Publications
+Opens in a new window
+
+quantamagazine.org
+Key Chemistry Question Answered, No Quantum Computer Required - Quanta Magazine
+Opens in a new window
+
+quantumfrontiers.com
+The FeMo-cofactor and classical and quantum computing
+Opens in a new window
+
+postquantum.com
+The Quantum Utility Ladder: Fault-Tolerant Algorithm Map
+Opens in a new window
+
+innobu.com
+Quantum Machine Learning 2025 | QML Research & Practice - innobu
+Opens in a new window
+
+quantumjobslist.com
+Quantum ML Jobs: 12 Careers & Skills Guide 2026
+Opens in a new window
+
+postquantum.com
+Quantum Machine Learning in 2026: A Real Frontier and an Honest Scorecard
+Opens in a new window
+
+qaif.org
+Quantum Machine Learning Conference 2026 - Fundacja Quantum AI
+Opens in a new window
+
+euacc.ai
+Quantum Machine Learning — Horizon Europe (deadline 28 January 2027) - EUACC
+Opens in a new window
+
+science.cmb.ac.lk
+Inauguration of Sri Lanka's First Quantum Computing Facility - Faculty of Science
+Opens in a new window
+
+dailymirror.lk
+Sri Lanka steps into the quantum era - News Features | Daily Mirror
+Opens in a new window
+
+nifs.ac.lk
+Quantum Physics and Applied Electronics Research Programme
+Opens in a new window
+
+ieee.lk
+IEEE Techno Meetup - Quantum Computing
+Opens in a new window
+
+theknowledgeacademy.com
+Quantum Computing Course in Colombo - The Knowledge Academy
