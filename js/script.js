@@ -22,6 +22,30 @@ if (themeToggle) {
   });
 }
 
+// ===== Language Toggle Logic =====
+const langToggle = document.getElementById('langToggle');
+
+function updateLangButton() {
+  if (langToggle) {
+    if (htmlElement.getAttribute('data-lang') === 'si') {
+      langToggle.textContent = 'EN';
+    } else {
+      langToggle.textContent = 'සිං';
+    }
+  }
+}
+updateLangButton();
+
+if (langToggle) {
+  langToggle.addEventListener('click', () => {
+    const currentLang = htmlElement.getAttribute('data-lang') || 'en';
+    let newLang = currentLang === 'en' ? 'si' : 'en';
+    htmlElement.setAttribute('data-lang', newLang);
+    try { localStorage.setItem('lang', newLang); } catch (e) { }
+    updateLangButton();
+  });
+}
+
 // ===== Custom Cursor Logic =====
 const cursorDot = document.querySelector('[data-cursor-dot]');
 const cursorOutline = document.querySelector('[data-cursor-outline]');

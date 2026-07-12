@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,15 @@
 
     <script>
         (function () {
-            try { var savedTheme = localStorage.getItem('theme') || 'dark'; document.documentElement.setAttribute('data-theme', savedTheme); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+            try {
+                var savedTheme = localStorage.getItem('theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                var savedLang = localStorage.getItem('lang') || 'en';
+                document.documentElement.setAttribute('data-lang', savedLang);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.setAttribute('data-lang', 'en');
+            }
         })();
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,6 +39,22 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/chatbot.css">
     <style>
+        html,
+        body {
+            overflow-x: hidden !important;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Language toggling styles */
+        [data-lang="en"] .lang-si {
+            display: none !important;
+        }
+
+        [data-lang="si"] .lang-en {
+            display: none !important;
+        }
+
         .glass-panel {
             background: rgba(28, 25, 23, 0.4);
             backdrop-filter: blur(16px);
@@ -41,29 +65,54 @@
 
         .research-content h2 {
             font-family: 'Syne', sans-serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--fg);
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
             border-bottom: 1px solid var(--border);
+        }
+
+        @media (min-width: 768px) {
+            .research-content h2 {
+                font-size: 2rem;
+                margin-top: 3rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.75rem;
+            }
         }
 
         .research-content h3 {
             font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--fg);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .research-content h3 {
+                font-size: 1.5rem;
+                margin-top: 2.5rem;
+                margin-bottom: 1rem;
+            }
         }
 
         .research-content p {
             color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .research-content p {
+                line-height: 1.8;
+                margin-bottom: 1.5rem;
+                font-size: 1.05rem;
+            }
         }
 
         .research-content table {
@@ -141,7 +190,7 @@
         }
 
         .quantum-blob {
-            position: absolute;
+            position: fixed;
             border-radius: 50%;
             filter: blur(120px);
             z-index: -1;
@@ -206,6 +255,9 @@
                 <a href="contact.html" class="nav-link">Contact</a>
             </div>
             <div class="flex items-center gap-4">
+                <button id="langToggle" class="theme-btn text-xs font-mono font-bold" aria-label="Toggle Language">
+                    සිං
+                </button>
                 <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
                     <i id="themeIcon" class="fas fa-sun"></i>
                 </button>
@@ -232,312 +284,695 @@
     </div>
 
     <!-- Main Header -->
-    <header class="pt-32 pb-12 px-6 border-b border-stone-800 backdrop-blur-sm">
+    <header class="pt-28 pb-10 px-4 sm:px-6 border-b border-stone-800 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto text-center">
             <span
                 class="inline-block py-1.5 px-4 rounded-full border border-orange-500/30 text-orange-400 font-mono text-xs uppercase tracking-widest mb-6 bg-orange-500/10">
-                <i class="fas fa-atom mr-2 animate-spin-slow"></i> Original Research Article
+                <span class="lang-en"><i class="fas fa-atom mr-2 animate-spin-slow"></i> Original Research
+                    Article</span>
+                <span class="lang-si"><i class="fas fa-atom mr-2 animate-spin-slow"></i> මුල් පර්යේෂණ ලිපිය</span>
             </span>
-            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-5xl mx-auto">
+            <h1
+                class="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-5xl mx-auto lang-en">
                 Comprehensive Research Report on <span style="color: var(--accent);">Quantum Computing</span> and the
                 Future Technological Revolution
             </h1>
-            <div class="flex items-center justify-center gap-6 text-sm" style="color: var(--muted);">
+            <h1
+                class="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-5xl mx-auto lang-si">
+                <span style="color: var(--accent);">ප්‍රමාණක පරිගණනය</span> (Quantum Computing) සහ අනාගත තාක්‍ෂණික
+                විප්ලවය පිළිබඳ සවිස්තරාත්මක පර්යේෂණ වාර්තාව
+            </h1>
+            <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm" style="color: var(--muted);">
                 <div class="flex items-center gap-2">
                     <img src="img/Masitha.jpeg" alt="Masitha Bandara"
                         class="w-10 h-10 rounded-full object-cover border-2" style="border-color: var(--accent);">
                     <div class="text-left py-2">
-                        <p class="font-bold" style="color: var(--fg);">Masitha Bandara</p>
-                        <p class="font-mono text-xs">Author & Researcher</p>
+                        <p class="font-bold lang-en" style="color: var(--fg);">Masitha Bandara</p>
+                        <p class="font-bold lang-si" style="color: var(--fg);">මසිත් බණ්ඩාර</p>
+                        <p class="font-mono text-xs lang-en">Author & Researcher</p>
+                        <p class="font-mono text-xs lang-si">කර්තෘ සහ පර්යේෂක</p>
                     </div>
                 </div>
-                <div class="h-8 w-px bg-stone-700"></div>
+                <div class="h-8 w-px bg-stone-700 hidden sm:block"></div>
                 <div class="text-left">
-                    <p class="font-bold flex items-center gap-2" style="color: var(--fg);"><i
-                            class="fas fa-calendar-alt text-orange-500"></i> July 2026</p>
-                    <p class="font-mono text-xs">Published</p>
+                    <p class="font-bold flex items-center gap-2" style="color: var(--fg);">
+                        <i class="fas fa-calendar-alt text-orange-500"></i>
+                        <span class="lang-en">July 2026</span>
+                        <span class="lang-si">2026 ජූලි</span>
+                    </p>
+                    <p class="font-mono text-xs lang-en">Published</p>
+                    <p class="font-mono text-xs lang-si">ප්‍රකාශිතයි</p>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Research Layout Setup -->
-    <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col lg:flex-row gap-12 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16 flex flex-col lg:flex-row gap-8 lg:gap-12 relative">
 
         <!-- Sidebar Navigation (TOC) -->
-        <aside class="lg:w-1/4 shrink-0">
+        <aside class="w-full lg:w-1/4 shrink-0">
+            <!-- Mobile Table of Contents (visible only on mobile/tablet) -->
+            <div class="lg:hidden block glass-panel p-5 rounded-2xl mb-2">
+                <details class="group cursor-pointer">
+                    <summary
+                        class="font-display font-bold text-sm sm:text-base flex items-center justify-between uppercase tracking-wider list-none"
+                        style="color: var(--fg);">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-list-ul text-orange-500"></i>
+                            <span class="lang-en">Table of Contents</span>
+                            <span class="lang-si">පටුන</span>
+                        </span>
+                        <i
+                            class="fas fa-chevron-down text-stone-500 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <ul class="space-y-3 text-sm font-medium mt-4 pt-4 border-t border-stone-800"
+                        style="color: var(--muted);">
+                        <li><a href="#intro" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">1. Introduction & Background</span><span class="lang-si">1.
+                                    හැඳින්වීම සහ පසුබිම</span></a></li>
+                        <li><a href="#error-correction" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">2. Breakthroughs in Error Correction</span><span class="lang-si">2.
+                                    දෝෂ නිවැරදි කිරීමේ දියුණුව</span></a></li>
+                        <li><a href="#logical-qubits" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">3. Evolution of Logical Qubits</span><span class="lang-si">3. තර්කන
+                                    කියුබිට්වල පරිණාමය</span></a></li>
+                        <li><a href="#ibm-roadmap" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">4. IBM's Fault-Tolerant Roadmap</span><span class="lang-si">4. IBM
+                                    හි දෝෂ-සහන මාර්ග සිතියම</span></a></li>
+                        <li><a href="#pqc" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">5. Post-Quantum Cryptography</span><span class="lang-si">5.
+                                    පශ්චාත්-ප්‍රමාණක ගුප්ත ලේඛන ශිල්පය</span></a></li>
+                        <li><a href="#chemical-simulation"
+                                class="block py-1 hover:text-[#f97316] transition-colors"><span class="lang-en">6.
+                                    Chemical Simulation & Science</span><span class="lang-si">6. රසායනික අනුකරණය සහ
+                                    විද්‍යාව</span></a></li>
+                        <li><a href="#qml" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">7. Quantum Machine Learning (QML)</span><span class="lang-si">7.
+                                    ප්‍රමාණක යන්ත්‍ර ඉගෙනුම (QML)</span></a></li>
+                        <li><a href="#sri-lanka" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">8. Quantum Computing in Sri Lanka</span><span class="lang-si">8.
+                                    ශ්‍රී ලංකාවේ ප්‍රමාණක පරිගණනය</span></a></li>
+                        <li><a href="#conclusion" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">9. Conclusion</span><span class="lang-si">9. උපසංහාරය</span></a>
+                        </li>
+                        <li><a href="#references" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">References</span><span class="lang-si">ආශ්‍රිත ලිපි</span></a></li>
+                    </ul>
+                </details>
+            </div>
+
+            <!-- Desktop Table of Contents (visible only on desktop) -->
             <div class="sticky top-32 glass-panel p-6 rounded-2xl hidden lg:block">
                 <h4 class="font-display font-bold text-lg mb-6 flex items-center gap-2 uppercase tracking-wider"
                     style="color: var(--fg);">
-                    <i class="fas fa-list-ul text-orange-500"></i> Table of Contents
+                    <i class="fas fa-list-ul text-orange-500"></i>
+                    <span class="lang-en">Table of Contents</span>
+                    <span class="lang-si">පටුන</span>
                 </h4>
                 <ul class="space-y-4 text-sm font-medium" style="color: var(--muted);">
-                    <li><a href="#intro" class="toc-link block">Introduction & Background</a></li>
-                    <li><a href="#error-correction" class="toc-link block">Breakthroughs in Error Correction</a></li>
-                    <li><a href="#logical-qubits" class="toc-link block">Evolution of Logical Qubits</a></li>
-                    <li><a href="#ibm-roadmap" class="toc-link block">IBM's Fault-Tolerant Roadmap</a></li>
-                    <li><a href="#pqc" class="toc-link block">Post-Quantum Cryptography</a></li>
-                    <li><a href="#chemical-simulation" class="toc-link block">Chemical Simulation & Science</a></li>
-                    <li><a href="#qml" class="toc-link block">Quantum Machine Learning (QML)</a></li>
-                    <li><a href="#sri-lanka" class="toc-link block">Quantum Computing in Sri Lanka</a></li>
-                    <li><a href="#conclusion" class="toc-link block">Conclusion</a></li>
-                    <li><a href="#references" class="toc-link block">References</a></li>
+                    <li><a href="#intro" class="toc-link block"><span class="lang-en">Introduction &
+                                Background</span><span class="lang-si">හැඳින්වීම සහ පසුබිම</span></a></li>
+                    <li><a href="#error-correction" class="toc-link block"><span class="lang-en">Breakthroughs in Error
+                                Correction</span><span class="lang-si">දෝෂ නිවැරදි කිරීමේ දියුණුව</span></a></li>
+                    <li><a href="#logical-qubits" class="toc-link block"><span class="lang-en">Evolution of Logical
+                                Qubits</span><span class="lang-si">තර්කන කියුබිට්වල පරිණාමය</span></a></li>
+                    <li><a href="#ibm-roadmap" class="toc-link block"><span class="lang-en">IBM's Fault-Tolerant
+                                Roadmap</span><span class="lang-si">IBM හි දෝෂ-සහන මාර්ග සිතියම</span></a></li>
+                    <li><a href="#pqc" class="toc-link block"><span class="lang-en">Post-Quantum
+                                Cryptography</span><span class="lang-si">පශ්චාත්-ප්‍රමාණක ගුප්ත ලේඛන ශිල්පය</span></a>
+                    </li>
+                    <li><a href="#chemical-simulation" class="toc-link block"><span class="lang-en">Chemical Simulation
+                                & Science</span><span class="lang-si">රසායනික අනුකරණය සහ විද්‍යාව</span></a></li>
+                    <li><a href="#qml" class="toc-link block"><span class="lang-en">Quantum Machine Learning
+                                (QML)</span><span class="lang-si">ප්‍රමාණක යන්ත්‍ර ඉගෙනුම (QML)</span></a></li>
+                    <li><a href="#sri-lanka" class="toc-link block"><span class="lang-en">Quantum Computing in Sri
+                                Lanka</span><span class="lang-si">ශ්‍රී ලංකාවේ ප්‍රමාණක පරිගණනය</span></a></li>
+                    <li><a href="#conclusion" class="toc-link block"><span class="lang-en">Conclusion</span><span
+                                class="lang-si">උපසංහාරය</span></a></li>
+                    <li><a href="#references" class="toc-link block"><span class="lang-en">References</span><span
+                                class="lang-si">ආශ්‍රිත පුවත්</span></a></li>
                 </ul>
             </div>
         </aside>
 
         <!-- Main Content Column -->
-        <main class="lg:w-3/4 research-content glass-panel p-8 md:p-12 rounded-3xl"
+        <main class="w-full lg:w-3/4 research-content glass-panel p-5 sm:p-8 md:p-12 rounded-3xl"
             style="background: var(--bg-elevated);">
 
+
             <section id="intro">
-                <h2 class="mt-0">1. Comprehensive Introduction and Background</h2>
-                <p>Quantum computing is not simply a faster version of existing classical computers, but an entirely new
-                    paradigm that takes the fundamental physical theories of information processing to a completely new
-                    dimension. For decades restricted to the realm of theoretical physics, this field has undergone a
-                    historic transition by the years 2025 and 2026, moving from the Noisy Intermediate-Scale Quantum
-                    (NISQ) era to the Fault-Tolerant Quantum Computing (FTQC) era.</p>
-                <p>By utilizing the principles of quantum superposition and quantum entanglement, this technology has
-                    today proven capable of providing novel solutions to previously unsolvable problems in chemical
-                    simulation, materials science, and financial optimization.</p>
-                <p>The most significant milestone of this transition is that Quantum Error Correction (QEC) has moved
-                    beyond theoretical boundaries and has been successfully implemented at a practical hardware level.
-                    While classical computers secure data by copying information, quantum states cannot be copied in the
-                    same manner due to the "no-cloning theorem" in quantum mechanics. To circumvent this, <strong>Peter
-                        Shor introduced an alternative methodology in 1995:</strong> spreading the information across
-                    multiple physical qubits without directly measuring it. Although this remained a mere theory for
-                    over thirty years, recent massive advancements in the integration of hardware and software have made
-                    it practically viable.</p>
+                <h2 class="mt-0">
+                    <span class="lang-en">1. Comprehensive Introduction and Background</span>
+                    <span class="lang-si">1. සවිස්තරාත්මක හැඳින්වීම සහ පසුබිම</span>
+                </h2>
+                <div class="lang-en">
+                    <p>Quantum computing is not simply a faster version of existing classical computers, but an entirely
+                        new
+                        paradigm that takes the fundamental physical theories of information processing to a completely
+                        new
+                        dimension. For decades restricted to the realm of theoretical physics, this field has undergone
+                        a
+                        historic transition by the years 2025 and 2026, moving from the Noisy Intermediate-Scale Quantum
+                        (NISQ) era to the Fault-Tolerant Quantum Computing (FTQC) era.</p>
+                    <p>By utilizing the principles of quantum superposition and quantum entanglement, this technology
+                        has
+                        today proven capable of providing novel solutions to previously unsolvable problems in chemical
+                        simulation, materials science, and financial optimization.</p>
+                    <p>The most significant milestone of this transition is that Quantum Error Correction (QEC) has
+                        moved
+                        beyond theoretical boundaries and has been successfully implemented at a practical hardware
+                        level.
+                        While classical computers secure data by copying information, quantum states cannot be copied in
+                        the
+                        same manner due to the "no-cloning theorem" in quantum mechanics. To circumvent this,
+                        <strong>Peter
+                            Shor introduced an alternative methodology in 1995:</strong> spreading the information
+                        across
+                        multiple physical qubits without directly measuring it. Although this remained a mere theory for
+                        over thirty years, recent massive advancements in the integration of hardware and software have
+                        made
+                        it practically viable.
+                    </p>
+                </div>
+                <div class="lang-si">
+                    <p>ප්‍රමාණක පරිගණනය (Quantum Computing) යනු දැනට පවතින සම්භාව්‍ය පරිගණකවල වඩා වේගවත් සංස්කරණයක්
+                        පමණක් නොවේ. එය තොරතුරු සැකසීමේ මූලික භෞතික විද්‍යාත්මක සිද්ධාන්ත සම්පූර්ණයෙන්ම නව මානයකට ගෙන යන
+                        නවතම ක්‍රමවේදයකි. දශක ගණනාවක් තිස්සේ සෛද්ධාන්තික භෞතික විද්‍යාවට පමණක් සීමා වී තිබූ මෙම
+                        ක්ෂේත්‍රය, 2025 සහ 2026 වසර වන විට ඝෝෂාකාරී මධ්‍ය පරිමාණ ප්‍රමාණක (NISQ) යුගයේ සිට දෝෂ-සහන
+                        ප්‍රමාණක පරිගණන (FTQC) යුගය දක්වා ඓතිහාසික සංක්‍රාන්තියකට භාජනය වී ඇත.</p>
+                    <p>ප්‍රමාණක සුපිරි පිහිටීම (Quantum Superposition) සහ ප්‍රමාණක පැටලැවිල්ල (Quantum Entanglement) යන
+                        මූලධර්ම භාවිතයෙන්, රසායනික අනුකරණයන් (Chemical Simulation), ද්‍රව්‍ය විද්‍යාව (Materials
+                        Science) සහ මූල්‍ය ප්‍රශස්තකරණය (Financial Optimization) වැනි මින් පෙර විසඳීමට නොහැකි වූ
+                        ගැටලුවලට නවතම විසඳුම් ලබා දීමට මෙම තාක්‍ෂණය අද වන විට සමත් වී ඇත.</p>
+                    <p>මෙම සංක්‍රාන්තියේ වඩාත්ම වැදගත් සන්ධිස්ථානය වන්නේ ප්‍රමාණක දෝෂ නිවැරදි කිරීම (Quantum Error
+                        Correction - QEC) සෛද්ධාන්තික සීමාවන්ගෙන් ඔබ්බට ගොස් ප්‍රායෝගික දෘඩාංග මට්ටමින් සාර්ථකව
+                        ක්‍රියාත්මක කිරීමට හැකි වීමයි. සම්භාව්‍ය පරිගණක තොරතුරු පිටපත් කිරීම මඟින් දත්ත සුරක්ෂිත කරන
+                        අතර, ප්‍රමාණක යාන්ත්‍ර විද්‍යාවේ එන "නො-පිටපත් කිරීමේ ප්‍රමේයය" (No-Cloning Theorem) නිසා
+                        ප්‍රමාණක තත්ත්වයන් (Quantum States) එකලෙස පිටපත් කළ නොහැක. මෙයට විසඳුමක් ලෙස පීටර් ෂෝර් (Peter
+                        Shor) විසින් 1995 දී විකල්ප ක්‍රමවේදයක් හඳුන්වා දෙන ලදී: එනම් දත්ත සෘජුවම මැනීමකින් තොරව භෞතික
+                        කියුබිට් (Qubits) කිහිපයක් පුරා තොරතුරු ව්‍යාප්ත කිරීමයි. වසර තිහකට වැඩි කාලයක් මෙය හුදු
+                        සිද්ධාන්තයක් ලෙස පැවතුණද, මෑතකදී දෘඩාංග හා මෘදුකාංග ඒකාබද්ධ කිරීමේ සිදු වූ දැවැන්ත දියුණුව
+                        හේතුවෙන් එය ප්‍රායෝගිකව ක්‍රියාත්මක කළ හැකි වී ඇත.</p>
+                </div>
             </section>
 
             <section id="error-correction">
-                <h2>2. Recent Breakthroughs in Quantum Error Correction (QEC)</h2>
-                <p>The primary weakness of quantum systems is decoherence, where information stored in qubits is
-                    destroyed due to the slightest environmental disturbance (temperature changes, electromagnetic
-                    waves, etc.). For fault-tolerant computing, it is essential to detect and correct these errors in
-                    real-time. By the year 2026, several organizations successfully achieved practical "exponential
-                    error suppression".</p>
-                <p>Google's <strong>Willow quantum processor</strong> practically confirmed that as the size of the
-                    surface-code lattice increases, the logical error rate decreases by a factor of 2.14x. This
-                    superconducting chip, consisting of 105 physical qubits, marks a historic moment where quantum error
-                    correction theories were proven at the practical hardware level.</p>
-                <p>On the other hand, <strong>Quantinuum</strong>, in collaboration with NVIDIA, has taken a new step to
-                    execute real-time QEC decoding at extremely high speeds. Their H2 processor successfully completed
-                    14,000 consecutive circuit operations without a single logical error. They utilized a Knill-inspired
-                    scheme alongside a 16-qubit tesseract color code featuring a four-dimensional structure.</p>
+                <h2>
+                    <span class="lang-en">2. Recent Breakthroughs in Quantum Error Correction (QEC)</span>
+                    <span class="lang-si">2. ප්‍රමාණක දෝෂ නිවැරදි කිරීමේ (QEC) මෑතකාලීන දියුණුව</span>
+                </h2>
+                <div class="lang-en">
+                    <p>The primary weakness of quantum systems is decoherence, where information stored in qubits is
+                        destroyed due to the slightest environmental disturbance (temperature changes, electromagnetic
+                        waves, etc.). For fault-tolerant computing, it is essential to detect and correct these errors
+                        in
+                        real-time. By the year 2026, several organizations successfully achieved practical "exponential
+                        error suppression".</p>
+                    <p>Google's <strong>Willow quantum processor</strong> practically confirmed that as the size of the
+                        surface-code lattice increases, the logical error rate decreases by a factor of 2.14x. This
+                        superconducting chip, consisting of 105 physical qubits, marks a historic moment where quantum
+                        error
+                        correction theories were proven at the practical hardware level.</p>
+                    <p>On the other hand, <strong>Quantinuum</strong>, in collaboration with NVIDIA, has taken a new
+                        step to
+                        execute real-time QEC decoding at extremely high speeds. Their H2 processor successfully
+                        completed
+                        14,000 consecutive circuit operations without a single logical error. They utilized a
+                        Knill-inspired
+                        scheme alongside a 16-qubit tesseract color code featuring a four-dimensional structure.</p>
+                </div>
+                <div class="lang-si">
+                    <p>ප්‍රමාණක පද්ධතිවල ප්‍රධානතම දුර්වලතාවය වන්නේ විසංයෝජනය (Decoherence) හෙවත් සුළු පරිසර කැළඹීමක්
+                        (උෂ්ණත්ව වෙනස්වීම්, විද්‍යුත් චුම්භක තරංග ආදිය) නිසා කියුබිට්වල ගබඩා කර ඇති තොරතුරු විනාශ වීමයි.
+                        දෝෂ-සහන පරිගණනය සඳහා මෙම දෝෂ තථ්‍ය කාලීනව (Real-time) හඳුනාගෙන නිවැරදි කිරීම අත්‍යවශ්‍ය වේ. 2026
+                        වසර වන විට ආයතන කිහිපයක්ම ප්‍රායෝගික "ඝාතීය දෝෂ යටපත් කිරීම" (Exponential Error Suppression)
+                        සාර්ථකව අත්පත් කර ගෙන ඇත.</p>
+                    <p>ගූගල්හි (Google) <strong>Willow ප්‍රමාණක ප්‍රොසෙසරය</strong> මඟින් පෘෂ්ඨීය-කෝඩ ජාලයේ
+                        (Surface-code lattice) ප්‍රමාණය වැඩි වන විට, තර්කන දෝෂ අනුපාතය (Logical error rate) 2.14
+                        ගුණයකින් අඩු වන බව ප්‍රායංශිකව තහවුරු කළේය. භෞතික කියුබිට් 105 කින් සමන්විත මෙම සුපිරි සන්නායක
+                        චිපය, ප්‍රමාණක දෝෂ නිවැරදි කිරීමේ සිද්ධාන්ත ප්‍රායෝගික දෘඩාංග මට්ටමින් ඔප්පු කළ ඓතිහාසික
+                        සන්ධිස්ථානයක් සනිටුහන් කරයි.</p>
+                    <p>අනෙක් අතට, <strong>Quantinuum</strong> ආයතනය NVIDIA සමඟ එක්ව අතිශය ඉහළ වේගයකින් තථ්‍ය කාලීන QEC
+                        විකේතනය (Real-time QEC decoding) ක්‍රියාත්මක කිරීමට පියවර ගෙන ඇත. ඔවුන්ගේ H2 ප්‍රොසෙසරය තනි
+                        තර්කන දෝෂයකින් තොරව අඛණ්ඩව පරිපථ මෙහෙයුම් 14,000 ක් සාර්ථකව නිම කළේය. ඔවුන් මේ සඳහා සිව්-මාන
+                        ව්‍යුහයකින් යුත් කියුබිට් 16 ක ටෙසරැක්ට් වර්ණ කේතයක් (Tesseract color code) සමඟ නිල් (Knill)
+                        ආශ්‍රිත ක්‍රමවේදයක් භාවිත කළහ.</p>
+                </div>
 
                 <div
                     class="p-6 rounded-2xl bg-stone-900 border border-stone-800 my-8 shadow-inner relative overflow-hidden group">
                     <div
                         class="absolute -right-10 -top-10 text-[150px] opacity-10 text-indigo-500 group-hover:scale-110 transition-transform duration-500">
-                        <i class="fas fa-microchip"></i></div>
-                    <h3 class="mt-0 text-indigo-400 border-none"><i class="fas fa-bolt mr-2 text-indigo-400"></i> The
-                        Local Clustering Decoder (LCD)</h3>
-                    <p class="text-sm">The UK-based company <strong>Riverlane</strong> further accelerated the quantum
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="mt-0 text-indigo-400 border-none">
+                        <span class="lang-en"><i class="fas fa-bolt mr-2 text-indigo-400"></i> The Local Clustering
+                            Decoder (LCD)</span>
+                        <span class="lang-si"><i class="fas fa-bolt mr-2 text-indigo-400"></i> දේශීය පොකුරුකරණ විකේතකය
+                            (Local Clustering Decoder - LCD)</span>
+                    </h3>
+                    <p class="text-sm lang-en">The UK-based company <strong>Riverlane</strong> further accelerated the
+                        quantum
                         error correction process by introducing the LCD. This technology allows systems to perform one
                         million error-free operations while reducing the physical qubit requirement by a factor of four
                         (4x). Their FPGA hardware-based Deltaflow system is capable of processing terabytes of data per
                         second in real-time.</p>
+                    <p class="text-sm lang-si">එක්සත් රාජධානිය පදනම් කරගත් <strong>Riverlane</strong> සමාගම LCD හඳුන්වා
+                        දෙමින් ප්‍රමාණක දෝෂ නිවැරදි කිරීමේ ක්‍රියාවලිය තවත් වේගවත් කළේය. මෙම තාක්‍ෂණය මඟින් පද්ධතියකට
+                        අවශ්‍ය භෞතික කියුබිට් ප්‍රමාණය හතර ගුණයකින් (4x) අඩු කරන අතරතුර දෝෂ රහිත මෙහෙයුම් මිලියනයක් සිදු
+                        කිරීමට ඉඩ සලසයි. ඔවුන්ගේ FPGA දෘඩාංග පදනම් කරගත් Deltaflow පද්ධතිය තත්පරයට ටෙරාබයිට් ගණනක දත්ත
+                        තථ්‍ය කාලීනව සැකසීමට සමත් වේ.</p>
                 </div>
             </section>
 
             <section id="logical-qubits">
-                <h2>3. Evolution of Logical Qubits and Hardware Modalities</h2>
-                <p>The fundamental building block of fault-tolerant quantum computing is the "logical qubit." This means
-                    binding several physical qubits together to create a single, error-free unit of information. By
-                    2026, <strong>"Neutral Atom" technology</strong> has taken the lead in the race to create these
-                    logical qubits.</p>
+                <h2>
+                    <span class="lang-en">3. Evolution of Logical Qubits and Hardware Modalities</span>
+                    <span class="lang-si">3. තර්කන කියුබිට්වල පරිණාමය සහ දෘඩාංග ක්‍රමවේද</span>
+                </h2>
 
-                <h3>Logical Qubit Performance (2026 Sandbox)</h3>
-                <div class="overflow-x-auto">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Company</th>
-                                <th>Logical Qubit Count</th>
-                                <th>Physical Qubit Ratio</th>
-                                <th>Error Correction Code Used</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="font-bold text-white">QuEra Computing</td>
-                                <td>96</td>
-                                <td>~4.7 : 1</td>
-                                <td><span
-                                        class="font-mono bg-stone-800 px-2 py-1 rounded text-orange-400 text-xs">[[16,6,4]]</span>
-                                    High-rate codes</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold text-white">Quantinuum</td>
-                                <td>48</td>
-                                <td>~2 : 1</td>
-                                <td>Color code + Iceberg concatenation</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold text-white">Atom Computing + Microsoft</td>
-                                <td>24</td>
-                                <td>~49 : 1</td>
-                                <td>Bacon-Shor codes</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold text-white">Infleqtion</td>
-                                <td>12</td>
-                                <td>Not disclosed</td>
-                                <td>Post-selection / Sqale platform</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h3 class="lang-en">Logical Qubit Performance (2026 Sandbox)</h3>
+                <h3 class="lang-si">තර්කන කියුබිට් කාර්ය සාධනය (2026 Sandbox)</h3>
 
-                <h3>1. Neutral Atom Technology</h3>
-                <p>In this modality, single atoms of alkaline metals like Rubidium or Strontium are trapped using
-                    focused laser beams known as optical tweezers. Since these atoms are electrically neutral, unwanted
-                    crosstalk between qubits is minimized. The position and connectivity of the qubits
-                    (reconfigurability) can be dynamically altered via software while a circuit is running.</p>
+                <div class="lang-en">
+                    <p>The fundamental building block of fault-tolerant quantum computing is the "logical qubit." This
+                        means
+                        binding several physical qubits together to create a single, error-free unit of information. By
+                        2026, <strong>"Neutral Atom" technology</strong> has taken the lead in the race to create these
+                        logical qubits.</p>
 
-                <h3>2. Superconducting Technology</h3>
-                <p>IBM and Google are the pioneers of this technology. The main advantage of superconducting circuits is
-                    their operational speed (nanosecond-level gate operations). However, they require massive, expensive
-                    cryogenic infrastructure (Dilution refrigerators) to maintain temperatures near absolute zero (< 4
+                    <div class="overflow-x-auto">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Logical Qubit Count</th>
+                                    <th>Physical Qubit Ratio</th>
+                                    <th>Error Correction Code Used</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-bold text-white">QuEra Computing</td>
+                                    <td>96</td>
+                                    <td>~4.7 : 1</td>
+                                    <td><span
+                                            class="font-mono bg-stone-800 px-2 py-1 rounded text-orange-400 text-xs">[[16,6,4]]</span>
+                                        High-rate codes</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-white">Quantinuum</td>
+                                    <td>48</td>
+                                    <td>~2 : 1</td>
+                                    <td>Color code + Iceberg concatenation</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-white">Atom Computing + Microsoft</td>
+                                    <td>24</td>
+                                    <td>~49 : 1</td>
+                                    <td>Bacon-Shor codes</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-white">Infleqtion</td>
+                                    <td>12</td>
+                                    <td>Not disclosed</td>
+                                    <td>Post-selection / Sqale platform</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>1. Neutral Atom Technology</h3>
+                    <p>In this modality, single atoms of alkaline metals like Rubidium or Strontium are trapped using
+                        focused laser beams known as optical tweezers. Since these atoms are electrically neutral,
+                        unwanted
+                        crosstalk between qubits is minimized. The position and connectivity of the qubits
+                        (reconfigurability) can be dynamically altered via software while a circuit is running.</p>
+
+                    <h3>2. Superconducting Technology</h3>
+                    <p>IBM and Google are the pioneers of this technology. The main advantage of superconducting
+                        circuits is
+                        their operational speed (nanosecond-level gate operations). However, they require massive,
+                        expensive
+                        cryogenic infrastructure (Dilution refrigerators) to maintain temperatures near absolute zero
+                        (&lt; 4
                         Kelvin).</p>
 
-                        <h3>3. Trapped Ion Technology (Quantinuum, IonQ)</h3>
-                        <p>Though operational speed is slower, this technology provides exceptionally high precision.
-                            IonQ's Tempo system set a record by achieving a 99.99% two-qubit gate fidelity.</p>
+                    <h3>3. Trapped Ion Technology (Quantinuum, IonQ)</h3>
+                    <p>Though operational speed is slower, this technology provides exceptionally high precision.
+                        IonQ's Tempo system set a record by achieving a 99.99% two-qubit gate fidelity.</p>
 
-                        <h3>4. Photonic Technology (Xanadu, Quandela)</h3>
-                        <p>Based on light particles, its strongest advantage is the ability to operate at <strong>room
-                                temperature</strong>. Xanadu's Aurora system successfully connected 35 photonic chips
-                            via a 13-kilometer optical fiber network.</p>
+                    <h3>4. Photonic Technology (Xanadu, Quandela)</h3>
+                    <p>Based on light particles, its strongest advantage is the ability to operate at <strong>room
+                            temperature</strong>. Xanadu's Aurora system successfully connected 35 photonic chips
+                        via a 13-kilometer optical fiber network.</p>
+                </div>
+                <div class="lang-si">
+                    <p>දෝෂ-සහන ප්‍රමාණක පරිගණනයේ මූලික ගොඩනැඟිලි ඒකකය වන්නේ "තර්කන කියුබිට්" (Logical Qubit) ය. මෙයින්
+                        අදහස් කරන්නේ භෞතික කියුබිට් කිහිපයක් එකට බැඳ තනි දෝෂ රහිත තොරතුරු ඒකකයක් නිර්මාණය කිරීමයි. 2026
+                        වන විට, මෙම තර්කන කියුබිට් නිර්මාණය කිරීමේ තරඟයේ පෙරමුණ ගැනීමට <strong>"උදාසීන පරමාණුව" (Neutral
+                            Atom) තාක්‍ෂණය</strong> සමත්ව ඇත.</p>
+
+                    <div class="overflow-x-auto">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>සමාගම</th>
+                                    <th>තර්කන කියුබිට් සංඛ්‍යාව</th>
+                                    <th>භෞතික කියුබිට් අනුපාතය</th>
+                                    <th>භාවිත කළ දෝෂ නිවැරදි කිරීමේ කේතය</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-bold text-white">QuEra Computing</td>
+                                    <td>96</td>
+                                    <td>~4.7 : 1</td>
+                                    <td><span
+                                            class="font-mono bg-stone-800 px-2 py-1 rounded text-orange-400 text-xs">[[16,6,4]]</span>
+                                        High-rate codes</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-white">Quantinuum</td>
+                                    <td>48</td>
+                                    <td>~2 : 1</td>
+                                    <td>Color code + Iceberg concatenation (වර්ණ කේත + Iceberg අනුක්‍රමණය)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-white">Atom Computing + Microsoft</td>
+                                    <td>24</td>
+                                    <td>~49 : 1</td>
+                                    <td>Bacon-Shor codes (බේකන්-ෂෝර් කේත)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-white">Infleqtion</td>
+                                    <td>12</td>
+                                    <td>හෙළිදරව් කර නැත</td>
+                                    <td>Post-selection / Sqale වේදිකාව</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>1. උදාසීන පරමාණු තාක්‍ෂණය (Neutral Atom Technology)</h3>
+                    <p>මෙම ක්‍රමවේදයේදී, රුබීඩියම් (Rubidium) හෝ ස්ට්‍රොන්ටියම් (Strontium) වැනි ක්ෂාරීය ලෝහවල තනි
+                        පරමාණු, "දෘශ්‍ය බලකටු" (Optical Tweezers) ලෙස හැඳින්වෙන නාභිගත ලේසර් කිරණ භාවිතයෙන් රඳවා ගනු
+                        ලැබේ. මෙම පරමාණු විද්‍යුත් වශයෙන් උදාසීන බැවින් කියුබිට් අතර අනවශ්‍ය බාධා කිරීම් (Crosstalk) අවම
+                        වේ. පරිපථයක් ක්‍රියාත්මක වන අතරතුර මෘදුකාංග හරහා කියුබිට්වල පිහිටීම සහ සම්බන්ධතාවය
+                        (ප්‍රතිසංවිධානය කිරීමේ හැකියාව) ගතිකව වෙනස් කළ හැකිය.</p>
+
+                    <h3>2. සුපිරි සන්නායක තාක්‍ෂණය (Superconducting Technology)</h3>
+                    <p>IBM සහ Google මෙම තාක්‍ෂණයේ පුරෝගාමීන් වේ. සුපිරි සන්නායක පරිපථවල ප්‍රධාන වාසිය වන්නේ ඒවායේ
+                        ක්‍රියාකාරී වේගයයි (නැනෝ තත්පර මට්ටමේ ගේට් මෙහෙයුම්). කෙසේ වෙතත්, නිරපේක්ෂ ශුන්‍යයට ආසන්න
+                        උෂ්ණත්වයක් (&lt; 4 Kelvin) පවත්වා ගැනීම සඳහා විශාල මෙන්ම මිල අධික ක්‍රයෝජනික් යටිතල පහසුකම්
+                        (Dilution refrigerators) මේ සඳහා අවශ්‍ය වේ.</p>
+
+                    <h3>3. රඳවාගත් අයන තාක්‍ෂණය (Trapped Ion Technology - Quantinuum, IonQ)</h3>
+                    <p>ක්‍රියාකාරී වේගය තරමක් මන්දගාමී වුවද, මෙම තාක්‍ෂණය මඟින් අතිශය ඉහළ නිරවද්‍යතාවයක් ලබා දෙයි. IonQ
+                        හි Tempo පද්ධතිය 99.99% ක දෙ-කියුබිට් ගේට් විශ්වසනීයත්වයක් (fidelity) ලබා ගනිමින් වාර්තාවක්
+                        පිහිටුවීය.</p>
+
+                    <h3>4. ෆෝටෝනික තාක්‍ෂණය (Photonic Technology - Xanadu, Quandela)</h3>
+                    <p>ආලෝක අංශු (ෆෝටෝන) මත පදනම් වූ මෙහි ප්‍රබලම වාසිය වන්නේ සාමාන්‍ය කාමර උෂ්ණත්වයේදී (Room
+                        temperature) ක්‍රියාත්මක වීමේ හැකියාවයි. Xanadu හි Aurora පද්ධතිය කිලෝමීටර 13 ක දෘශ්‍ය තන්තු
+                        (Optical fiber) ජාලයක් හරහා ෆෝටෝනික චිප් 35 ක් සාර්ථකව සම්බන්ධ කර ඇත.</p>
+                </div>
             </section>
 
             <section id="ibm-roadmap">
-                <h2>4. IBM's Fault-Tolerant Roadmap and Software Integration</h2>
-                <p>IBM currently leads the quantum race with an ambitious roadmap mapping simultaneous hardware
+                <h2>
+                    <span class="lang-en">4. IBM's Fault-Tolerant Roadmap and Software Integration</span>
+                    <span class="lang-si">4. IBM හි දෝෂ-සහන මාර්ග සිතියම සහ මෘදුකාංග ඒකාබද්ධ කිරීම</span>
+                </h2>
+                <p class="lang-en">IBM currently leads the quantum race with an ambitious roadmap mapping simultaneous
+                    hardware
                     development alongside classical HPC integration.</p>
+                <p class="lang-si">IBM ආයතනය මේ වන විට සම්භාව්‍ය HPC ඒකාබද්ධතාවය සමඟ සමගාමී දෘඩාංග සංවර්ධනය පෙළගස්වන
+                    අභිලාෂකාමී මාර්ග සිතියමක් සමඟ ප්‍රමාණක තරඟයේ පෙරමුණ ගෙන සිටී.</p>
+
                 <div class="grid md:grid-cols-2 gap-6 my-6">
                     <div
                         class="p-6 border border-stone-800 rounded-2xl bg-stone-900/50 hover:border-orange-500/50 transition-colors">
-                        <div class="text-orange-500 font-mono text-xs mb-2">2026 ARCHITECTURE</div>
+                        <div class="text-orange-500 font-mono text-xs mb-2">
+                            <span class="lang-en">2026 ARCHITECTURE</span>
+                            <span class="lang-si">2026 ව්‍යුහය</span>
+                        </div>
                         <h4 class="text-white text-xl font-bold mb-2">Nighthawk & Kookaburra</h4>
-                        <p class="text-sm">Executes 7,500 gates limit. IBM introduces multi-chip processor "Kookaburra"
+                        <p class="text-sm lang-en">Executes 7,500 gates limit. IBM introduces multi-chip processor
+                            "Kookaburra"
                             containing 1,386 physical qubits natively.</p>
+                        <p class="text-sm lang-si">ගේට්ස් 7,500 ක සීමාවක් ක්‍රියාත්මක කරයි. IBM විසින් භෞතික කියුබිට්
+                            1,386 ක් ස්වදේශීයව අඩංගු බහු-චිප් ප්‍රොසෙසරයක් වන "Kookaburra" හඳුන්වා දෙයි.</p>
                     </div>
                     <div
                         class="p-6 border border-stone-800 rounded-2xl bg-stone-900/50 hover:border-blue-500/50 transition-colors">
-                        <div class="text-blue-500 font-mono text-xs mb-2">2029 ENDGAME</div>
+                        <div class="text-blue-500 font-mono text-xs mb-2">
+                            <span class="lang-en">2029 ENDGAME</span>
+                            <span class="lang-si">2029 අවසාන ඉලක්කය</span>
+                        </div>
                         <h4 class="text-white text-xl font-bold mb-2">IBM Quantum Starling</h4>
-                        <p class="text-sm">Expected to contain ~10,000 physical qubits, aiming to complete block
+                        <p class="text-sm lang-en">Expected to contain ~10,000 physical qubits, aiming to complete block
                             processing of 100 million fault-tolerant operations using 200 logical qubits.</p>
+                        <p class="text-sm lang-si">තර්කන කියුබිට් 200 ක් භාවිත කරමින් දෝෂ-සහන මෙහෙයුම් මිලියන 100 ක
+                            බ්ලොක් සැකසුම් සම්පූර්ණ කිරීමේ අරමුණ ඇතිව, භෞතික කියුබිට් ~10,000 ක් පමණ අඩංගු වනු ඇතැයි
+                            අපේක්ෂා කෙරේ.</p>
                     </div>
                 </div>
             </section>
 
             <section id="pqc">
-                <h2>5. Post-Quantum Cryptography & Global Cybersecurity (PQC)</h2>
-                <p>The physical expansion of quantum computers poses a massive threat to current public-key encryption
-                    methods (RSA/ECC). A powerful quantum computer running Shor's algorithm could solve these problems
-                    in hours. In response, NIST officially announced a trio of post-quantum standards in August 2024.
-                </p>
+                <h2>
+                    <span class="lang-en">5. Post-Quantum Cryptography & Global Cybersecurity (PQC)</span>
+                    <span class="lang-si">5. පශ්චාත්-ප්‍රමාණක ගුප්ත ලේඛන ශිල්පය සහ ගෝලීය සයිබර් ආරක්ෂණය (PQC)</span>
+                </h2>
+                <div class="lang-en">
+                    <p>The physical expansion of quantum computers poses a massive threat to current public-key
+                        encryption
+                        methods (RSA/ECC). A powerful quantum computer running Shor's algorithm could solve these
+                        problems
+                        in hours. In response, NIST officially announced a trio of post-quantum standards in August
+                        2024.
+                    </p>
 
-                <div class="overflow-x-auto">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>NIST Standard (FIPS)</th>
-                                <th>Algorithm</th>
-                                <th>Primary Use Case</th>
-                                <th>Mathematical Basis</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="font-bold text-white"><span
-                                        class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded text-xs font-mono border border-green-500/30">FIPS
-                                        203</span></td>
-                                <td>ML-KEM</td>
-                                <td>Key Encapsulation / TLS</td>
-                                <td>Module-LWE (Lattice-based)</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold text-white"><span
-                                        class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded text-xs font-mono border border-green-500/30">FIPS
-                                        204</span></td>
-                                <td>ML-DSA</td>
-                                <td>Digital Signatures</td>
-                                <td>Module-LWE (Lattice-based)</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold text-white"><span
-                                        class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 rounded text-xs font-mono border border-yellow-500/30">FIPS
-                                        205</span></td>
-                                <td>SLH-DSA</td>
-                                <td>Digital Sig. (Gov Defense)</td>
-                                <td>Hash-based</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="overflow-x-auto">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NIST Standard (FIPS)</th>
+                                    <th>Algorithm</th>
+                                    <th>Primary Use Case</th>
+                                    <th>Mathematical Basis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-bold text-white"><span
+                                            class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded text-xs font-mono border border-green-500/30">FIPS
+                                            203</span></td>
+                                    <td>ML-KEM</td>
+                                    <td>Key Encapsulation / TLS</td>
+                                    <td>Module-LWE (Lattice-based)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-white"><span
+                                            class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded text-xs font-mono border border-green-500/30">FIPS
+                                            204</span></td>
+                                    <td>ML-DSA</td>
+                                    <td>Digital Signatures</td>
+                                    <td>Module-LWE (Lattice-based)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-white"><span
+                                            class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 rounded text-xs font-mono border border-yellow-500/30">FIPS
+                                            205</span></td>
+                                    <td>SLH-DSA</td>
+                                    <td>Digital Sig. (Gov Defense)</td>
+                                    <td>Hash-based</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p><strong>The Implementation Nightmare:</strong> While conventional Ed25519 public keys are 32
+                        bytes,
+                        the ML-DSA-65 standard requires a massive public key of 1,952 bytes. IoT hardware (like ARM
+                        Cortex-M0+ PR2040) suffers massive latency spikes up to 1,115 milliseconds during ML-DSA signing
+                        due
+                        to the Fiat-Shamir rejection sampling process.</p>
                 </div>
+                <div class="lang-si">
+                    <p>ප්‍රමාණක පරිගණකවල භෞතික ව්‍යාප්තිය වර්තමාන ප්‍රසිද්ධ-යතුරු සංකේතන ක්‍රමවේදවලට (RSA/ECC) විශාල
+                        තර්ජනයක් එල්ල කරයි. ෂෝර්ගේ ඇල්ගොරිතම (Shor's algorithm) ක්‍රියාත්මක වන ප්‍රබල ප්‍රමාණක පරිගණකයකට
+                        මෙම ගැටලු පැය කිහිපයකින් විසඳිය හැක. මේ සඳහා ප්‍රතිචාරයක් ලෙස, NIST ආයතනය 2024 අගෝස්තු මාසයේදී
+                        පශ්චාත්-ප්‍රමාණක ප්‍රමිතීන් තුනක් නිල වශයෙන් ප්‍රකාශයට පත් කළේය.</p>
 
-                <p><strong>The Implementation Nightmare:</strong> While conventional Ed25519 public keys are 32 bytes,
-                    the ML-DSA-65 standard requires a massive public key of 1,952 bytes. IoT hardware (like ARM
-                    Cortex-M0+ PR2040) suffers massive latency spikes up to 1,115 milliseconds during ML-DSA signing due
-                    to the Fiat-Shamir rejection sampling process.</p>
+                    <div class="overflow-x-auto">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NIST ප්‍රමිතිය (FIPS)</th>
+                                    <th>ඇල්ගොරිතම</th>
+                                    <th>ප්‍රධාන භාවිත අවස්ථාව</th>
+                                    <th>ගණිතමය පදනම</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-bold text-white"><span
+                                            class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded text-xs font-mono border border-green-500/30">FIPS
+                                            203</span></td>
+                                    <td>ML-KEM</td>
+                                    <td>යතුරු කැප්සියුලීකරණය / TLS</td>
+                                    <td>Module-LWE (දැලක පදනම් වූ)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-white"><span
+                                            class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded text-xs font-mono border border-green-500/30">FIPS
+                                            204</span></td>
+                                    <td>ML-DSA</td>
+                                    <td>ඩිජිටල් අත්සන්</td>
+                                    <td>Module-LWE (දැලක පදනම් වූ)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-white"><span
+                                            class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 rounded text-xs font-mono border border-yellow-500/30">FIPS
+                                            205</span></td>
+                                    <td>SLH-DSA</td>
+                                    <td>ඩිජිටල් අත්සන් (රජයේ ආරක්ෂක අංශ)</td>
+                                    <td>හැෂ් පදනම් වූ</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p><strong>ක්‍රියාත්මක කිරීමේ අභියෝගය:</strong> සාම්ප්‍රදායික Ed25519 ප්‍රසිද්ධ යතුරු බයිට් 32 ක් වන
+                        අතර, ML-DSA-65 ප්‍රමිතියට බයිට් 1,952 ක දැවැන්ත ප්‍රසිද්ධ යතුරක් අවශ්‍ය වේ. Fiat-Shamir
+                        ප්‍රතික්ෂේප කිරීමේ සාම්පල ලබා ගැනීමේ ක්‍රියාවලිය හේතුවෙන් ML-DSA අත්සන් කිරීමේදී IoT දෘඩාංග (ARM
+                        Cortex-M0+ PR2040 වැනි) මිලි තත්පර 1,115 දක්වා විශාල ප්‍රමාදයන්ට මුහුණ දෙයි.</p>
+                </div>
             </section>
 
             <section id="chemical-simulation">
-                <h2>6. Chemical Simulation and Molecular Science</h2>
-                <p>Materials science is among the most powerful practical applications of this era. The Haber-Bosch
-                    process currently consumes 1%-2% of total global energy to produce agricultural fertilizer at high
-                    temperatures. In contrast, the Nitrogenase enzyme (FeMo-cofactor) manages this at room temperature.
-                </p>
-                <p>By 2025, algorithmic advances reduced the T-gate requirement to simulate FeMo-co from 10<span
-                        class="sup-math">14</span> to just 5.3 billion gates, massively speeding up simulations using
-                    Spectrum amplification.</p>
+                <h2>
+                    <span class="lang-en">6. Chemical Simulation and Molecular Science</span>
+                    <span class="lang-si">6. රසායනික අනුකරණය සහ අණුක විද්‍යාව</span>
+                </h2>
+                <div class="lang-en">
+                    <p>Materials science is among the most powerful practical applications of this era. The Haber-Bosch
+                        process currently consumes 1%-2% of total global energy to produce agricultural fertilizer at
+                        high
+                        temperatures. In contrast, the Nitrogenase enzyme (FeMo-cofactor) manages this at room
+                        temperature.
+                    </p>
+                    <p>By 2025, algorithmic advances reduced the T-gate requirement to simulate FeMo-co from 10<span
+                            class="sup-math">14</span> to just 5.3 billion gates, massively speeding up simulations
+                        using
+                        Spectrum amplification.</p>
 
-                <div class="math-formula">
-                    <span
-                        class="text-xs text-orange-500 font-mono absolute -mt-4 bg-stone-900 border border-orange-500/30 px-2 rounded-full">Free
-                        Energy Perturbation</span><br>
-                    ΔG<span class="sub-math">binding</span> = G<span class="sub-math">bound</span> - G<span
-                        class="sub-math">unbound</span>
+                    <div class="math-formula">
+                        <span
+                            class="text-xs text-orange-500 font-mono absolute -mt-4 bg-stone-900 border border-orange-500/30 px-2 rounded-full">Free
+                            Energy Perturbation</span><br>
+                        ΔG<span class="sub-math">binding</span> = G<span class="sub-math">bound</span> - G<span
+                            class="sub-math">unbound</span>
+                    </div>
+                </div>
+                <div class="lang-si">
+                    <p>ද්‍රව්‍ය විද්‍යාව (Materials Science) යනු මෙම යුගයේ ඇති ප්‍රබලතම ප්‍රායෝගික යෙදවුම්වලින් එකකි.
+                        කෘෂිකාර්මික පොහොර ඉහළ උෂ්ණත්ව යටතේ නිපදවීම සඳහා වන Haber-Bosch ක්‍රියාවලිය දැනට සමස්ත ගෝලීය
+                        බලශක්තියෙන් 1%-2% ක් පරිභෝජනය කරයි. ඊට ප්‍රතිලෝමව, නයිට්‍රොජිනේස් එන්සයිමයට (FeMo-cofactor)
+                        සාමාන්‍ය කාමර උෂ්ණත්වයේදී මෙය සිදු කළ හැකිය.</p>
+                    <p>2025 වන විට සිදු වූ ඇල්ගොරිතමීය දියුණුව හේතුවෙන් FeMo-co අනුකරණය කිරීමට අවශ්‍ය T-gate ප්‍රමාණය
+                        10<sup>14</sup> සිට බිලියන 5.3 දක්වා අඩු වූ අතර, වර්ණාවලි විස්තාරණය (Spectrum amplification)
+                        මඟින් අනුකරණයේ වේගය විශාල ලෙස තීව්‍ර විය.</p>
+
+                    <div class="math-formula">
+                        <span
+                            class="text-xs text-orange-500 font-mono absolute -mt-4 bg-stone-900 border border-orange-500/30 px-2 rounded-full">නිදහස්
+                            ශක්ති කැළඹීම (Free Energy Perturbation)</span><br>
+                        ΔG<span class="sub-math">binding</span> = G<span class="sub-math">bound</span> - G<span
+                            class="sub-math">unbound</span>
+                    </div>
                 </div>
             </section>
 
             <section id="qml">
-                <h2>7. Practical Applications of Quantum Machine Learning (QML)</h2>
-                <p>QML has shifted from theory to enterprise deployments in 2026. HSBC achieved a 34% improvement in
-                    predicting client RFQs for bonds. Deutsche Bank registered a 30%-40% optimization ratio over
-                    classical models for Portfolio Optimization.</p>
-                <p>However, theoretical hurdles like <strong>"Barren Plateaus"</strong>, where gradients vanish in
-                    parameterized circuits, continue to demand large-scale Horizon Europe investments.</p>
+                <h2>
+                    <span class="lang-en">7. Practical Applications of Quantum Machine Learning (QML)</span>
+                    <span class="lang-si">7. ප්‍රමාණක යන්ත්‍ර ඉගෙනීමේ (QML) ප්‍රායෝගික යෙදවුම්</span>
+                </h2>
+                <div class="lang-en">
+                    <p>QML has shifted from theory to enterprise deployments in 2026. HSBC achieved a 34% improvement in
+                        predicting client RFQs for bonds. Deutsche Bank registered a 30%-40% optimization ratio over
+                        classical models for Portfolio Optimization.</p>
+                    <p>However, theoretical hurdles like <strong>"Barren Plateaus"</strong>, where gradients vanish in
+                        parameterized circuits, continue to demand large-scale Horizon Europe investments.</p>
+                </div>
+                <div class="lang-si">
+                    <p>QML තාක්‍ෂණය 2026 වසරේදී සෛද්ධාන්තික මට්ටමෙන් ඔබ්බට ගොස් ව්‍යවසාය මට්ටමෙන් ක්‍රියාත්මක වන
+                        තත්ත්වයකට පත්ව ඇත. HSBC බැංකුව බැඳුම්කර සඳහා සේවාදායක RFQ පුරෝකථනය කිරීමේදී 34% ක දියුණුවක් ලබා
+                        ගත්තේය. Deutsche Bank බැංකුව Portfolio Optimization (ආයෝජන කළඹ ප්‍රශස්තකරණය) සඳහා සම්භාව්‍ය
+                        ආකෘතිවලට වඩා 30%-40% ක ප්‍රශස්තිකරණ අනුපාතයක් ලියාපදිංචි කළේය.</p>
+                    <p>කෙසේ වෙතත්, පරාමිතිකෘත පරිපථවල අනුක්‍රමණ (gradients) ශුන්‍ය වන <strong>"Barren Plateaus"</strong>
+                        වැනි සෛද්ධාන්තික බාධාවන් නිසා තවමත් මහා පරිමාණ Horizon Europe ආයෝජන අවශ්‍ය වේ.</p>
+                </div>
             </section>
 
             <section id="sri-lanka">
-                <h2>8. The Advancement of Quantum Computing in Sri Lanka</h2>
-                <p>Rather than investing in prohibitively expensive cryogenic architectures, Sri Lanka has adopted an
-                    educational approach. The official inauguration of <strong>Sri Lanka's first quantum
-                        computer</strong> occurred on January 21, 2026, at the University of Colombo.</p>
-                <p>The SpinQ Nuclear Magnetic Resonance (NMR) device operates gracefully at room temperature.
-                    Spearheaded by Prof. Upul Sonnadara and Prof. Anuradha Mahasinghe, this fundamentally establishes a
-                    quantum-ready workforce inside Sri Lanka. Institutions like the NIFS (Kandy) and IEEE Sri Lanka
-                    Section continue to advocate for broad corporate R&D in quantum physics.</p>
+                <h2>
+                    <span class="lang-en">8. The Advancement of Quantum Computing in Sri Lanka</span>
+                    <span class="lang-si">8. ශ්‍රී ලංකාව තුළ ප්‍රමාණක පරිගණනයේ ප්‍රගතිය</span>
+                </h2>
+                <div class="lang-en">
+                    <p>Rather than investing in prohibitively expensive cryogenic architectures, Sri Lanka has adopted
+                        an
+                        educational approach. The official inauguration of <strong>Sri Lanka's first quantum
+                            computer</strong> occurred on January 21, 2026, at the University of Colombo.</p>
+                    <p>The SpinQ Nuclear Magnetic Resonance (NMR) device operates gracefully at room temperature.
+                        Spearheaded by Prof. Upul Sonnadara and Prof. Anuradha Mahasinghe, this fundamentally
+                        establishes a
+                        quantum-ready workforce inside Sri Lanka. Institutions like the NIFS (Kandy) and IEEE Sri Lanka
+                        Section continue to advocate for broad corporate R&D in quantum physics.</p>
+                </div>
+                <div class="lang-si">
+                    <p>අධික ලෙස මිල අධික ක්‍රයෝජනික් යටිතල පහසුකම් සඳහා ආයෝජනය කරනවා වෙනුවට, ශ්‍රී ලංකාව මේ සඳහා
+                        අධ්‍යාපනික ප්‍රවේශයක් අනුගමනය කර ඇත. <strong>ශ්‍රී ලංකාවේ ප්‍රථම ප්‍රමාණක පරිගණකය</strong> නිල
+                        වශයෙන් විවෘත කිරීම 2026 ජනවාරි 21 වන දින කොළඹ විශ්වවිද්‍යාලයේදී සිදු විය.</p>
+                    <p>මෙම SpinQ න්‍යෂ්ටික චුම්භක අනුනාද (NMR) උපාංගය සාමාන්‍ය කාමර උෂ්ණත්වයේදී සාර්ථකව ක්‍රියාත්මක වේ.
+                        මහාචාර්ය උපුල් සොන්නාදර සහ මහාචාර්ය අනුරාධ මහසිංහ යන මහත්වරුන්ගේ මූලිකත්වයෙන් දියත් කළ මෙම
+                        ව්‍යාපෘතිය මඟින් ශ්‍රී ලංකාව තුළ ප්‍රමාණක තාක්‍ෂණයට සූදානම් ශ්‍රම බලකායක් බිහි කිරීමට අඩිතාලම
+                        වැටේ. මහනුවර NIFS ආයතනය සහ IEEE ශ්‍රී ලංකා අංශය වැනි ආයතන ප්‍රමාණක භෞතික විද්‍යාව පිළිබඳ ආයතනික
+                        පර්යේෂණ සහ සංවර්ධන කටයුතු ප්‍රවර්ධනය කිරීමට අඛණ්ඩව කටයුතු කරයි.</p>
+                </div>
             </section>
 
             <section id="conclusion">
-                <h2>9. Conclusion</h2>
-                <p>Quantum computing has officially exited the physics laboratory and become a sophisticated engineering
+                <h2>
+                    <span class="lang-en">9. Conclusion</span>
+                    <span class="lang-si">9. උපසංහාරය</span>
+                </h2>
+                <p class="lang-en">Quantum computing has officially exited the physics laboratory and become a
+                    sophisticated engineering
                     pipeline. As FTQC systems scale beyond 100 logical qubits utilizing fast LCD error decoders, hybrid
                     classical-quantum models are unlocking decades-old barriers across cybersecurity (NIST PQC
                     architectures), thermodynamics, drug discovery, and enterprise QML integrations over the coming
                     decade.</p>
+                <p class="lang-si">ප්‍රමාණක පරිගණනය නිල වශයෙන් භෞතික විද්‍යා පර්යේෂණාගාරවලින් ඔබ්බට ගොස් සංකීර්ණ
+                    ඉංජිනේරු ක්‍රියාවලියක් බවට පත්ව ඇත. වේගවත් LCD දෝෂ විකේතක භාවිත කරමින් FTQC පද්ධති තර්කන කියුබිට්
+                    100 සීමාව ඉක්මවා යත්ම, ඉදිරි දශකය තුළ සයිබර් ආරක්ෂණය (NIST PQC ව්‍යුහයන්), තාප ගති විද්‍යාව, ඖෂධ
+                    සොයාගැනීම් සහ ව්‍යවසාය QML ඒකාබද්ධ කිරීම් වැනි අංශ ගණනාවක දශක ගණනාවක් පැරණි බාධක ජය ගැනීමට දෙමුහුන්
+                    සම්භාව්‍ය-ප්‍රමාණක ආකෘති සමත් වනු ඇත.</p>
             </section>
 
             <!-- References Grid -->
             <section id="references">
-                <h3 class="border-t border-stone-800 pt-8 mt-12 mb-6 text-xl tracking-tight"><i
-                        class="fas fa-bookmark text-stone-500 mr-2"></i> Bibliography & References</h3>
+                <h3 class="border-t border-stone-800 pt-8 mt-12 mb-6 text-xl tracking-tight">
+                    <span class="lang-en"><i class="fas fa-bookmark text-stone-500 mr-2"></i> Bibliography &
+                        References</span>
+                    <span class="lang-si"><i class="fas fa-bookmark text-stone-500 mr-2"></i> ග්‍රන්ථ නාමාවලිය සහ
+                        ආශ්‍රිත ලිපි</span>
+                </h3>
                 <div class="grid md:grid-cols-2 gap-4">
                     <a href="https://bqpsim.com" target="_blank"
                         class="ref-card flex items-center justify-between group cursor-none">
@@ -588,7 +1023,10 @@
 
     <!-- Footer Space -->
     <footer class="border-t border-stone-800 py-8 text-center" style="background: var(--bg-elevated);">
-        <p class="font-mono text-xs text-stone-500">© 2026 Masitha Bandara. Original Research. All rights reserved.</p>
+        <p class="font-mono text-xs text-stone-500">
+            <span class="lang-en">© 2026 Masitha Bandara. Original Research. All rights reserved.</span>
+            <span class="lang-si">© 2026 මසිත් බණ්ඩාර. මුල් පර්යේෂණය. සියලු හිමිකම් ඇවිරිණි.</span>
+        </p>
     </footer>
 
     <script src="js/script.js"></script>
