@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serverless Architecture Optimization — Masitha Bandara</title>
+    <meta name="description"
+        content="Research Report on Serverless Architecture Optimization: Mitigating Cold Starts and Strategic Alignment by Masitha Bandara.">
+    <meta name="keywords"
+        content="Serverless, Cold Start, AWS Lambda, SnapStart, Performance Optimization, Prime Video, LEGO, Microservices, Monolith">
+    <meta name="author" content="Masitha Bandara">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://masitha200.github.io/Portfolio-website-/serverless-research.html">
+    <meta property="og:title" content="Serverless Architecture Optimization — Masitha Bandara">
+    <meta property="og:description"
+        content="Research Report on Serverless Architecture Optimization: Mitigating Cold Starts and Strategic Alignment by Masitha Bandara.">
+
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                var savedLang = localStorage.getItem('lang') || 'en';
+                document.documentElement.setAttribute('data-lang', savedLang);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.setAttribute('data-lang', 'en');
+            }
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <style>
+        html,
+        body {
+            overflow-x: hidden !important;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Language toggling styles */
+        [data-lang="en"] .lang-si {
+            display: none !important;
+        }
+
+        [data-lang="si"] .lang-en {
+            display: none !important;
+        }
+
+        .glass-panel {
+            background: rgba(28, 25, 23, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .research-content h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--fg);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        @media (min-width: 768px) {
+            .research-content h2 {
+                font-size: 2rem;
+                margin-top: 3rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.75rem;
+            }
+        }
+
+        .research-content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--fg);
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .research-content h3 {
+                font-size: 1.5rem;
+                margin-top: 2.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .research-content p {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .research-content p {
+                line-height: 1.8;
+                margin-bottom: 1.5rem;
+                font-size: 1.05rem;
+            }
+        }
+
+        .research-content table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2.5rem 0;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .research-content th {
+            background: rgba(249, 115, 22, 0.05);
+            color: var(--accent);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .research-content td {
+            color: var(--muted);
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .research-content tr:last-child td {
+            border-bottom: none;
+        }
+
+        .research-content tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--fg);
+            transition: all 0.3s ease;
+        }
+
+        .math-formula {
+            display: block;
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(249, 115, 22, 0.05);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            border-radius: 12px;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.25rem;
+            color: var(--fg);
+            margin: 2rem 0;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .sub-math {
+            font-size: 0.6em;
+            vertical-align: sub;
+        }
+
+        .sup-math {
+            font-size: 0.7em;
+            vertical-align: super;
+        }
+
+        .toc-link {
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 1rem;
+            border-left: 2px solid transparent;
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            color: var(--accent) !important;
+            border-left-color: var(--accent);
+            text-shadow: 0 0 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .serverless-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.15;
+            animation: breathe 10s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ref-card {
+            background: rgba(28, 25, 23, 0.3);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .ref-card:hover {
+            border-color: var(--accent);
+            background: rgba(249, 115, 22, 0.05);
+            transform: translateY(-2px);
+        }
+
+        @keyframes breathe {
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.1;
+            }
+
+            100% {
+                transform: scale(1.2) translate(20px, -20px);
+                opacity: 0.25;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <div class="bg-grid"></div>
+    <div class="serverless-blob" style="width: 600px; height: 600px; background: #0ea5e9; top: 10%; left: -10%;"></div>
+    <div class="serverless-blob"
+        style="width: 500px; height: 500px; background: #ea580c; bottom: 20%; right: -5%; animation-delay: -5s;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b"
+        style="background: var(--bg-nav); border-color: var(--border);">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="font-display text-2xl font-bold"
+                style="color: var(--fg); text-decoration: none;">
+                Masitha Bandara <span style="color: var(--accent);">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="work.html" class="nav-link">Work</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="tutorials.html" class="nav-link">Lessons</a>
+                <a href="news.html" class="nav-link">News</a>
+                <a href="research.html" class="nav-link active text-[#f97316]">Research</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="langToggle" class="theme-btn text-xs font-mono font-bold" aria-label="Toggle Language">
+                    සිං
+                </button>
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i id="themeIcon" class="fas fa-sun"></i>
+                </button>
+                <button id="menuToggle" class="md:hidden theme-btn flex items-center justify-center">
+                    <i id="menuIcon" class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu"
+        class="hidden md:hidden fixed top-[73px] left-0 right-0 z-40 border-b backdrop-blur-xl p-6 flex flex-col gap-4 text-center animate-fade-in"
+        style="background: var(--bg-nav); border-color: var(--border);">
+        <a href="index.html" class="mobile-nav-link py-2 font-medium">Home</a>
+        <a href="work.html" class="mobile-nav-link py-2 font-medium">Work</a>
+        <a href="about.html" class="mobile-nav-link py-2 font-medium">About</a>
+        <a href="services.html" class="mobile-nav-link py-2 font-medium">Services</a>
+        <a href="experience.html" class="mobile-nav-link py-2 font-medium">Experience</a>
+        <a href="tutorials.html" class="mobile-nav-link py-2 font-medium">Lessons</a>
+        <a href="news.html" class="mobile-nav-link py-2 font-medium">News</a>
+        <a href="research.html" class="mobile-nav-link active py-2 font-medium">Research</a>
+        <a href="contact.html" class="mobile-nav-link py-2 font-medium">Contact</a>
+    </div>
+
+    <!-- Main Header -->
+    <header class="pt-28 pb-10 px-4 sm:px-6 border-b border-stone-800 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto text-center">
+            <span
+                class="inline-block py-1.5 px-4 rounded-full border border-sky-500/30 text-sky-400 font-mono text-xs uppercase tracking-widest mb-6 bg-sky-500/10">
+                <span class="lang-en"><i class="fas fa-server mr-2"></i> Systems Research Article</span>
+                <span class="lang-si"><i class="fas fa-server mr-2"></i> පද්ධති පර්යේෂණ ලිපිය</span>
+            </span>
+            <h1
+                class="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-5xl mx-auto lang-en">
+                Serverless Architecture Optimization: <span style="color: var(--accent);">Mitigating Cold Starts</span>
+            </h1>
+            <h1
+                class="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-5xl mx-auto lang-si">
+                සර්වර්ලස් ව්‍යුහය ප්‍රශස්තිකරණය: <span style="color: var(--accent);">කෝල්ඩ් ස්ටාර්ට් අවම කිරීම</span>
+            </h1>
+            <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm" style="color: var(--muted);">
+                <div class="flex items-center gap-2">
+                    <img src="img/Masitha.jpeg" alt="Masitha Bandara"
+                        class="w-10 h-10 rounded-full object-cover border-2" style="border-color: var(--accent);">
+                    <div class="text-left py-2">
+                        <p class="font-bold lang-en" style="color: var(--fg);">Masitha Bandara</p>
+                        <p class="font-bold lang-si" style="color: var(--fg);">මසිත් බණ්ඩාර</p>
+                        <p class="font-mono text-xs lang-en">Author & Systems Analyst</p>
+                        <p class="font-mono text-xs lang-si">කර්තෘ සහ පද්ධති විශ්ලේෂක</p>
+                    </div>
+                </div>
+                <div class="h-8 w-px bg-stone-700 hidden sm:block"></div>
+                <div class="text-left">
+                    <p class="font-bold flex items-center gap-2" style="color: var(--fg);">
+                        <i class="fas fa-calendar-alt text-sky-500"></i>
+                        <span class="lang-en">July 2026</span>
+                        <span class="lang-si">2026 ජූලි</span>
+                    </p>
+                    <p class="font-mono text-xs lang-en">Published</p>
+                    <p class="font-mono text-xs lang-si">ප්‍රකාශිතයි</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Research Layout Setup -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16 flex flex-col lg:flex-row gap-8 lg:gap-12 relative">
+
+        <!-- Sidebar Navigation (TOC) -->
+        <aside class="w-full lg:w-1/4 shrink-0">
+            <!-- Mobile TOC -->
+            <div class="lg:hidden block glass-panel p-5 rounded-2xl mb-2">
+                <details class="group cursor-pointer">
+                    <summary
+                        class="font-display font-bold text-sm sm:text-base flex items-center justify-between uppercase tracking-wider list-none"
+                        style="color: var(--fg);">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-list-ul text-sky-500"></i>
+                            <span class="lang-en">Table of Contents</span>
+                            <span class="lang-si">පටුන</span>
+                        </span>
+                        <i
+                            class="fas fa-chevron-down text-stone-500 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <ul class="space-y-3 text-sm font-medium mt-4 pt-4 border-t border-stone-800"
+                        style="color: var(--muted);">
+                        <li><a href="#intro" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">1. Introduction & Background</span><span class="lang-si">1.
+                                    හැඳින්වීම සහ පසුබිම</span></a></li>
+                        <li><a href="#anatomy" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">2. Anatomy of a Cold Start</span><span class="lang-si">2. කෝල්ඩ්
+                                    ස්ටාර්ට් එකක ක්‍රියාකාරීත්වය</span></a></li>
+                        <li><a href="#anti-patterns" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">3. Inefficiencies & Anti-Patterns</span><span class="lang-si">3.
+                                    අකාර්යක්ෂමතාවන් සහ ප්‍රති-රටා</span></a></li>
+                        <li><a href="#diagnostics" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">4. Diagnostic Localization Frameworks</span><span class="lang-si">4.
+                                    දෝෂ විශ්ලේෂණ රාමු</span></a></li>
+                        <li><a href="#platform-mitigations"
+                                class="block py-1 hover:text-[#f97316] transition-colors"><span class="lang-en">5.
+                                    Infrastructure-Level Mitigations</span><span class="lang-si">5. යටිතල පහසුකම් මට්ටමේ
+                                    අවම කිරීම්</span></a></li>
+                        <li><a href="#resource-allocation"
+                                class="block py-1 hover:text-[#f97316] transition-colors"><span class="lang-en">6.
+                                    Algorithmic Resource Allocation</span><span class="lang-si">6. ස්වයංක්‍රීය සම්පත්
+                                    වෙන් කිරීම</span></a></li>
+                        <li><a href="#networking" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">7. VPC Overheads & Data Access</span><span class="lang-si">7. VPC
+                                    ජාල ප්‍රමාදය සහ දත්ත භාවිතය</span></a></li>
+                        <li><a href="#strategic" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">8. Serverless vs. Monoliths</span><span class="lang-si">8. සර්වර්ලස්
+                                    සහ ඒකලිත කේත සංසන්දනය</span></a></li>
+                        <li><a href="#conclusion" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">9. Conclusion</span><span class="lang-si">9. උපසංහාරය</span></a>
+                        </li>
+                        <li><a href="#references" class="block py-1 hover:text-[#f97316] transition-colors"><span
+                                    class="lang-en">References</span><span class="lang-si">ආශ්‍රිත ලිපි</span></a></li>
+                    </ul>
+                </details>
+            </div>
+
+            <!-- Desktop TOC -->
+            <div class="sticky top-32 glass-panel p-6 rounded-2xl hidden lg:block">
+                <h4 class="font-display font-bold text-lg mb-6 flex items-center gap-2 uppercase tracking-wider"
+                    style="color: var(--fg);">
+                    <i class="fas fa-list-ul text-sky-500"></i>
+                    <span class="lang-en">Table of Contents</span>
+                    <span class="lang-si">පටුන</span>
+                </h4>
+                <ul class="space-y-4 text-sm font-medium" style="color: var(--muted);">
+                    <li><a href="#intro" class="toc-link block"><span class="lang-en">Introduction</span><span
+                                class="lang-si">හැඳින්වීම</span></a></li>
+                    <li><a href="#anatomy" class="toc-link block"><span class="lang-en">Anatomy of a Cold
+                                Start</span><span class="lang-si">කෝල්ඩ් ස්ටාර්ට් ක්‍රියාකාරීත්වය</span></a></li>
+                    <li><a href="#anti-patterns" class="toc-link block"><span class="lang-en">Inefficiencies &
+                                Anti-Patterns</span><span class="lang-si">අකාර්යක්ෂමතාවන් සහ ප්‍රති-රටා</span></a></li>
+                    <li><a href="#diagnostics" class="toc-link block"><span class="lang-en">Diagnostics &
+                                SCABench</span><span class="lang-si">රෝග විනිශ්චය සහ SCABench</span></a></li>
+                    <li><a href="#platform-mitigations" class="toc-link block"><span class="lang-en">Infrastructure
+                                Control</span><span class="lang-si">යටිතල පහසුකම් පාලනය</span></a></li>
+                    <li><a href="#resource-allocation" class="toc-link block"><span class="lang-en">Resource
+                                Allocation</span><span class="lang-si">සම්පත් වෙන් කිරීම</span></a></li>
+                    <li><a href="#networking" class="toc-link block"><span class="lang-en">VPC & Network
+                                Overheads</span><span class="lang-si">VPC සහ ජාලකරණ ප්‍රමාදයන්</span></a></li>
+                    <li><a href="#strategic" class="toc-link block"><span class="lang-en">Serverless vs.
+                                Monoliths</span><span class="lang-si">සර්වර්ලස් සහ ඒකලිත කේත</span></a></li>
+                    <li><a href="#conclusion" class="toc-link block"><span class="lang-en">Conclusion</span><span
+                                class="lang-si">උපසංහාරය</span></a></li>
+                    <li><a href="#references" class="toc-link block"><span class="lang-en">References</span><span
+                                class="lang-si">ආශ්‍රිත පුවත්</span></a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="w-full lg:w-3/4 research-content glass-panel p-5 sm:p-8 md:p-12 rounded-3xl"
+            style="background: var(--bg-elevated);">
+
+            <!-- Section 1 -->
+            <section id="intro">
+                <h2 class="mt-0">
+                    <span class="lang-en">1. Introduction & Background</span>
+                    <span class="lang-si">1. හැඳින්වීම සහ පසුබිම</span>
+                </h2>
+                <div class="lang-en">
+                    <p>The serverless computing market has experienced unprecedented growth, driven by an escalating
+                        demand across global enterprises for scalable, cost-effective, and operationally agile cloud
+                        infrastructure. By abstracting the underlying physical and virtual server management, serverless
+                        platforms enable automatic scaling, fine-grained billing, and optimized compute resource
+                        utilization.</p>
+                    <p>However, as organizations transition mission-critical and latency-sensitive workloads—such as
+                        high-frequency financial trading, real-time analytics, and global e-commerce platforms—to
+                        serverless architectures, significant performance bottlenecks have become starkly apparent. The
+                        most prominent, widely scrutinized, and economically impactful of these bottlenecks is cold
+                        start latency.</p>
+                    <p>A cold start introduces a non-deterministic delay between a request arrival and the actual
+                        function execution. In modern distributed architectures where multiple serverless functions
+                        interact sequentially within complex service meshes, these delays compound, creating severe
+                        performance degradation along the entire execution chain. The economic impact of this latency is
+                        substantial; historical metrics indicate that every 100 milliseconds of added latency translates
+                        to a 1% drop in sales conversions, while 500 milliseconds can reduce user traffic by up to 20%.
+                    </p>
+                </div>
+                <div class="lang-si">
+                    <p>පරිමාණ කළ හැකි, පිරිවැය-ඵලදායී සහ මෙහෙයුම්මය වශයෙන් කඩිසර වලාකුළු (cloud) යටිතල පහසුකම් සඳහා
+                        ගෝලීය ව්‍යවසායන් පුරා පවතින ඉහළ ඉල්ලුම හේතුවෙන් සර්වර්ලස් (serverless) පරිගණන වෙළඳපොළ පෙර නොවූ
+                        විරූ වර්ධනයක් අත්කර ගෙන ඇත. භෞතික හා අතථ්‍ය (virtual) සර්වර් කළමනාකරණය වියුක්ත කිරීම
+                        (abstracting) මඟින් සර්වර්ලස් වේදිකා ස්වයංක්‍රීය පරිමාණකරණය (automatic scaling), සූක්ෂ්ම මට්ටමේ
+                        බිල්පත්කරණය (fine-grained billing) සහ ප්‍රශස්ත පරිගණන සම්පත් භාවිතය සක්‍රීය කරයි.</p>
+                    <p>කෙසේ වෙතත්, ආයතන විසින් අධි-සංඛ්‍යාත මූල්‍ය වෙළඳාම, තථ්‍ය කාලීන විශ්ලේෂණ සහ ගෝලීය ඊ-වාණිජ්‍යය
+                        වැනි කාලීන සංවේදී සහ අතිශය තීරණාත්මක කාර්යයන් සර්වර්ලස් ව්‍යුහයන් වෙත මාරු කරන විට, සැලකිය යුතු
+                        කාර්යසාධන බාධාවන් පැහැදිලිව පෙනෙන්නට තිබේ. මෙම බාධාවලින් වඩාත් කැපී පෙනෙන, පුළුල් ලෙස සාකච්ඡා වන
+                        සහ ආර්ථිකමය වශයෙන් බලපෑමක් ඇති කරන බාධාව වන්නේ කෝල්ඩ් ස්ටාර්ට් ප්‍රමාදයයි (cold start latency).
+                    </p>
+                    <p>කෝල්ඩ් ස්ටාර්ට් එකක් මඟින් ඉල්ලීමක් ලැබීමේ සිට සැබෑ ශ්‍රිතය ක්‍රියාත්මක වීම (function execution)
+                        දක්වා අතර කාලය තුළ අනපේක්ෂිත ප්‍රමාදයක් ඇති කරයි. බහුවිධ සර්වර්ලස් ශ්‍රිතයන් එකිනෙක අඛණ්ඩව
+                        ක්‍රියා කරන නවීන බෙදාහැරූ ව්‍යුහයන් (distributed architectures) තුළ මෙම ප්‍රමාදයන් එකතු වී සමස්ත
+                        පද්ධතියේම සැලකිය යුතු කාර්යසාධන පිරිහීමක් ඇති කරයි. මෙම ප්‍රමාදයේ ආර්ථිකමය බලපෑම අතිමහත්ය;
+                        ඓතිහාසික දත්තයන්ට අනුව එකතු වන සෑම මිලි තත්පර 100 ක ප්‍රමාදයක් සඳහා අලෙවි පරිවර්තනයන්හි (sales
+                        conversions) 1% ක පහත වැටීමක් සිදුවන අතර, මිලි තත්පර 500 ක ප්‍රමාදයකට පරිශීලක ගමනාගමනය (user
+                        traffic) 20% කින් පමණ අඩු කළ හැක.</p>
+                </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="anatomy">
+                <h2>
+                    <span class="lang-en">2. Anatomy of a Cold Start</span>
+                    <span class="lang-si">2. කෝල්ඩ් ස්ටාර්ට් එකක ක්‍රියාකාරීත්වය</span>
+                </h2>
+                <div class="lang-en">
+                    <p>Unlike traditional, persistent servers that remain active and ready to accept connections,
+                        serverless functions are ephemeral. Cloud platforms build resource efficiency by spinning down
+                        idle execution environments, typically after fifteen minutes of inactivity. When a function is
+                        invoked after this period, the provider must dynamically provision a new execution environment,
+                        leading to a cold start penalty.</p>
+                    <p>The initialization (INIT) phase represents the platform's overhead before any
+                        application-specific logic can execute. During this phase, the cloud provider allocates a micro
+                        virtual machine—such as AWS Firecracker—mounts the required base operating system, and
+                        establishes isolated network connectivity. Following secure sandbox setup, the deployment
+                        artifact is fetched. Standard ZIP archives (typically up to 50MB direct) are unpacked directly
+                        into execution storage, whereas Container-based deployments (up to 10GB OCI images) rely on
+                        advanced lazy loading to stream layers dynamically as needed during execution.</p>
+                    <p>Once the sandbox and code are ready, the runtime bootstraps. The duration of this phase is
+                        heavily dependent on the chosen programming language and its execution model. Interpreted
+                        languages (Python, Node.js) initialize rapidly (100ms - 500ms). In contrast, compiled JVM-based
+                        languages (Java, .NET) require extensive virtual machine spin-up, JIT compiler warming, and
+                        class loading, dragging boot times up to several seconds unless compiled to native binaries
+                        Ahead-Of-Time (AOT).</p>
+                </div>
+                <div class="lang-si">
+                    <p>සම්බන්ධතා පිළිගැනීමට සක්‍රීයව පවතින සාම්ප්‍රදායික ස්ථාවර සර්වර් මෙන් නොව, සර්වර්ලස් ශ්‍රිතයන්
+                        තාවකාලික (ephemeral) වේ. කෙටි කාලයක් (සාමාන්‍යයෙන් විනාඩි 15 ක් පමණ) අක්‍රීයව පවතින ක්‍රියාත්මක
+                        කිරීමේ පරිසරයන් (execution environments) වේගයෙන් ඉවත් කිරීම මඟින් වලාකුළු සැපයුම්කරුවන් සම්පත්වල
+                        කාර්යක්ෂමතාව ප්‍රශස්ත කරයි. මෙම අක්‍රීය කාලයෙන් පසුව හෝ අවශ්‍යතාවය වැඩි වන විට, සැපයුම්කරු
+                        විසින් ගතිකව නව ක්‍රියාත්මක කිරීමේ පරිසරයක් සැපයිය යුතුය.</p>
+                    <p>ආරම්භක (INIT) අදියර මඟින් ඕනෑම යෙදුමකට විශේෂිත වූ තර්කනයක් ක්‍රියාත්මක වීමට පෙර වේදිකාවට
+                        (platform) ඇතිවන අමතර කාර්යයන් (overhead) නියෝජනය කරයි. මෙම අදියරේදී, සැපයුම්කරු විසින් AWS
+                        Firecracker වැනි ක්ෂුද්‍ර අතථ්‍ය යන්ත්‍රයක් (micro virtual machine) වෙන් කරන අතර අවශ්‍ය මූලික
+                        මෙහෙයුම් පද්ධතිය සවිකර හුදකලා ජාල සම්බන්ධතාවය ස්ථාපිත කරයි. ඉන්පසු යෙදුම් කේත පැකේජය (deployment
+                        artifact) ලබාගෙන එය දිගහැරිය (extracted) යුතුය. සම්මත ZIP ලේඛනාගාර සෘජුවම මතකයට එකතු කරන අතර,
+                        10GB දක්වා වන OCI කන්ටේනර් හැඹිලිගත කිරීමේදී lazy loading තාක්ෂණය භාවිතා කරයි.</p>
+                    <p>ක්‍රියාත්මක කිරීමේ පරිසරය සහ යෙදුම් කේතය සූදානම් වූ පසු, ධාවන පද්ධතිය (runtime) පණ ගැන්විය යුතුය.
+                        Python සහ Node.js වැනි අර්ථකථනය කරන ලද භාෂා (interpreted languages) වේගවත් ආරම්භක කාලයන් (මිලි
+                        තත්පර 100-500) පෙන්වයි. නමුත් Java සහ .NET වැනි බරපතල අතථ්‍ය යන්ත්‍ර (virtual machines) මත ධාවනය
+                        වන සම්පාදනය කරන ලද භාෂා (compiled languages) ක්‍රියාත්මක වීමට තත්පර කිහිපයක් ගතවන අතර, Native
+                        Ahead-Of-Time (AOT) මඟින් මෙම ගැටලුව මඟහරවා ගත හැක.</p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><span class="lang-en">Runtime Environment</span><span class="lang-si">ධාවන
+                                        පරිසරය</span></th>
+                                <th><span class="lang-en">Execution Model</span><span class="lang-si">ක්‍රියාත්මක කිරීමේ
+                                        ආකෘතිය</span></th>
+                                <th><span class="lang-en">Typical Cold Start</span><span class="lang-si">සාමාන්‍ය කෝල්ඩ්
+                                        ස්ටාර්ට් අගය</span></th>
+                                <th><span class="lang-en">Ideal Optimization Strategy</span><span
+                                        class="lang-si">ප්‍රශස්තම උපායමාර්ගය</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold text-white">Rust / Go</td>
+                                <td>Native AOT Binary</td>
+                                <td>18 ms – 120 ms</td>
+                                <td><span class="lang-en">Code-level refactoring only</span><span class="lang-si">කේත
+                                        මට්ටමේ ප්‍රතිසංස්කරණ පමණි</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">Node.js (20+)</td>
+                                <td>V8 Engine (Interpreted)</td>
+                                <td>200 ms – 400 ms</td>
+                                <td><span class="lang-en">Bundling, Provisioned Concurrency</span><span
+                                        class="lang-si">බන්ඩ්ල් කිරීම, Provisioned Concurrency</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">Python (3.12+)</td>
+                                <td>CPython (Interpreted)</td>
+                                <td>250 ms – 500 ms</td>
+                                <td><span class="lang-en">Lazy imports, SnapStart</span><span class="lang-si">ඇල්මැරුණු
+                                        ආනයනය, SnapStart</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">.NET (8+)</td>
+                                <td>CoreCLR / Native AOT</td>
+                                <td>1,500 ms – 3,000 ms</td>
+                                <td><span class="lang-en">SnapStart, Native AOT compilation</span><span
+                                        class="lang-si">SnapStart, Native AOT සම්පාදනය</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">Java (17+)</td>
+                                <td>JVM (JIT Compiled)</td>
+                                <td>1,800 ms – 6,000 ms</td>
+                                <td><span class="lang-en">SnapStart</span><span class="lang-si">SnapStart තාක්ෂණය
+                                        භාවිතය</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="anti-patterns">
+                <h2>
+                    <span class="lang-en">3. Inefficiencies & Anti-Patterns</span>
+                    <span class="lang-si">3. අකාර්යක්ෂමතාවන් සහ ප්‍රති-රටා</span>
+                </h2>
+                <div class="lang-en">
+                    <p>While cloud providers optimize infrastructure setup, application-level inefficiencies remain the
+                        dominant source of latency. Recent empirical research has shifted the paradigm from viewing cold
+                        starts as an opaque platform issue to treating them as a developer-visible software design
+                        problem. Analytical models reveal three core dimensions of inefficiencies: Root-Cause
+                        Anti-Patterns, Optimization Refactoring, and Diagnostic Challenges.</p>
+                    <p>Primary root-cause anti-patterns include <strong>Import Graph Inflation (A1)</strong>, where
+                        developers globally import heavy monolithic packages when only fraction of their code path is
+                        invoked, causing heavy module resolution overheads. Another is <strong>Eager Service
+                            Initialization (A2)</strong>, where SDK clients and database drivers execute static network
+                        calls and credential checks during runtime load, instead of delaying them until request
+                        processing.</p>
+                    <p>Remediation strategies focus on structural cleanups. <strong>Lazy Imports (R1)</strong> and
+                        <strong>Lazy Initialization (R2)</strong> defer library load and instantiation until handler
+                        execution. Contrastingly, <strong>Move to Hot Path (R3)</strong> shifts one-time ORM compile
+                        tasks out of the request handler scope and into the global scope. This ensures they execute only
+                        once per VM lifetime instead of on every invocation.</p>
+                </div>
+                <div class="lang-si">
+                    <p>යටිතල පහසුකම් මට්ටමේ ප්‍රශස්තිකරණය වලාකුළු සැපයුම්කරුවන් විසින් සිදුකළද, සංවර්ධනය කරන යෙදුම්වල
+                        පවතින අකාර්යක්ෂමතාවන් ප්‍රමාදයන් සඳහා ප්‍රධාන හේතුවක් වේ. මෑතකාලීන පර්යේෂණවලට අනුව කෝල්ඩ්
+                        ස්ටාර්ට් යනු මෘදුකාංග සැලසුම් ගැටලුවක් ලෙස හඳුනාගෙන ඇත. මෙහි ප්‍රධාන අංශ තුනක් ඇත: මූලික හේතු
+                        ප්‍රති-රටා (Root-Cause Anti-Patterns), ප්‍රශස්තකරණ ප්‍රතිසංස්කරණ සහ රෝග විනිශ්චය අභියෝග.</p>
+                    <p>ප්‍රධාන ප්‍රති-රටාවක් වන්නේ <strong>ආනයන ප්‍රස්ථාර පිම්බීමයි (Import Graph Inflation -
+                            A1)</strong>. ශ්‍රිතයේ ධාවන මාර්ගවලින් කුඩා කොටසකට පමණක් අවශ්‍ය වන සුවිශාල පුස්තකාල
+                        සංවර්ධකයින් ගෝලීයව ආනයනය කිරීම මෙහිදී සිදු වේ. තවත් ගැටලුවක් වන්නේ <strong>සේවා පුස්තකාලවල
+                            උනන්දුවෙන් ආරම්භ කිරීමයි (Eager Service Initialization - A2)</strong>. මෙහිදී SDK සහ
+                        database drivers පැකේජය පූරණය වන විටම ජාල සත්‍යාපන හෝ සේවාදායක සැකසුම් සිදු කරයි.</p>
+                    <p>මෙය වළක්වා ගැනීමට <strong>ඇල්මැරුණු ආනයනය (Lazy Import - R1)</strong> සහ <strong>ඇල්මැරුණු ආරම්භය
+                            (Lazy Initialization - R2)</strong> වැනි ක්‍රමවේද භාවිතා කරමින් අවශ්‍ය මොහොත වන තෙක්
+                        පුස්තකාල පැටවීම ප්‍රමාද කෙරේ. එමෙන්ම <strong>ORM වැනි පිහිටුවීම් ආරම්භය හොට් පාත් විෂය පථයට
+                            ගෙනයාම (R3)</strong> මඟින් ඉල්ලීම් හසුරුවන්නාගේ සිට ගෝලීය විෂය පථයට ආරම්භක කේතය රැගෙන යනු
+                        ලබයි.</p>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="diagnostics">
+                <h2>
+                    <span class="lang-en">4. Diagnostic Localization & SCABench</span>
+                    <span class="lang-si">4. රෝග විනිශ්චය සහ SCABench</span>
+                </h2>
+                <div class="lang-en">
+                    <p>Resolving cold start inefficiencies is uniquely challenging because the overhead often resides
+                        outside standard execution traces. Standard control-flow profiling fails to attribute implicitly
+                        nested import-time execution delays (Localization Challenge L1). To bridge this gap, the
+                        research community introduced <strong>SCABench</strong>, a reproducible environment containing
+                        18 controlled scenarios capturing specific initialization runtime anti-patterns.</p>
+                    <p>Concurrently, profiling frameworks like <strong>InitScope</strong> map import-time latency
+                        against execution block frequency. By intercepting load events, InitScope builds an annotated
+                        Calling-Context Tree (CCT) mapping, providing developers with clear refactoring guidance.
+                        Evaluations show InitScope can improve localization accuracy by up to 40% while cutting
+                        debugging cycles by 64%.</p>
+                </div>
+                <div class="lang-si">
+                    <p>කෝල්ඩ් ස්ටාර්ට් අකාර්යක්ෂමතාවන් විසඳීම සුවිශේෂී අභියෝගයකි. මන්දයත් ආරම්භක අමතර කාර්යය බොහෝ විට
+                        සම්මත ක්‍රියාත්මක කිරීමේ සලකුණුවලින් (execution traces) පරිබාහිරව පවතින බැවිනි. Standard
+                        profilers වලට වක්‍රව සිදුවන ආනයන (import) කාලීන ප්‍රමාදයන් හඳුනාගත නොහැක. මෙම ප්‍රශ්නය විසඳීම
+                        සඳහා පර්යේෂකයන් විසින් <strong>SCABench</strong> සහ <strong>InitScope</strong> වැනි විශ්ලේෂණ
+                        රාමු හඳුන්වා දී ඇත.</p>
+                    <p>InitScope මඟින් මොඩියුල පැටවීමේ සිදුවීම් ග්‍රහණය කර ඒවා ගතික ඇමතුම් ගොනු (call stacks) සමඟ
+                        පෙළගස්වා Calling-Context Tree (CCT) එකක් නිර්මාණය කර සවිස්තරාත්මක වාර්තාවක් ලබා දෙයි. InitScope
+                        වැනි රෝග විනිශ්චය ක්‍රම මඟින් ස්ථානගත කිරීමේ නිරවද්‍යතාවය 40% ක් දක්වා වැඩි කරන අතර නිවැරදි
+                        කිරීම සඳහා යන කාලය 64% කින් අඩු කරයි.</p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Anti-Pattern Root Cause</th>
+                                <th>Remediation Strategy</th>
+                                <th>Diagnostic Localization Challenge</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold text-white">A1: Import Graph Inflation</td>
+                                <td>R1 (Lazy Import), R4 (Optimize Build)</td>
+                                <td>L1 (Invisible Import-Time Execution)</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">A2: Eager Service Initialization</td>
+                                <td>R2 (Lazy Initialization)</td>
+                                <td>L3 (Multi-layer Abstraction Hiding)</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">A3: Cold-Path Placement</td>
+                                <td>R3 (Move to Hot Path Scope)</td>
+                                <td>L5 (Tooling/Profiler Limitations)</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">A5: Heavy Binary Loading</td>
+                                <td>R5 (Reduce Heavy Resources)</td>
+                                <td>L1 (Invisible Import-Time Execution)</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">A6: Boot-Time External I/O</td>
+                                <td>R6 (Defer/Cache Network I/O)</td>
+                                <td>L4 (Environment-Dependent Behavior)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="platform-mitigations">
+                <h2>
+                    <span class="lang-en">5. Infrastructure-Level Mitigations</span>
+                    <span class="lang-si">5. යටිතල පහසුකම් මට්ටමේ අවම කිරීම්</span>
+                </h2>
+                <div class="lang-en">
+                    <p>When application-layer refactoring exhausts its theoretical limits, systems engineers leverage
+                        advanced platform configurations such as <strong>Provisioned Concurrency</strong> and
+                        <strong>AWS Lambda SnapStart</strong>.</p>
+                    <p>Provisioned Concurrency eliminates cold starts entirely by keeping a configured number of
+                        microVMs booted and initialized. However, this brute-force method incurs up to a 750% to 900%
+                        cost premium because it bypasses the pay-per-execution model in favor of an idle-compute
+                        structure. Real-world usage requires dynamic auto-scaling rules to float pre-warmed capacity
+                        peaks.</p>
+                    <p>To solve the JVM and database cold-start dilemmas without idle compute overhead, snapshotted
+                        architectures like <strong>AWS Lambda SnapStart</strong> were introduced. The platform boots the
+                        runtime and runs international init scripts, pauses the VM, takes an encrypted memory snapshot,
+                        and stores it in high-throughput caching tiers. Subsequent invocations resume from the snapshot
+                        state, compressing a standard 6-second Java cold start down to ~200ms without premium fees.
+                        Dynamic state hooks like RegisterBeforeSnapshot() and RegisterAfterRestore() are used to handle
+                        unique network connections and prevent duplicate entropy across container clones.</p>
+                </div>
+                <div class="lang-si">
+                    <p>යෙදුම් මට්ටමේ ප්‍රශස්තිකරණයෙන් ඔබ්බට, සිස්ටම්ස් ඉංජිනේරුවන් විසින් වලාකුළු වේදිකා මඟින් සපයනු ලබන
+                        <strong>සැපයූ සහසම්බන්ධතාව (Provisioned Concurrency)</strong> සහ <strong>AWS Lambda
+                            SnapStart</strong> වැනි තාක්ෂණික වින්‍යාසයන් භාවිතා කරනු ලබයි.</p>
+                    <p>Provisioned Concurrency මඟින් සීමිත පරිසර ප්‍රමාණයක් කලින් පණ ගන්වා පවත්වා ගන්නා බැවින් කෝල්ඩ්
+                        ස්ටාර්ට් සම්පූර්ණයෙන්ම වළක්වයි. නමුත් මෙය මූල්‍යමය වශයෙන් 750% සිට 900% දක්වා වියදම් අධික විය
+                        හැක. මීට වඩා සාර්ථක විසඳුමක් වන්නේ ක්‍රියාත්මක කිරීමේ පරිසරයේ ස්නැප්ෂොට් (SnapStart) තාක්ෂණයයි.
+                        මෙහිදී යෙදුම සම්පූර්ණයෙන්ම සූදානම් තත්ත්වයට පත් වූ පසු එහි මතකය (memory and disk state)
+                        ස්නැප්ෂොට් එකක් ලෙස හැඹිලියක තැන්පත් කෙරේ.</p>
+                    <p>මීළඟ ඉල්ලීම්වලදී INIT අදියර මඟහැර මෙම ස්නැප්ෂොට් එක ක්ෂණිකව නැවත පණ ගන්වනු ලැබේ. මෙමඟින් ජාවා
+                        (Java) වැනි භාෂාවල කෝල්ඩ් ස්ටාර්ට් ප්‍රමාදය තත්පර 6 සිට මිලි තත්පර 200 දක්වා 90% කින් පමණ අඩු
+                        කරයි. ආරක්ෂාව සඳහා RegisterBeforeSnapshot() සහ RegisterAfterRestore() වැනි රන්-ටයිම් උපාංග
+                        මෙහිදී භාවිත වේ.</p>
+                </div>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="resource-allocation">
+                <h2>
+                    <span class="lang-en">6. Algorithmic Resource Allocation</span>
+                    <span class="lang-si">6. ස්වයංක්‍රීය සම්පත් වෙන් කිරීම</span>
+                </h2>
+                <div class="lang-en">
+                    <p>Raw memory allocation fundamentally dictates compute speed since hypervisors scale vCPU, storage
+                        throughput, and networking bandwidth directly in proportion to memory size. Setting a function's
+                        memory configuration too low results in CPU starvation, extending both global setup paths and
+                        execution limits.</p>
+                    <p>Paradoxically, allocating more memory can decrease total billing costs. Since serverless billing
+                        is the product of execution time and memory size (GB-seconds), doubling the memory (and CPU)
+                        could cut duration by more than half, yielding cheaper executions. Architects use tools like
+                        <strong>AWS Lambda Power Tuning</strong> to profile workloads and find the optimal balance
+                        between performance and invocation cost.</p>
+                </div>
+                <div class="lang-si">
+                    <p>මතක වෙන් කිරීම (memory allocation) vCPU ධාරිතාව, අභ්‍යන්තර ජාල කලාප පළල සහ ආචයනය සමඟ සෘජුවම
+                        සම්බන්ධ වේ. මතකය අඩුවෙන් වෙන් කිරීමෙන් CPU හිඟවීම (CPU starvation) සිදුවන අතර, එමඟින් INIT අදියර
+                        මෙන්ම ශ්‍රිත ධාවන කාලයද දිගු වේ.</p>
+                    <p>සර්වර්ලස් බිල්පත්කරණය GB-තත්පර (GB-seconds) ලෙස ගණන් බැලෙන බැවින්, මතකය වැඩි කිරීමෙන් ධාවන කාලය
+                        අඩකට වඩා අඩු වුවහොත්, මුළු බිල්පත් පිරිවැය අඩු වන අතර එය මූල්‍යමය වශයෙන්ද වාසිදායක වේ. මතක
+                        ප්‍රශස්තකරණය ස්වයංක්‍රීය කිරීමට AWS Lambda Power Tuning වැනි මෙවලම් භාවිතා කරයි.</p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Workload Profile</th>
+                                <th>Duration Curve Style</th>
+                                <th>Cost Curve Style</th>
+                                <th>Tuning Strategy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold text-white">CPU-Bound (Compute Heavy)</td>
+                                <td>Steep exponential drop</td>
+                                <td>Flat initially, then rising</td>
+                                <td>Increase memory to inflection point</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">I/O-Bound (Network Heavy)</td>
+                                <td>Flat line; minimal change</td>
+                                <td>Linear increase with memory</td>
+                                <td>Decrease memory to minimum threshold</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">Balanced / Mixed</td>
+                                <td>Gradual curve downward</td>
+                                <td>U-shaped curve</td>
+                                <td>Select lowest cost trough</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 7 -->
+            <section id="networking">
+                <h2>
+                    <span class="lang-en">7. VPC Overheads & Data Access</span>
+                    <span class="lang-si">7. VPC ජාල ප්‍රමාදය සහ දත්ත භාවිතය</span>
+                </h2>
+                <div class="lang-en">
+                    <p>Operating functions securely within Private Clouds (VPCs) historically presented severe latency
+                        penalties because hypervisors had to generate and bind Elastic Network Interfaces (ENIs) for
+                        every new instance, risking IP buffer exhaustion. The deployment of Network Virtualization
+                        layers like <strong>AWS Hyperplane</strong> solved this by multiplexing connections through
+                        pre-allocated, shared ENIs, bypassing cold-path network setups.</p>
+                    <p>However, VPC functions still experience routing lags due to three major factors: lack of
+                        dedicated VPC Private Interface Endpoints (which forces external API traffic through NAT
+                        gateways), SDK client churn (re-negotiating database handshakes inside request handlers instead
+                        of caching them globally), and relational database connection exhaustion, which requires Managed
+                        Database Proxies to pool connections effectively.</p>
+                </div>
+                <div class="lang-si">
+                    <p>ඓතිහාසිකව, VPC ඒකාබද්ධතාවය සර්වර්ලස් ක්‍රියාවලියේ බරපතලම ප්‍රමාදයන් ඇති කළ අතර, එය ආරම්භයේදීම ENI
+                        සම්බන්ධතාවයන් නිසා තත්පර කිහිපයක ප්‍රමාදයක් ඇති කළේය. මෙම ගැටළුව විසඳීමට AWS Hyperplane වැනි ජාල
+                        අථත්‍යකරණ වේදිකාවන් හඳුන්වා දී ඇත.</p>
+                    <p>කෙසේ වෙතත්, VPC තුළ ඇති ශ්‍රිතයන් තවමත් ජාල ප්‍රමාදයන්ට මුහුණ දිය හැක. එනම් NAT ගේට්වේ (NAT
+                        Gateway) හරහා පොදු අන්තර්ජාලය වෙත ගමනාගමනය සිදුවීම, SDK client churn නිසා සෑම ඉල්ලීමකදීම නව
+                        සබඳතා ඇරඹීමෙන් සිදුවන ප්‍රමාදය සහ දත්ත සමුදා සම්බන්ධතා සීමා ඉක්මවා යාමයි. මෙයට විසඳුම් ලෙස VPC
+                        Private Endpoint සහ Database Proxies වැනි තාක්ෂණයන් භාවිත කෙරේ.</p>
+                </div>
+            </section>
+
+            <!-- Section 8 -->
+            <section id="strategic">
+                <h2>
+                    <span class="lang-en">8. Strategic Architectural Alignment: Serverless vs. Monoliths</span>
+                    <span class="lang-si">8. සර්වර්ලස් සහ ඒකලිත කේත සංසන්දනය</span>
+                </h2>
+                <div class="lang-en">
+                    <p>Optimizing code and networking limits is futile if the underlying architectural paradigm is
+                        fundamentally mismatched to the workload. High-throughput, data-heavy workflows applied to
+                        serverless models can easily lead to financial and scaling failures.</p>
+
+                    <h3>The Limits of Disaggregation: Amazon Prime Video Case Study</h3>
+                    <p>Amazon Prime Video's stream quality analysis tool was initially engineered as an event-driven
+                        microservice orchestration layout (Step Functions combined with data flow through Amazon S3).
+                        Scaling to active broadcast volumes triggered astronomical orchestration state fees and severe
+                        S3 network I/O latency. Moving the media converter and defect detector back to a single
+                        Monolithic container process allowed the application to execute within local memory, eliminating
+                        S3 reads/writes. This fundamental architectural shift reduced infrastructure costs by 90% and
+                        allowed flawless multi-stream handling.</p>
+
+                    <h3>Event-Driven Agility: The LEGO Group Case Study</h3>
+                    <p>In contrast, LEGO Group transitioned its e-commerce framework from a monolithic architecture
+                        (which crashed under Black Friday peak traffic) to asynchronous serverless microservices. Using
+                        Amazon EventBridge choreographies, domains like checkout and shipping reacted autonomously to
+                        state changes without central controller bottlenecks. The decoupled systems enabled peak traffic
+                        bounds to scale infinitely without dragging down downstream legacy servers.</p>
+                </div>
+                <div class="lang-si">
+                    <p>සර්වර්ලස් යටිතල පහසුකම් ප්‍රශස්තිකරණය කිරීම පමණක් ප්‍රමාණවත් නොවේ, යටින් පවතින ව්‍යුහාත්මක සැලසුම
+                        (architecture) ව්‍යාපාරික අවශ්‍යතාවයට ගැළපෙන්නේ නැත්නම්. අධික දත්ත ප්‍රමාණයක් සහිත සබඳතා බහුල
+                        ක්‍රියාවලීන් සඳහා වැරදි ලෙස භාවිතා කිරීමෙන් විශාල මූල්‍යමය හා මෙහෙයුම්මය පාඩු විඳීමට සිදුවිය
+                        හැක.</p>
+
+                    <h3>Prime Video සිද්ධි අධ්‍යයනය: ක්ෂුද්‍ර සේවා සීමාවන්</h3>
+                    <p>Amazon Prime Video ආයතනයේ වීඩියෝ විශ්ලේෂණ පද්ධතිය මුලින්ම සර්වර්ලස් ක්ෂුද්‍ර සේවා ක්‍රමයකට සහ
+                        Amazon S3 හරහා දත්ත හුවමාරු වන පරිදි නිම කරන ලදී. නමුත් මෙය නිෂ්පාදන මට්ටමේදී අතිවිශාල පිරිවැයක්
+                        සහ ජාල ප්‍රමාදයන් ඇති කළේය. පසුව ඔවුන් මෙම ක්‍රමය ඉවත් කර, සමස්ත ක්‍රියාවලියම ඒකලිත (monolith)
+                        මෘදුකාංගයක් ලෙස සකසා Amazon EC2/ECS මත යෙදෙව්වේය. මෙහි ප්‍රතිඵලයක් ලෙස යටිතල පහසුකම් පිරිවැය 90%
+                        කින් අඩු කර ගැනීමට ඔවුන්ට හැකි විය.</p>
+
+                    <h3>LEGO Group සිද්ධි අධ්‍යයනය: Event-Driven සාර්ථකත්වය</h3>
+                    <p>අනෙක් අතට, LEGO සමාගම සතුව තිබූ පැරණි ඒකලිත ඊ-වාණිජ්‍ය වෙබ් අඩවිය Black Friday දිනකදී බිඳ
+                        වැටීමෙන් පසු, ඔවුන් pure Event-Driven Architecture (EDA) ක්‍රමයකට මාරු විය. මෙහිදී ඇණවුම්
+                        කිරීම්, ගබඩා කළමනාකරණය වැනි වසම් එකිනෙක සෘජුව සම්බන්ධ නොවී, EventBridge හරහා අසමමුහුර්තව තොරතුරු
+                        හුවමාරු කර ගන්නා ලදී. මෙමඟින් පද්ධතියේ එක් අංශයක ගැටලුවක් අනෙක් අංශවලට බලපෑමක් නොකර, සාර්ථකව
+                        පරිමාණය වී ක්‍රියාත්මක වීමට මඟ පෑදුණි.</p>
+                </div>
+            </section>
+
+            <!-- Section 9 -->
+            <section id="conclusion">
+                <h2>
+                    <span class="lang-en">9. Conclusion</span>
+                    <span class="lang-si">9. උපසංහාරය</span>
+                </h2>
+                <p class="lang-en">Serverless computing has officially exited the physics laboratory and become a
+                    sophisticated engineering pipeline. As FTQC systems scale beyond 100 logical qubits utilizing fast
+                    LCD error decoders, hybrid classical-quantum models are unlocking decades-old barriers across
+                    cybersecurity (NIST PQC architectures), thermodynamics, drug discovery, and enterprise QML
+                    integrations over the coming decade.</p>
+                <p class="lang-si">සර්වර්ලස් පරිගණනය තවදුරටත් සරල ක්‍රියාකාරීත්වයකට පමණක් සීමා නොවේ. එය වර්තමානයේ
+                    ව්‍යවසාය මට්ටමේ මෘදුකාංග සංවර්ධනයේ ප්‍රධානතම මෙවලමක් බවට පත්ව ඇත. කේත මට්ටමේ විනය (clean code
+                    logic), SnapStart වැනි ස්නැප්ෂොට් ක්‍රමවේද හෝ Provisioned Concurrency නිවැරදිව භාවිත කිරීම සහ
+                    ව්‍යාපාරික අවශ්‍යතාවයට ගැළපෙන පරිදි Event-Driven ශෛලියෙන් ව්‍යුහය සැලසුම් කිරීම මඟින්, පිරිවැය සහ
+                    කාර්යසාධනය අතර පරිපූර්ණ සමබරතාවයක් ඇති කර ගැනීමට මෘදුකාංග ඉංජිනේරුවන්ට හැකි වේ.</p>
+            </section>
+
+            <!-- References Grid -->
+            <section id="references">
+                <h3 class="border-t border-stone-800 pt-8 mt-12 mb-6 text-xl tracking-tight">
+                    <span class="lang-en"><i class="fas fa-bookmark text-stone-500 mr-2"></i> Bibliography &
+                        References</span>
+                    <span class="lang-si"><i class="fas fa-bookmark text-stone-500 mr-2"></i> ග්‍රන්ථ නාමාවලිය සහ
+                        ආශ්‍රිත ලිපි</span>
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <a href="https://dev.to" target="_blank"
+                        class="ref-card flex items-center justify-between group cursor-none">
+                        <span class="text-sm font-mono text-stone-300">Conquering Cold Starts: High-Performance
+                            Serverless Applications</span>
+                        <i class="fas fa-external-link-alt text-[10px] text-stone-600 group-hover:text-sky-500"></i>
+                    </a>
+                    <a href="https://researchgate.net" target="_blank"
+                        class="ref-card flex items-center justify-between group cursor-none">
+                        <span class="text-sm font-mono text-stone-300">Cold-Start Anti-Patterns and Refactorings in
+                            Serverless Systems</span>
+                        <i class="fas fa-external-link-alt text-[10px] text-stone-600 group-hover:text-sky-500"></i>
+                    </a>
+                    <a href="https://aws.amazon.com/lambda" target="_blank"
+                        class="ref-card flex items-center justify-between group cursor-none">
+                        <span class="text-sm font-mono text-stone-300">AWS Lambda SnapStart Performance Optimization
+                            Guide</span>
+                        <i class="fas fa-external-link-alt text-[10px] text-stone-600 group-hover:text-sky-500"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank"
+                        class="ref-card flex items-center justify-between group cursor-none">
+                        <span class="text-sm font-mono text-stone-300">AWS Lambda Power Tuning Deterministic
+                            Profiler</span>
+                        <i class="fas fa-external-link-alt text-[10px] text-stone-600 group-hover:text-sky-500"></i>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer Space -->
+    <footer class="border-t border-stone-800 py-8 text-center" style="background: var(--bg-elevated);">
+        <p class="font-mono text-xs text-stone-500">
+            <span class="lang-en">© 2026 Masitha Bandara. Original Research. All rights reserved.</span>
+            <span class="lang-si">© 2026 මසිත් බණ්ඩාර. මුල් පර්යේෂණය. සියලු හිමිකම් ඇවිරිණි.</span>
+        </p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/chatbot.js"></script>
+
+    <!-- Custom TOC Scrollspy logic embedded -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.toc-link');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+
+</html>
