@@ -1,6 +1,6 @@
 /**
- * Aether AI Chatbot - 100% Accurate Client-Side IT Advisor
- * Custom built for Masitha Bandara's Portfolio
+ * Masi AI Engine - 100% Accurate Client-Side IT Advisor
+ * Custom-built client-side NLP Chatbot for Masitha Bandara's Portfolio
  */
 
 
@@ -454,7 +454,7 @@ function processUserQuery(query) {
     if (GREETINGS.some(greet => cleaned === greet)) {
         return {
             type: "greet",
-            response: `Hi there! 👋 I am **Aether AI**, Masitha's specialized IT Advisor. I can answer any IT-related topics or explain Masitha's portfolio software like CoreBurner X11, LankaStay, AetherPDF, and AthenaLMS. <br><br>What would you like to build or learn about today?`
+            response: `Hi there! 👋 I am **Masi AI Engine**, Masitha's custom-built client-side IT Advisor. I can answer any IT-related topics or explain Masitha's portfolio software like CoreBurner X11, LankaStay, AetherPDF, and AthenaLMS. <br><br>What would you like to build or learn about today?`
         };
     }
 
@@ -471,7 +471,7 @@ function processUserQuery(query) {
     if (cleaned.includes("who are you") || cleaned.includes("your name") || cleaned.includes("what is your name") || cleaned.includes("what are you")) {
         return {
             type: "identity",
-            response: `🤖 I am **Aether AI**, a highly responsive IT Advisory engine custom-built for Masitha's portfolio. I run **100% locally** in your browser, guaranteeing instant answers, zero data-tracking, and zero required logins! I can explain programming languages, databases, servers, DevOps, or details about Masitha's projects.`
+            response: `🤖 I am **Masi AI Engine**, a highly responsive IT Advisory engine custom-built for Masitha's portfolio. I run **100% locally** in your browser, guaranteeing instant answers, zero data-tracking, and zero required logins! I can explain programming languages, databases, servers, DevOps, or details about Masitha's projects.`
         };
     }
 
@@ -502,7 +502,7 @@ function processUserQuery(query) {
     if (cleaned.includes("help") || cleaned.includes("menu") || cleaned.includes("topics") || cleaned.includes("what can you do") || cleaned.includes("options")) {
         return {
             type: "help",
-            response: `🛠️ **Aether AI Capabilities:**<br>You can ask me about various technical domains and projects. Try entering:<br><br>• **Projects**: \`coreburner\`, \`lankastay\`, \`aetherpdf\`, \`athenalms\`<br>• **Coding**: \`javascript\`, \`python\`, \`react\`, \`oop\`, \`java\`<br>• **Backend**: \`sql\`, \`nosql\`, \`database\`, \`node\`<br>• **Systems**: \`dns\`, \`http\`, \`ip address\`<br><br>Just check the quick chips below or type a query to test me!`
+            response: `🛠️ **Masi AI Engine Capabilities:**<br>You can ask me about various technical domains and projects. Try entering:<br><br>• **Projects**: \`coreburner\`, \`lankastay\`, \`aetherpdf\`, \`athenalms\`<br>• **Coding**: \`javascript\`, \`python\`, \`react\`, \`oop\`, \`java\`<br>• **Backend**: \`sql\`, \`nosql\`, \`database\`, \`node\`<br>• **Systems**: \`dns\`, \`http\`, \`ip address\`<br><br>Just check the quick chips below or type a query to test me!`
         };
     }
 
@@ -600,7 +600,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div id="chatbotLauncher" class="chatbot-launcher">
       <i class="fas fa-comment-dots launcher-icon"></i>
       <i class="fas fa-times close-icon"></i>
-      <div id="chatbotTooltip" class="chatbot-tooltip">Ask Aether IT AI 🤖</div>
+      <div id="chatbotTooltip" class="chatbot-tooltip">Ask Masi AI Engine 🤖</div>
     </div>
 
     <!-- Chat UI Box -->
@@ -609,11 +609,11 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="chatbot-header">
         <div class="chatbot-header-info">
           <div class="chatbot-avatar-container">
-            A
+            M
             <div class="chatbot-avatar-status"></div>
           </div>
           <div class="chatbot-header-text">
-            <h3>Aether AI Engine</h3>
+            <h3>Masi AI Engine</h3>
             <p><i class="fas fa-circle" style="font-size: 7px;"></i> 100% Accurate IT Advisor</p>
           </div>
         </div>
@@ -632,10 +632,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- AI Greeting -->
         <div class="chat-message bot">
           <div class="message-bubble">
-            Ayubowan! 👋 I am <strong>Aether AI</strong>, Masitha's senior IT advisory agent. 
+            Ayubowan! 👋 I am <strong>Masi AI Engine</strong>, Masitha's custom-built client-side IT advisor. 
             I can answer any IT-related topics to help you navigate frameworks, logic scripts, network layers, and database queries.
             <br><br>
-            select a hot topic below to test my accuracy instantly!
+            Select a hot topic below to test my parser algorithm instantly!
           </div>
           <span class="message-time">Just now</span>
         </div>
