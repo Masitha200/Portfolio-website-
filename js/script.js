@@ -101,3 +101,29 @@ if (cursorDot && cursorOutline && !document.body.classList.contains('software-pa
     });
   });
 }
+
+// ===== Promo Video Overlay Logic =====
+document.querySelectorAll('.card').forEach(container => {
+  const video = container.querySelector('video');
+  const overlay = container.querySelector('#videoPlayOverlay');
+  if (video && overlay) {
+    overlay.addEventListener('click', () => {
+      video.play();
+    });
+
+    video.addEventListener('play', () => {
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+    });
+
+    video.addEventListener('pause', () => {
+      overlay.style.opacity = '1';
+      overlay.style.pointerEvents = 'auto';
+    });
+
+    video.addEventListener('ended', () => {
+      overlay.style.opacity = '1';
+      overlay.style.pointerEvents = 'auto';
+    });
+  }
+});

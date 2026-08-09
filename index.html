@@ -332,11 +332,287 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
+      <!-- Featured Fiverr Gig / Services Showreel -->
+      <section class="py-24 md:py-32 px-4 md:px-6 border-t" style="border-color: var(--border);">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-12">
+            <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">03 — Featured
+              Reel</span>
+            <h2 class="font-display text-4xl md:text-5xl font-bold mt-2">Fiverr Gig Showreel</h2>
+          </div>
 
-  <script src="js/script.js"></script>
-  <script src="js/chatbot.js"></script>
+          <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <!-- Details Column -->
+            <div class="lg:col-span-5 space-y-6">
+              <div>
+                <h3 class="font-display text-3xl font-bold leading-tight">Build a Full-Stack Custom Website or Web
+                  Application</h3>
+                <p class="mt-4 text-base leading-relaxed" style="color: var(--muted);">
+                  Watch my official Fiverr gig showcase video to see how I build responsive, lightning-fast, and
+                  high-performance custom web applications. I combine modern clean code architectures with beautiful
+                  front-end designs to deliver exceptional results.
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="p-3 rounded-xl border flex items-center justify-center shrink-0"
+                    style="background: var(--bg-elevated); border-color: var(--border); width: 48px; height: 48px;">
+                    <i class="fas fa-bolt text-lg" style="color: var(--accent);"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg">High-Fidelity Code</h4>
+                    <p class="text-xs" style="color: var(--muted);">Clean codebase written using React, Next.js,
+                      traditional HTML/CSS/JS web architectures, and node systems.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="p-3 rounded-xl border flex items-center justify-center shrink-0"
+                    style="background: var(--bg-elevated); border-color: var(--border); width: 48px; height: 48px;">
+                    <i class="fas fa-mobile-screen text-lg" style="color: var(--accent);"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg font-display">Fluid Responsiveness</h4>
+                    <p class="text-xs" style="color: var(--muted);">Every layout fits perfectly across mobile screens,
+                      tablets, laptops, and ultra-wide desktops.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-6 flex flex-wrap gap-4 select-none">
+                <a href="https://www.fiverr.com/s/zWYV9Kz" target="_blank" class="btn-primary">
+                  Order on Fiverr <i class="fab fa-fiverr text-lg ml-1"></i>
+                </a>
+                <a href="services.html" class="btn-outline">
+                  Explore Services <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Video Column -->
+            <div class="lg:col-span-7 relative">
+              <!-- Main container with glow effect on hover -->
+              <div
+                class="group relative card overflow-hidden border p-4 md:p-6 transition-all duration-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]"
+                style="background: var(--bg-elevated); border-color: var(--border);">
+
+                <!-- Video wrapper -->
+                <div class="aspect-video rounded-xl overflow-hidden border mb-4 relative"
+                  style="border-color: var(--border);">
+                  <video id="promoVideo" class="w-full h-full object-cover" preload="metadata" controls>
+                    <source src="web%20add.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+
+                  <!-- Video Overlay with Play Button -->
+                  <div id="videoPlayOverlay"
+                    class="absolute inset-x-0 inset-y-0 flex flex-col justify-center items-center bg-black/75 backdrop-blur-[2px] transition-all duration-300 group-hover:bg-black/60 cursor-pointer">
+                    <button aria-label="Play showreel video"
+                      class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white shadow-[0_0_30px_rgba(249,115,22,0.4)] transition-transform duration-300 hover:scale-105 pointer-events-none">
+                      <i class="fas fa-play text-xl md:text-2xl ml-1"></i>
+                    </button>
+                    <span
+                      class="mt-4 text-xs font-mono font-bold text-white uppercase tracking-widest opacity-80 pointer-events-none">Play
+                      Showcase</span>
+                  </div>
+                </div>
+
+                <!-- Video spec indicators -->
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="p-3 bg-stone-900/30 rounded-xl border border-stone-850 text-center"
+                    style="border-color: var(--border);">
+                    <p class="text-xs text-stone-500 font-mono">GIG VIDEO TYPE</p>
+                    <p class="text-sm font-bold font-display mt-1 text-orange-500">Commercial Web Ad</p>
+                  </div>
+                  <div class="p-3 bg-stone-900/30 rounded-xl border border-stone-850 text-center"
+                    style="border-color: var(--border);">
+                    <p class="text-xs text-stone-500 font-mono">DELIVERY RATING</p>
+                    <p class="text-sm font-bold font-display mt-1 text-orange-500">5.0 ★ Highly Rated</p>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- Close lg:col-span-7 -->
+          </div> <!-- Close grid lg:grid-cols-12 -->
+
+          <!-- Fiverr Gig Packages Section -->
+          <div class="mt-24 border-t pt-20" style="border-color: var(--border);">
+            <div class="text-center mb-16">
+              <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">Flexible
+                Solutions</span>
+              <h3 class="font-display text-3xl md:text-5xl font-bold mt-2">Fiverr Service Packages</h3>
+              <p class="max-w-2xl mx-auto mt-4 text-sm md:text-base" style="color: var(--muted);">
+                Pick a tier that matches your development requirements. Each package is tailored to deliver maximum
+                speed, responsiveness, and clean code optimization.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+              <!-- Basic Card -->
+              <div
+                class="card p-6 md:p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-500 hover:translate-y-[-8px] hover:shadow-[0_10px_30px_rgba(249,115,22,0.05)]"
+                style="background: var(--bg-elevated); border-color: var(--border);">
+                <div>
+                  <div class="flex justify-between items-center mb-6">
+                    <span class="font-mono text-xs uppercase tracking-wider text-orange-500 font-bold">FRONTEND
+                      ONLY</span>
+                    <span class="px-2.5 py-1 text-[10px] font-mono rounded bg-stone-900 border border-stone-850"
+                      style="color: var(--muted); border-color: var(--border);">Basic</span>
+                  </div>
+                  <h4 class="font-display text-2xl font-bold mb-2">Basic Package</h4>
+                  <p class="text-sm mb-6 leading-relaxed" style="color: var(--muted);">1-3 Pages modern UI/UX frontend
+                    design. Fully responsive. (No backend)</p>
+
+                  <div
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 font-mono text-xs font-semibold mb-6">
+                    <i class="far fa-clock"></i> 4 Days Delivery
+                  </div>
+
+                  <div class="flex items-baseline gap-1 mb-8">
+                    <span class="text-4xl font-bold"
+                      style="color: var(--fg); font-family: 'Space Grotesk', sans-serif;">$80</span>
+                    <span class="text-xs font-mono" style="color: var(--muted);">/ starter project</span>
+                  </div>
+
+                  <ul class="space-y-4 text-sm mb-8" style="color: var(--muted);">
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>3 Pages Layout</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>Functional Website &
+                        Content Upload</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>Hosting Setup & Social
+                        Icons</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>3 Revisions
+                        Included</span></li>
+                  </ul>
+                </div>
+
+                <a href="https://www.fiverr.com/s/zWYV9Kz" target="_blank"
+                  class="btn-outline w-full text-center justify-center py-3 font-semibold rounded-xl text-sm transition-all duration-300">
+                  Get Started <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+
+              <!-- Standard Card (Highlighted) -->
+              <div
+                class="card p-6 md:p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-500 hover:translate-y-[-8px] hover:shadow-[0_15px_35px_rgba(249,115,22,0.1)] border-orange-500/50"
+                style="background: var(--bg-elevated); border-color: rgba(249, 115, 22, 0.4);">
+                <div
+                  class="absolute top-0 right-0 bg-orange-500 text-white font-mono text-[9px] uppercase tracking-widest font-bold py-1 px-4 rounded-bl">
+                  Most Popular
+                </div>
+                <div>
+                  <div class="flex justify-between items-center mb-6">
+                    <span class="font-mono text-xs uppercase tracking-wider text-orange-500 font-bold">FULL STACK
+                      STARTER</span>
+                    <span class="px-2.5 py-1 text-[10px] font-mono rounded bg-stone-900 border border-stone-850"
+                      style="color: var(--accent); border-color: var(--accent);">Standard</span>
+                  </div>
+                  <h4 class="font-display text-2xl font-bold mb-2">Standard Package</h4>
+                  <p class="text-sm mb-6 leading-relaxed" style="color: var(--muted);">Custom Frontend + Basic Backend +
+                    Database setup. Ideal for small businesses.</p>
+
+                  <div
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-orange-500/20 border border-orange-500/40 text-orange-300 font-mono text-xs font-semibold mb-6">
+                    <i class="far fa-clock text-orange-400"></i> 7 Days Delivery
+                  </div>
+
+                  <div class="flex items-baseline gap-1 mb-8">
+                    <span class="text-4xl font-bold"
+                      style="color: var(--fg); font-family: 'Space Grotesk', sans-serif;">$200</span>
+                    <span class="text-xs font-mono" style="color: var(--muted);">/ main project</span>
+                  </div>
+
+                  <ul class="space-y-4 text-sm mb-8" style="color: var(--muted);">
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>5 Pages Layout</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>Database Setup & Basic
+                        Backend</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>Opt-in Form & Speed
+                        Optimization</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>Hosting Setup & Social
+                        Icons</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>2 Plugins
+                        Customization</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>Unlimited Revisions</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <a href="https://www.fiverr.com/s/zWYV9Kz" target="_blank"
+                  class="btn-primary w-full text-center justify-center py-3 font-semibold rounded-xl text-sm transition-all duration-300">
+                  Get Started <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+
+              <!-- Premium Card -->
+              <div
+                class="card p-6 md:p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-500 hover:translate-y-[-8px] hover:shadow-[0_10px_30px_rgba(249,115,22,0.05)]"
+                style="background: var(--bg-elevated); border-color: var(--border);">
+                <div>
+                  <div class="flex justify-between items-center mb-6">
+                    <span class="font-mono text-xs uppercase tracking-wider text-orange-500 font-bold">ADVANCED WEB
+                      APP</span>
+                    <span class="px-2.5 py-1 text-[10px] font-mono rounded bg-stone-900 border border-stone-850"
+                      style="color: var(--muted); border-color: var(--border);">Premium</span>
+                  </div>
+                  <h4 class="font-display text-2xl font-bold mb-2">Premium Package</h4>
+                  <p class="text-sm mb-6 leading-relaxed" style="color: var(--muted);">Complex Web App, Advanced
+                    Backend, Admin Panel, Database & API Integration.</p>
+
+                  <div
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 font-mono text-xs font-semibold mb-6">
+                    <i class="far fa-clock"></i> 14 Days Delivery
+                  </div>
+
+                  <div class="flex items-baseline gap-1 mb-8">
+                    <span class="text-4xl font-bold"
+                      style="color: var(--fg); font-family: 'Space Grotesk', sans-serif;">$500</span>
+                    <span class="text-xs font-mono" style="color: var(--muted);">/ complex app</span>
+                  </div>
+
+                  <ul class="space-y-4 text-sm mb-8" style="color: var(--muted);">
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>10 Pages Layout & Fully
+                        Custom DB</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>Advanced Backend & Admin
+                        Dashboard</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>E-commerce (10 Products) &
+                        Payments</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>Autoresponder & Opt-in API
+                        Setup</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>5 Plugins + Caching +
+                        Ultimate SEO</span></li>
+                    <li class="flex items-start gap-3"><i
+                        class="fas fa-check mt-1 text-xs shrink-0 text-orange-500"></i> <span>Unlimited Revisions</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <a href="https://www.fiverr.com/s/zWYV9Kz" target="_blank"
+                  class="btn-outline w-full text-center justify-center py-3 font-semibold rounded-xl text-sm transition-all duration-300">
+                  Get Started <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <script src="js/script.js"></script>
+      <script src="js/chatbot.js"></script>
 </body>
 
 </html>
