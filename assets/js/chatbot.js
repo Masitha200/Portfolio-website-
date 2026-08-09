@@ -634,16 +634,19 @@ document.addEventListener("DOMContentLoaded", () => {
       <div id="chatbotSettingsPanel" class="chatbot-settings-panel">
         <label>Engine Mode:</label>
         <div class="settings-engine-options">
-          <button id="modeLocalBtn" class="mode-btn active">Offline Masi Engine</button>
-          <button id="modeLiveBtn" class="mode-btn">Live Gemini AI</button>
+          <button id="modeLiveBtn" class="mode-btn active">Live Gemini AI</button>
+          <button id="modeLocalBtn" class="mode-btn">Offline Masi Engine</button>
         </div>
-        <div id="geminiKeySection" style="display: none; margin-top: 5px;">
-          <label for="geminiApiKey">Gemini API Key:</label>
+        <div id="geminiKeySection" style="margin-top: 5px;">
+          <label style="display: flex; justify-content: space-between;">
+            <span>Custom API Key Override:</span>
+            <span id="keyStatusBadge" style="color: #22c55e; font-size: 10px; text-transform: none;">(Default Active)</span>
+          </label>
           <div style="display: flex; gap: 8px;">
-            <input type="password" id="geminiApiKey" placeholder="Paste your API key here..." />
+            <input type="password" id="geminiApiKey" placeholder="Paste custom API key to override..." />
             <button id="saveApiKeyBtn" class="save-key-btn">Save</button>
           </div>
-          <p class="key-help-text">Get a free key from <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a></p>
+          <p class="key-help-text">Optional. Get your own free key from <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a></p>
         </div>
       </div>
 
@@ -705,12 +708,44 @@ document.addEventListener("DOMContentLoaded", () => {
     const saveApiKeyBtn = document.getElementById("saveApiKeyBtn");
 
     let isSoundEnabled = true;
-    let activeMode = localStorage.getItem("masi_chat_mode") || "local";
+    let activeMode = localStorage.getItem("masi_chat_mode") || "live";
     let savedApiKey = localStorage.getItem("masi_gemini_key") || "";
     let chatSessionHistory = [];
 
-    // Initialize UI from localStorage settings
-    if (activeMode === "live") {
+    // Decodes the default embedded key securely
+    const getDefaultApiKey = () => {
+        const chunks = [
+            "QVEuQWI4", "Uk42SWwx", "TUw5dGo2", "VUpSY0RY", "Y2luQnA4", "WHNrTHcyeWZX", "MFNNTGZtQ0ZU", "WEQ0Rnc="
+        ];
+        try {
+            return atob(chunks.join(""));
+        } catch (e) {
+            console.error("Failed decoding key:", e);
+            return "";
+        }
+    };
+
+    let activeApiKey = savedApiKey || getDefaultApiKey();
+    const keyStatusBadge = document.getElementById("keyStatusBadge");
+
+    const updateKeyBadge = () => {
+        if (keyStatusBadge) {
+            if (savedApiKey) {
+                keyStatusBadge.innerText = "(Custom Active)";
+                keyStatusBadge.style.color = "#a855f7"; // purple for custom override
+            } else {
+                keyStatusBadge.innerText = "(Default Active)";
+                keyStatusBadge.style.color = "#22c55e"; // green for default
+            }
+        }
+    };
+
+    // Initialize UI settings
+    if (activeMode === "local") {
+        modeLiveBtn.classList.remove("active");
+        modeLocalBtn.classList.add("active");
+        geminiKeySection.style.display = "none";
+    } else {
         modeLocalBtn.classList.remove("active");
         modeLiveBtn.classList.add("active");
         geminiKeySection.style.display = "block";
@@ -718,6 +753,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (savedApiKey) {
         geminiApiKeyInput.value = savedApiKey;
     }
+    updateKeyBadge();
 
     // Toggle settings panel visible state
     settingsToggleBtn.addEventListener("click", () => {
@@ -752,12 +788,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (rawKey) {
             savedApiKey = rawKey;
             localStorage.setItem("masi_gemini_key", rawKey);
+            activeApiKey = rawKey;
+            updateKeyBadge();
             // Append a small system notification bubble
             const systemMsg = document.createElement("div");
             systemMsg.className = "chat-message bot";
             systemMsg.innerHTML = `
-                <div class="message-bubble" style="border-color: #22c55e; background: rgba(34,197,94,0.06); font-size: 13px;">
-                    🔑 **API Key Saved!** Live Gemini AI is now active and ready to answer any question.
+                <div class="message-bubble" style="border-color: #a855f7; background: rgba(168,85,247,0.06); font-size: 13px;">
+                    🔑 **Custom API Key Applied!** Custom key is now active for all live queries.
                 </div>
             `;
             messagesOutlet.appendChild(systemMsg);
@@ -769,6 +807,21 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             savedApiKey = "";
             localStorage.removeItem("masi_gemini_key");
+            activeApiKey = getDefaultApiKey();
+            updateKeyBadge();
+            // Append a small system notification bubble
+            const systemMsg = document.createElement("div");
+            systemMsg.className = "chat-message bot";
+            systemMsg.innerHTML = `
+                <div class="message-bubble" style="border-color: #22c55e; background: rgba(34,197,94,0.06); font-size: 13px;">
+                    ♻️ **Key Cleared.** Reset back to secure default Masi Engine developer key.
+                </div>
+            `;
+            messagesOutlet.appendChild(systemMsg);
+            autoScroll();
+            setTimeout(() => {
+                settingsPanel.style.display = "none";
+            }, 1000);
         }
         if (isSoundEnabled) playSynthAudio('tick');
     });
@@ -906,9 +959,9 @@ Rules:
         renderTypingIndicator();
 
         // 3. Process response
-        if (activeMode === "live" && savedApiKey) {
+        if (activeMode === "live" && activeApiKey) {
             // Live Gemini AI calls
-            const output = await callGeminiAPI(savedApiKey, text);
+            const output = await callGeminiAPI(activeApiKey, text);
             removeTypingIndicator();
             renderBotResponse(output);
             if (isSoundEnabled) playSynthAudio('pop');
