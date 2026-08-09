@@ -3,6 +3,22 @@
  * Custom built for Masitha Bandara's Portfolio
  */
 
+// Dynamically load Puter.js SDK for advanced AI capabilities
+(function loadPuterSDK() {
+    if (!document.querySelector('script[src="https://js.puter.com/v2/"]')) {
+        const script = document.createElement('script');
+        script.src = "https://js.puter.com/v2/";
+        script.async = true;
+        script.onload = () => {
+            console.log("Puter SDK loaded successfully.");
+        };
+        script.onerror = () => {
+            console.error("Failed to load Puter SDK.");
+        };
+        document.head.appendChild(script);
+    }
+})();
+
 // Synthetic audio feedback constructor using Web Audio API
 const playSynthAudio = (type) => {
     try {
@@ -429,16 +445,18 @@ function escapeHtml(text) {
         .replace(/'/g, "&#039;");
 }
 
-// Convert markdown to clean, structured HTML
 function formatMarkdown(text) {
     // Bold elements
     let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    // Lists
+    // Bullet Lists
     formatted = formatted.replace(/^\s*[-*]\s+(.*)$/gm, '<li>$1</li>');
+    // Numbered Lists
+    formatted = formatted.replace(/^\s*\d+\.\s+(.*)$/gm, '<li>$1</li>');
+    // Wrap consecutive list items in parent list block
     formatted = formatted.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
     // Handle single backticks codes
-    formatted = formatted.replace(/`([^`\n]+)`/g, '<code>$1</code>');
-    // New lines to br (unless inside ul/ol blocks)
+    formatted = formatted.replace(/`([^`\n]+)`/g, '<code class="font-mono text-orange-400 bg-stone-900 border border-stone-850 px-1 py-0.5 rounded text-xs">$1</code>');
+    // New lines to br
     return formatted.split('\n').join('<br>');
 }
 
@@ -625,6 +643,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let isSoundEnabled = true;
 
+    // Chat History storage initialized with developer system prompt
+    let chatHistory = [
+        {
+            role: "system",
+            content: `You are Aether AI Engine, a highly advanced 100% accurate senior IT Advisor built for Masitha Bandara's portfolio website. 
+Masitha is a dedicated software engineer and fullstack developer from Sri Lanka.
+Here are details about Masitha's featured projects:
+- **CoreBurner X11**: A professional CPU telemetry desktop app monitoring cpu usage, frequency, and sensor temperature at 0.25s polling intervals, built with Python & PyQt5.
+- **LankaStay**: A premium web app for luxury boutique hotel reservations in Sri Lanka, built with HTML/CSS/Tailwind & NodeJS.
+- **AetherPDF**: An offline, desktop-oriented PDF organization tool (reorder, merge, rotate, delete pages) built using Electron & React for maximum user file security.
+- **AthenaLMS**: A student learning management portal featuring secure auth, dashboard metrics, caching, and progress status tracking.
+
+You can answer ANY question about coding, architecture, development, web design, or general knowledge, but try to relate concepts back to software engineering and Masitha's developer expertise when relevant.
+Rules:
+1. Always maintain a professional, friendly, and helpful tone.
+2. If the user asks in Sinhala or Singlish, reply matching that language style (or English + Sinhala).
+3. Keep responses structured, concise, and easy to read.
+4. If writing code, put it inside a clean standard code block starting with \`\`\` and ending with \`\`\`.
+5. Keep your responses reasonably short and informative.`
+        }
+    ];
+
     // Toggle audio
     audioToggle.addEventListener("click", () => {
         isSoundEnabled = !isSoundEnabled;
@@ -655,6 +695,16 @@ document.addEventListener("DOMContentLoaded", () => {
         sendBtn.disabled = inputEl.value.trim() === "";
     });
 
+    // Local fallback query handler
+    const fallbackToLocal = (text) => {
+        setTimeout(() => {
+            removeTypingIndicator();
+            const output = processUserQuery(text);
+            renderBotResponse(output);
+            if (isSoundEnabled) playSynthAudio('pop');
+        }, 800);
+    };
+
     // Handle message sending
     const sendMessage = (customQuery = null) => {
         const text = customQuery || inputEl.value.trim();
@@ -682,12 +732,73 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTypingIndicator();
 
         // 3. Process AI query responses
-        setTimeout(() => {
-            removeTypingIndicator();
-            const output = processUserQuery(text);
-            renderBotResponse(output);
-            if (isSoundEnabled) playSynthAudio('pop');
-        }, 1000);
+        let cleaned = text.toLowerCase().trim().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "");
+        let directMatch = false;
+
+        // Check if query is greeting
+        if (GREETINGS.some(greet => cleaned === greet)) {
+            directMatch = true;
+        }
+
+        // Check if query is a precise keyword in local storage for instant response
+        if (!directMatch) {
+            for (let key in KEYWORD_MAPS) {
+                let keywords = KEYWORD_MAPS[key];
+                for (let word of keywords) {
+                    if (cleaned === word) {
+                        directMatch = true;
+                        break;
+                    }
+                }
+                if (directMatch) break;
+            }
+        }
+
+        if (directMatch) {
+            fallbackToLocal(text);
+        } else {
+            // General query - route to Puter AI LLM
+            if (window.puter && window.puter.ai) {
+                // Add user message to history
+                chatHistory.push({ role: 'user', content: text });
+
+                // Keep context length reasonable
+                if (chatHistory.length > 12) {
+                    chatHistory = [chatHistory[0], ...chatHistory.slice(chatHistory.length - 10)];
+                }
+
+                window.puter.ai.chat(chatHistory)
+                    .then(reply => {
+                        // Push Assistant reply to history
+                        chatHistory.push({ role: 'assistant', content: reply });
+
+                        let output = {
+                            type: "ai",
+                            response: reply,
+                            related: ["coreburner", "lankastay", "javascript", "oop"]
+                        };
+
+                        // Extract markdown code blocks if present
+                        const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
+                        const match = codeBlockRegex.exec(reply);
+                        if (match) {
+                            output.code = match[2];
+                            output.response = reply.replace(codeBlockRegex, '');
+                        }
+
+                        removeTypingIndicator();
+                        renderBotResponse(output);
+                        if (isSoundEnabled) playSynthAudio('pop');
+                    })
+                    .catch(err => {
+                        console.error("Puter AI Chat API error, falling back locally:", err);
+                        fallbackToLocal(text);
+                    });
+            } else {
+                console.warn("Puter SDK not active, running local fallback query.");
+                fallbackToLocal(text);
+            }
+        }
     };
 
     // Keyboard binding
