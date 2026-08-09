@@ -618,12 +618,32 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
         <div class="chatbot-header-actions">
+          <button id="chatbotSettingsToggle" class="chatbot-action-btn" title="AI Settings">
+            <i class="fas fa-cog"></i>
+          </button>
           <button id="chatbotAudioToggle" class="chatbot-action-btn" title="Toggle Sound">
             <i class="fas fa-volume-up"></i>
           </button>
           <button id="chatbotClose" class="chatbot-action-btn" title="Close Panel">
             <i class="fas fa-chevron-down"></i>
           </button>
+        </div>
+      </div>
+
+      <!-- Settings Panel -->
+      <div id="chatbotSettingsPanel" class="chatbot-settings-panel">
+        <label>Engine Mode:</label>
+        <div class="settings-engine-options">
+          <button id="modeLocalBtn" class="mode-btn active">Offline Masi Engine</button>
+          <button id="modeLiveBtn" class="mode-btn">Live Gemini AI</button>
+        </div>
+        <div id="geminiKeySection" style="display: none; margin-top: 5px;">
+          <label for="geminiApiKey">Gemini API Key:</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="password" id="geminiApiKey" placeholder="Paste your API key here..." />
+            <button id="saveApiKeyBtn" class="save-key-btn">Save</button>
+          </div>
+          <p class="key-help-text">Get a free key from <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a></p>
         </div>
       </div>
 
@@ -675,7 +695,83 @@ document.addEventListener("DOMContentLoaded", () => {
     const sendBtn = document.getElementById("chatbotSendBtn");
     const chipsContainer = document.getElementById("chatbotChips");
 
+    // Setting selectors
+    const settingsToggleBtn = document.getElementById("chatbotSettingsToggle");
+    const settingsPanel = document.getElementById("chatbotSettingsPanel");
+    const modeLocalBtn = document.getElementById("modeLocalBtn");
+    const modeLiveBtn = document.getElementById("modeLiveBtn");
+    const geminiKeySection = document.getElementById("geminiKeySection");
+    const geminiApiKeyInput = document.getElementById("geminiApiKey");
+    const saveApiKeyBtn = document.getElementById("saveApiKeyBtn");
+
     let isSoundEnabled = true;
+    let activeMode = localStorage.getItem("masi_chat_mode") || "local";
+    let savedApiKey = localStorage.getItem("masi_gemini_key") || "";
+    let chatSessionHistory = [];
+
+    // Initialize UI from localStorage settings
+    if (activeMode === "live") {
+        modeLocalBtn.classList.remove("active");
+        modeLiveBtn.classList.add("active");
+        geminiKeySection.style.display = "block";
+    }
+    if (savedApiKey) {
+        geminiApiKeyInput.value = savedApiKey;
+    }
+
+    // Toggle settings panel visible state
+    settingsToggleBtn.addEventListener("click", () => {
+        const isClosed = settingsPanel.style.display === "" || settingsPanel.style.display === "none";
+        settingsPanel.style.display = isClosed ? "flex" : "none";
+        if (isSoundEnabled) playSynthAudio('tick');
+    });
+
+    // Handle Local mode switch
+    modeLocalBtn.addEventListener("click", () => {
+        activeMode = "local";
+        localStorage.setItem("masi_chat_mode", "local");
+        modeLiveBtn.classList.remove("active");
+        modeLocalBtn.classList.add("active");
+        geminiKeySection.style.display = "none";
+        if (isSoundEnabled) playSynthAudio('tick');
+    });
+
+    // Handle Live mode switch
+    modeLiveBtn.addEventListener("click", () => {
+        activeMode = "live";
+        localStorage.setItem("masi_chat_mode", "live");
+        modeLocalBtn.classList.remove("active");
+        modeLiveBtn.classList.add("active");
+        geminiKeySection.style.display = "block";
+        if (isSoundEnabled) playSynthAudio('tick');
+    });
+
+    // Save key action
+    saveApiKeyBtn.addEventListener("click", () => {
+        const rawKey = geminiApiKeyInput.value.trim();
+        if (rawKey) {
+            savedApiKey = rawKey;
+            localStorage.setItem("masi_gemini_key", rawKey);
+            // Append a small system notification bubble
+            const systemMsg = document.createElement("div");
+            systemMsg.className = "chat-message bot";
+            systemMsg.innerHTML = `
+                <div class="message-bubble" style="border-color: #22c55e; background: rgba(34,197,94,0.06); font-size: 13px;">
+                    🔑 **API Key Saved!** Live Gemini AI is now active and ready to answer any question.
+                </div>
+            `;
+            messagesOutlet.appendChild(systemMsg);
+            autoScroll();
+            // Automatically close settings panel after 1s
+            setTimeout(() => {
+                settingsPanel.style.display = "none";
+            }, 1000);
+        } else {
+            savedApiKey = "";
+            localStorage.removeItem("masi_gemini_key");
+        }
+        if (isSoundEnabled) playSynthAudio('tick');
+    });
 
     // Toggle audio
     audioToggle.addEventListener("click", () => {
@@ -707,8 +803,84 @@ document.addEventListener("DOMContentLoaded", () => {
         sendBtn.disabled = inputEl.value.trim() === "";
     });
 
-    // Handle message sending locally (100% login-free, zero latency)
-    const sendMessage = (customQuery = null) => {
+    // Call Gemini API with user message
+    const callGeminiAPI = async (apiKey, userText) => {
+        // Build chatSessionHistory contents
+        chatSessionHistory.push({ role: "user", parts: [{ text: userText }] });
+
+        // Cap context history length
+        if (chatSessionHistory.length > 15) {
+            chatSessionHistory = chatSessionHistory.slice(chatSessionHistory.length - 10);
+        }
+
+        try {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    contents: chatSessionHistory,
+                    systemInstruction: {
+                        parts: [{
+                            text: `You are Masi AI Engine, a highly advanced senior IT Advisor built for Masitha Bandara's portfolio website. 
+Masitha is a dedicated software engineer and fullstack developer from Sri Lanka.
+Here are details about Masitha's featured projects:
+- CoreBurner X11: Pro CPU telemetry desktop monitoring app in Python & PyQt5.
+- LankaStay: Luxury hotel reservations app built with Tailwind, NodeJS, and MongoDB.
+- AetherPDF: Electron & React standalone secure PDF management tool.
+- AthenaLMS: Learning Management System with session caching.
+
+You can answer ANY question about coding, architecture, development, web design, or general knowledge, but try to relate concepts back to software engineering and Masitha's developer expertise.
+Rules:
+1. Always maintain a professional, friendly, and helpful tone.
+2. If the user asks in Sinhala or Singlish, reply matching that language style (or English + Sinhala).
+3. Keep responses structured, concise, and easy to read.
+4. If writing code, put it inside a clean standard code block starting with \`\`\` and ending with \`\`\`.
+5. Keep your responses reasonably short and informative.` }]
+                    }
+                })
+            });
+
+            if (!response.ok) {
+                const errData = await response.json();
+                throw new Error(errData.error?.message || `HTTP error ${response.status}`);
+            }
+
+            const data = await response.json();
+            const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated by the AI.";
+
+            // Save assistant reply to memory
+            chatSessionHistory.push({ role: "model", parts: [{ text: reply }] });
+
+            let output = {
+                type: "ai",
+                response: reply,
+                related: ["coreburner", "lankastay", "javascript", "oop"]
+            };
+
+            // Extract code block
+            const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
+            const match = codeBlockRegex.exec(reply);
+            if (match) {
+                output.code = match[2];
+                output.response = reply.replace(codeBlockRegex, '');
+            }
+
+            return output;
+        } catch (err) {
+            console.error("Gemini Live AI error:", err);
+            return {
+                type: "fallback",
+                response: `⚠️ **Gemini AI Connection Error:** ${err.message}<br><br>Running offline backup check instead:<br><br>` + processUserQuery(userText).response,
+                related: ["coreburner", "javascript", "oop", "database"]
+            };
+        }
+    };
+
+    // Handle message sending
+    const sendMessage = async (customQuery = null) => {
         const text = customQuery || inputEl.value.trim();
         if (!text) return;
 
@@ -733,13 +905,22 @@ document.addEventListener("DOMContentLoaded", () => {
         // 2. Render Typing indicator bubble
         renderTypingIndicator();
 
-        // 3. Process local query response with a natural typing delay
-        setTimeout(() => {
+        // 3. Process response
+        if (activeMode === "live" && savedApiKey) {
+            // Live Gemini AI calls
+            const output = await callGeminiAPI(savedApiKey, text);
             removeTypingIndicator();
-            const output = processUserQuery(text);
             renderBotResponse(output);
             if (isSoundEnabled) playSynthAudio('pop');
-        }, 800);
+        } else {
+            // Local fallback queries
+            setTimeout(() => {
+                removeTypingIndicator();
+                const output = processUserQuery(text);
+                renderBotResponse(output);
+                if (isSoundEnabled) playSynthAudio('pop');
+            }, 800);
+        }
     };
 
     // Keyboard binding
