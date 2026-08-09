@@ -675,13 +675,18 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
 
       <!-- Input Tray -->
-      <div class="chatbot-input-area">
-        <div class="chatbot-input-wrapper">
-          <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Ask me about coding, IT or my Projects..." autocomplete="off">
+      <div class="chatbot-input-area" style="flex-direction: column; gap: 8px; padding: 12px 20px;">
+        <div style="display: flex; width: 100%; gap: 10px; align-items: center;">
+          <div class="chatbot-input-wrapper" style="flex: 1;">
+            <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Ask me about coding, IT or my Projects..." autocomplete="off">
+          </div>
+          <button id="chatbotSendBtn" class="chatbot-send-btn" disabled>
+            <i class="fas fa-paper-plane"></i>
+          </button>
         </div>
-        <button id="chatbotSendBtn" class="chatbot-send-btn" disabled>
-          <i class="fas fa-paper-plane"></i>
-        </button>
+        <div class="chatbot-disclaimer" style="font-size: 10px; color: var(--muted); text-align: center; width: 100%; opacity: 0.7;">
+          Masi AI Engine can make mistakes. Verify important info.
+        </div>
       </div>
     </div>
   `;
