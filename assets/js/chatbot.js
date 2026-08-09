@@ -3,21 +3,6 @@
  * Custom built for Masitha Bandara's Portfolio
  */
 
-// Dynamically load Puter.js SDK for advanced AI capabilities
-(function loadPuterSDK() {
-    if (!document.querySelector('script[src="https://js.puter.com/v2/"]')) {
-        const script = document.createElement('script');
-        script.src = "https://js.puter.com/v2/";
-        script.async = true;
-        script.onload = () => {
-            console.log("Puter SDK loaded successfully.");
-        };
-        script.onerror = () => {
-            console.error("Failed to load Puter SDK.");
-        };
-        document.head.appendChild(script);
-    }
-})();
 
 // Synthetic audio feedback constructor using Web Audio API
 const playSynthAudio = (type) => {
@@ -461,6 +446,7 @@ function formatMarkdown(text) {
 }
 
 // Custom core query processor
+// Custom core query processor
 function processUserQuery(query) {
     let cleaned = query.toLowerCase().trim().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "");
 
@@ -472,7 +458,55 @@ function processUserQuery(query) {
         };
     }
 
-    // 2. Identify Sinhala/Singlish intention and provide a welcoming bilingual fallback
+    // 2. Handle specific conversational intents
+    // Developer profile query
+    if (cleaned.includes("masitha") || cleaned.includes("owner") || cleaned.includes("developer") || cleaned.includes("creator") || cleaned.includes("author") || cleaned.includes("who made this")) {
+        return {
+            type: "developer-profile",
+            response: `📚 **About the Developer:**<br>Masitha Bandara is an innovative Full-Stack Web Developer and Software Engineer from Sri Lanka. He specializes in building high-performance applications across several layers:<br><br>• **Desktop Telemetry**: Built *CoreBurner X11* using PyQt5 and Python.<br>• **Desktop Utilities**: Designed *AetherPDF* with Electron & React.<br>• **Complex Web Apps**: Launched *LankaStay* (Hotels Booking) and *AthenaLMS* (Student Portal).<br><br>You can click **Work** in the navigation bar to see his full repository list!`
+        };
+    }
+
+    // Chatbot identity query
+    if (cleaned.includes("who are you") || cleaned.includes("your name") || cleaned.includes("what is your name") || cleaned.includes("what are you")) {
+        return {
+            type: "identity",
+            response: `🤖 I am **Aether AI**, a highly responsive IT Advisory engine custom-built for Masitha's portfolio. I run **100% locally** in your browser, guaranteeing instant answers, zero data-tracking, and zero required logins! I can explain programming languages, databases, servers, DevOps, or details about Masitha's projects.`
+        };
+    }
+
+    // Chatbot status query
+    if (cleaned.includes("how are you") || cleaned.includes("how is it going") || cleaned.includes("hows it going") || cleaned.includes("fine")) {
+        return {
+            type: "status",
+            response: `🚀 Systems are fully green! Memory consumption is minimal, telemetry sensors are cached, and response rate is at **0.0ms latency**! Thank you for asking. How can I assist you with code or development queries today?`
+        };
+    }
+
+    // Programmer Jokes query
+    if (cleaned.includes("joke") || cleaned.includes("funny") || cleaned.includes("laugh")) {
+        let jokes = [
+            `Why do programmers wear glasses? <br>Because they can't **C#**! 🤓`,
+            `There are **10** types of people in the world: those who understand binary, and those who don't! 💻`,
+            `What is a programmer's favorite hangout place?<br>The **Foo Bar**! 🍺`,
+            `Why did the database administrator leave the restaurant?<br>Because they had **no tables**! 📊`
+        ];
+        let randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+        return {
+            type: "joke",
+            response: `😄 Here's a programmer joke for you:<br><br>${randomJoke}`
+        };
+    }
+
+    // Help/Topics query
+    if (cleaned.includes("help") || cleaned.includes("menu") || cleaned.includes("topics") || cleaned.includes("what can you do") || cleaned.includes("options")) {
+        return {
+            type: "help",
+            response: `🛠️ **Aether AI Capabilities:**<br>You can ask me about various technical domains and projects. Try entering:<br><br>• **Projects**: \`coreburner\`, \`lankastay\`, \`aetherpdf\`, \`athenalms\`<br>• **Coding**: \`javascript\`, \`python\`, \`react\`, \`oop\`, \`java\`<br>• **Backend**: \`sql\`, \`nosql\`, \`database\`, \`node\`<br>• **Systems**: \`dns\`, \`http\`, \`ip address\`<br><br>Just check the quick chips below or type a query to test me!`
+        };
+    }
+
+    // Sinhala/Singlish intention detection
     let hasSinhala = SINHALA_DETECTION.some(word => cleaned.split(" ").includes(word));
 
     // 3. Search for matches using keywords mapping
@@ -543,9 +577,9 @@ function processUserQuery(query) {
     // 4. Default Fallback
     let fallbackText = "";
     if (hasSinhala) {
-        fallbackText = `මම IT (තොරතුරු තාක්ෂණ) සහ Masitha ගේ Projects පිළිබඳව උපදෙස් දීමට සැකසූ AI සහායකයෙක් වෙමි. <br><br>කරුණාකර Programming, HTML, CSS, Databases, SQL, Web Dev හෝ Masitha ගේ **CoreBurner X11**, **LankaStay** වැනි software ගැන මගෙන් විමසන්න. මම 100% නිවැරදි පිළිතුරක් ලබා දෙන්නම්.`;
+        fallbackText = `මම IT (තොරතුරු තාක්ෂණ) සහ Masitha ගේ Projects පිළිබඳව උපදෙස් දීමට 100% locally සකසන ලද AI සහායකයෙක් වෙමි. <br><br>භාවිතා කරන්නන්ගේ පෞද්ගලිකත්වය ආරක්ෂා කිරීමට සහ logins වළක්වා ගැනීමට මම කිසිදු external sign-in එකක් ඉල්ලන්නේ නැත. කරුණාකර **Programming**, **HTML**, **CSS**, **Databases**, **SQL** හෝ Masitha ගේ **CoreBurner**, **LankaStay** වැනි software ගැන විමසන්න.`;
     } else {
-        fallbackText = `I have scanned my IT repository for your query. As an AI specialized in computer science, coding, and web design, I can only provide 100% accurate answers for IT related domains.<br><br>Try asking about:<br>• **Languages**: Python, Java, JavaScript<br>• **Web**: HTML, CSS, React, REST APIs<br>• **Data**: SQL, NoSQL DBs, Git/GitHub<br>• **Portfolio**: CoreBurner X11, LankaStay, AetherPDF, or AthenaLMS.`;
+        fallbackText = `I am a secure client-side AI Chatbot designed to run locally in your browser. This removes login screens, respects your privacy, and saves server bandwidth!<br><br>While I can't browse the web for general off-topic questions, I can answer any computer science or project question. Try asking about:<br>• **Coding**: python, javascript, java, oop<br>• **Web**: html, css, tailwind, react, node, api<br>• **Data**: database, sql, nosql, git/github<br>• **Projects**: coreburner, lankastay, aetherpdf, athenalms`;
     }
 
     return {
@@ -643,28 +677,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let isSoundEnabled = true;
 
-    // Chat History storage initialized with developer system prompt
-    let chatHistory = [
-        {
-            role: "system",
-            content: `You are Aether AI Engine, a highly advanced 100% accurate senior IT Advisor built for Masitha Bandara's portfolio website. 
-Masitha is a dedicated software engineer and fullstack developer from Sri Lanka.
-Here are details about Masitha's featured projects:
-- **CoreBurner X11**: A professional CPU telemetry desktop app monitoring cpu usage, frequency, and sensor temperature at 0.25s polling intervals, built with Python & PyQt5.
-- **LankaStay**: A premium web app for luxury boutique hotel reservations in Sri Lanka, built with HTML/CSS/Tailwind & NodeJS.
-- **AetherPDF**: An offline, desktop-oriented PDF organization tool (reorder, merge, rotate, delete pages) built using Electron & React for maximum user file security.
-- **AthenaLMS**: A student learning management portal featuring secure auth, dashboard metrics, caching, and progress status tracking.
-
-You can answer ANY question about coding, architecture, development, web design, or general knowledge, but try to relate concepts back to software engineering and Masitha's developer expertise when relevant.
-Rules:
-1. Always maintain a professional, friendly, and helpful tone.
-2. If the user asks in Sinhala or Singlish, reply matching that language style (or English + Sinhala).
-3. Keep responses structured, concise, and easy to read.
-4. If writing code, put it inside a clean standard code block starting with \`\`\` and ending with \`\`\`.
-5. Keep your responses reasonably short and informative.`
-        }
-    ];
-
     // Toggle audio
     audioToggle.addEventListener("click", () => {
         isSoundEnabled = !isSoundEnabled;
@@ -695,17 +707,7 @@ Rules:
         sendBtn.disabled = inputEl.value.trim() === "";
     });
 
-    // Local fallback query handler
-    const fallbackToLocal = (text) => {
-        setTimeout(() => {
-            removeTypingIndicator();
-            const output = processUserQuery(text);
-            renderBotResponse(output);
-            if (isSoundEnabled) playSynthAudio('pop');
-        }, 800);
-    };
-
-    // Handle message sending
+    // Handle message sending locally (100% login-free, zero latency)
     const sendMessage = (customQuery = null) => {
         const text = customQuery || inputEl.value.trim();
         if (!text) return;
@@ -731,74 +733,13 @@ Rules:
         // 2. Render Typing indicator bubble
         renderTypingIndicator();
 
-        // 3. Process AI query responses
-        let cleaned = text.toLowerCase().trim().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "");
-        let directMatch = false;
-
-        // Check if query is greeting
-        if (GREETINGS.some(greet => cleaned === greet)) {
-            directMatch = true;
-        }
-
-        // Check if query is a precise keyword in local storage for instant response
-        if (!directMatch) {
-            for (let key in KEYWORD_MAPS) {
-                let keywords = KEYWORD_MAPS[key];
-                for (let word of keywords) {
-                    if (cleaned === word) {
-                        directMatch = true;
-                        break;
-                    }
-                }
-                if (directMatch) break;
-            }
-        }
-
-        if (directMatch) {
-            fallbackToLocal(text);
-        } else {
-            // General query - route to Puter AI LLM
-            if (window.puter && window.puter.ai) {
-                // Add user message to history
-                chatHistory.push({ role: 'user', content: text });
-
-                // Keep context length reasonable
-                if (chatHistory.length > 12) {
-                    chatHistory = [chatHistory[0], ...chatHistory.slice(chatHistory.length - 10)];
-                }
-
-                window.puter.ai.chat(chatHistory)
-                    .then(reply => {
-                        // Push Assistant reply to history
-                        chatHistory.push({ role: 'assistant', content: reply });
-
-                        let output = {
-                            type: "ai",
-                            response: reply,
-                            related: ["coreburner", "lankastay", "javascript", "oop"]
-                        };
-
-                        // Extract markdown code blocks if present
-                        const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
-                        const match = codeBlockRegex.exec(reply);
-                        if (match) {
-                            output.code = match[2];
-                            output.response = reply.replace(codeBlockRegex, '');
-                        }
-
-                        removeTypingIndicator();
-                        renderBotResponse(output);
-                        if (isSoundEnabled) playSynthAudio('pop');
-                    })
-                    .catch(err => {
-                        console.error("Puter AI Chat API error, falling back locally:", err);
-                        fallbackToLocal(text);
-                    });
-            } else {
-                console.warn("Puter SDK not active, running local fallback query.");
-                fallbackToLocal(text);
-            }
-        }
+        // 3. Process local query response with a natural typing delay
+        setTimeout(() => {
+            removeTypingIndicator();
+            const output = processUserQuery(text);
+            renderBotResponse(output);
+            if (isSoundEnabled) playSynthAudio('pop');
+        }, 800);
     };
 
     // Keyboard binding
