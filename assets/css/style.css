@@ -40,6 +40,8 @@ body.software-page .cursor-outline {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -48,6 +50,8 @@ body {
   font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
   margin: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .font-display {
