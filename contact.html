@@ -228,9 +228,27 @@
                   placeholder="Type your WhatsApp message here... (Text messages only - no calls please)"></textarea>
               </div>
 
-              <button onclick="redirectToWhatsApp()"
-                class="w-full py-3.5 px-6 rounded-full font-bold text-sm text-white flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg cursor-none"
-                style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);">
+              <!-- I'M NOT A ROBOT VERIFICATION -->
+              <div class="flex items-center justify-between p-3 rounded-xl border transition-all"
+                style="background: var(--bg-elevated); border-color: var(--border);">
+                <div class="flex items-center gap-3">
+                  <div id="captchaCheck" onclick="verifyCaptcha()"
+                    class="w-7 h-7 rounded border-2 flex items-center justify-center cursor-none transition-all hover:border-orange-500"
+                    style="border-color: var(--border); background: var(--bg);">
+                    <i id="captchaIcon" class="fas fa-check opacity-0 text-sm transition-all duration-300"></i>
+                  </div>
+                  <span class="text-sm font-medium" style="color: var(--fg);">I'm not a robot</span>
+                </div>
+                <div class="flex flex-col items-center justify-center opacity-60">
+                  <i class="fas fa-shield-alt text-xl mb-0.5" style="color: var(--accent);"></i>
+                  <span class="text-[8px] font-mono tracking-widest uppercase" style="color: var(--muted);">Masitha
+                    Anti-Spam</span>
+                </div>
+              </div>
+
+              <button id="waSendBtn" onclick="redirectToWhatsApp()" disabled
+                class="w-full py-3.5 px-6 rounded-full font-bold text-sm text-white flex items-center justify-center gap-2 transition-all shadow-lg cursor-not-allowed opacity-50"
+                style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);">
                 <i class="fab fa-whatsapp text-lg"></i> Send WhatsApp Message
               </button>
               <p class="text-center text-[10px] mt-2 font-mono" style="color: var(--muted);">
@@ -248,11 +266,46 @@
       // e.g. "94771234567" for Sri Lanka
       const WHATSAPP_NUMBER = "94710632041";
 
+      let isVerified = false;
+
       function selectWaTemplate(message) {
         document.getElementById('waMessage').value = message;
       }
 
+      function verifyCaptcha() {
+        if (isVerified) return;
+
+        const checkBox = document.getElementById('captchaCheck');
+        const icon = document.getElementById('captchaIcon');
+        const sendBtn = document.getElementById('waSendBtn');
+
+        // Loading state (Spinning)
+        checkBox.style.borderColor = "var(--accent)";
+        icon.className = "fas fa-circle-notch fa-spin text-sm";
+        icon.style.color = "var(--accent)";
+        icon.classList.remove('opacity-0');
+
+        setTimeout(() => {
+          // Verified State
+          isVerified = true;
+          checkBox.style.borderColor = "#22c55e";
+          checkBox.style.background = "rgba(34, 197, 94, 0.1)";
+
+          icon.className = "fas fa-check text-sm";
+          icon.style.color = "#22c55e";
+
+          // Enable Send Button
+          sendBtn.disabled = false;
+          sendBtn.classList.remove('cursor-not-allowed', 'opacity-50');
+          sendBtn.style.cursor = "none"; // Using global custom cursor styling
+          sendBtn.classList.add('hover:scale-[1.02]', 'active:scale-[0.98]');
+          sendBtn.style.boxShadow = "0 4px 15px rgba(37, 211, 102, 0.3)";
+        }, 1200); // Wait 1.2s to simulate verification
+      }
+
       function redirectToWhatsApp() {
+        if (!isVerified) return; // double check
+
         const text = document.getElementById('waMessage').value.trim();
         const baseMsg = text || "Hello Masitha, I visited your portfolio and wanted to connect!";
         const waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(baseMsg);

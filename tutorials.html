@@ -240,70 +240,210 @@
         <a href="contact.html" class="mobile-nav-link py-2 font-medium">Contact</a>
     </div>
 
-    <!-- Main Content: Coming Soon -->
-    <main
-        class="min-h-screen flex items-center justify-center pt-28 md:pt-32 pb-16 px-4 md:px-6 relative overflow-hidden">
-        <div class="max-w-3xl w-full text-center relative z-10 space-y-8 mt-12">
-            <!-- Animated Badge -->
-            <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-500/20 bg-orange-500/5 text-orange-500 text-xs font-mono tracking-widest uppercase animate-pulse">
-                <span class="relative flex h-2 w-2">
-                    <span
-                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                </span>
-                Academy Module in Development
-            </div>
-
-            <!-- Header Titles -->
-            <div class="space-y-4">
-                <h1 class="font-display text-5xl md:text-8xl font-bold leading-none tracking-tight">
+    <!-- Main Content: Mini LMS -->
+    <main class="min-h-screen pt-28 md:pt-32 pb-16 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+            <!-- Header Section -->
+            <div class="mb-10 border-b pb-8" style="border-color: var(--border);">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 text-orange-500 text-xs font-mono tracking-widest uppercase mb-4 border border-orange-500/20">
+                    <i class="fas fa-graduation-cap"></i> Interactive Video LMS
+                </div>
+                <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                     Lessons <span style="color: var(--accent);">Academy</span>
                 </h1>
-                <p class="text-2xl md:text-3xl font-display font-medium" style="color: var(--fg);">
-                    Coming Soon
+                <p class="text-base md:text-lg mt-4 max-w-2xl" style="color: var(--muted);">
+                    Select your grade from the panel below to access structured video lessons, tutorials, and practical
+                    assignments.
                 </p>
             </div>
 
-            <!-- Description -->
-            <p class="text-base md:text-lg max-w-xl mx-auto leading-relaxed" style="color: var(--muted);">
-                I am currently curating a comprehensive series of HTML5, CSS3, and JavaScript video guides. Learn
-                semantic coding, SEO fundamentals, and responsive engineering directly from real-world projects.
-            </p>
+            <div class="grid lg:grid-cols-4 gap-8 items-start">
+                <!-- Sidebar UI / Grade Selector -->
+                <div class="lg:col-span-1 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 scrollbar-hide sticky top-[100px]"
+                    id="lmsSidebar">
+                    <button class="course-tab active w-full text-left flex justify-between items-center"
+                        data-grade="grade6">
+                        <span>Grade 6</span> <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
+                    </button>
+                    <button class="course-tab w-full text-left flex justify-between items-center" data-grade="grade7">
+                        <span>Grade 7</span> <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
+                    </button>
+                    <button class="course-tab w-full text-left flex justify-between items-center" data-grade="grade8">
+                        <span>Grade 8</span> <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
+                    </button>
+                    <button class="course-tab w-full text-left flex justify-between items-center" data-grade="grade9">
+                        <span>Grade 9</span> <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
+                    </button>
+                    <button class="course-tab w-full text-left flex justify-between items-center" data-grade="grade10">
+                        <span>Grade 10 (O/L)</span> <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
+                    </button>
+                    <button class="course-tab w-full text-left flex justify-between items-center" data-grade="grade11">
+                        <span>Grade 11 (O/L)</span> <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
+                    </button>
+                </div>
 
-            <!-- Creative Countdown Indicator / Modules Preview Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto pt-6 text-left">
-                <div class="card p-4 flex flex-col justify-between"
-                    style="background: var(--bg-elevated); border-color: var(--border);">
-                    <span class="text-xs font-mono text-[#f97316]">Module 1</span>
-                    <span class="font-semibold text-sm mt-2" style="color: var(--fg);">HTML5 Basics</span>
-                </div>
-                <div class="card p-4 flex flex-col justify-between"
-                    style="background: var(--bg-elevated); border-color: var(--border);">
-                    <span class="text-xs font-mono text-[#f97316]">Module 2</span>
-                    <span class="font-semibold text-sm mt-2" style="color: var(--fg);">CSS Layouts</span>
-                </div>
-                <div class="card p-4 flex flex-col justify-between"
-                    style="background: var(--bg-elevated); border-color: var(--border);">
-                    <span class="text-xs font-mono text-[#f97316]">Module 3</span>
-                    <span class="font-semibold text-sm mt-2" style="color: var(--fg);">JS Essentials</span>
-                </div>
-                <div class="card p-4 flex flex-col justify-between"
-                    style="background: var(--bg-elevated); border-color: var(--border);">
-                    <span class="text-xs font-mono text-[#f97316]">Module 4</span>
-                    <span class="font-semibold text-sm mt-2" style="color: var(--fg);">Git & Github</span>
-                </div>
-            </div>
+                <!-- Video Content Area -->
+                <div class="lg:col-span-3 min-h-[60vh] bg-stone-900/10 rounded-3xl p-1 md:p-6 border"
+                    style="border-color: var(--border);">
 
-            <!-- Interactive Notification Setup -->
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-                <a href="contact.html" class="btn-primary w-full sm:w-auto text-sm justify-center">
-                    Get in Touch <i class="fas fa-envelope"></i>
-                </a>
-                <button id="notifyBtn" onclick="notifyMe()"
-                    class="btn-outline w-full sm:w-auto text-sm justify-center cursor-none">
-                    Notify When Live <i class="fas fa-bell"></i>
-                </button>
+                    <!-- Grade 6 Classes -->
+                    <div id="grade6" class="grade-content animate-fade-in block">
+                        <div class="mb-6 flex justify-between items-end border-b pb-4 px-2"
+                            style="border-color: var(--border);">
+                            <div>
+                                <h2 class="font-display text-2xl font-bold">Grade 6 Lessons</h2>
+                                <p class="text-sm mt-1" style="color: var(--muted);">Explore the curriculum
+                                    fundamentals.</p>
+                            </div>
+                            <span class="text-xs font-mono bg-orange-500/20 text-orange-500 px-2 py-1 rounded">2
+                                Videos</span>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Card Template for Video -->
+                            <div class="card flex flex-col h-full"
+                                style="background: var(--bg-elevated); border-color: var(--border);">
+                                <div class="aspect-video w-full overflow-hidden bg-black relative group cursor-pointer"
+                                    onclick="window.open('https://www.youtube.com/watch?v=M7lc1UVf-VE', '_blank')">
+                                    <!-- YouTube Premium Fast-Load Facade (Bypasses Local file:// blocks) -->
+                                    <img src="https://img.youtube.com/vi/M7lc1UVf-VE/maxresdefault.jpg"
+                                        alt="Video Thumbnail"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <div
+                                            class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(220,38,38,0.6)] group-hover:scale-110 transition-transform">
+                                            <i class="fas fa-play ml-1 text-xl"></i>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold tracking-wider">
+                                        ▶ Watch on YouTube
+                                    </div>
+                                </div>
+                                <div class="p-5 flex-1 flex flex-col">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span
+                                            class="text-[10px] font-mono tracking-wider uppercase px-2 py-1 rounded bg-orange-500/10 text-orange-500 border border-orange-500/20">Lesson
+                                            01</span>
+                                        <span class="text-xs font-mono" style="color: var(--muted);"><i
+                                                class="far fa-clock"></i> 45:00</span>
+                                    </div>
+                                    <h3 class="font-display font-bold text-xl mb-2">Mathematics: Number Line</h3>
+                                    <p class="text-sm flex-1 leading-relaxed" style="color: var(--muted);">Understanding
+                                        positive and negative numbers on the mathematical number line.</p>
+                                </div>
+                            </div>
+                            <!-- Card Template 2 -->
+                            <div class="card flex flex-col h-full"
+                                style="background: var(--bg-elevated); border-color: var(--border);">
+                                <div class="aspect-video w-full overflow-hidden bg-black relative group cursor-pointer"
+                                    onclick="window.open('https://www.youtube.com/watch?v=M7lc1UVf-VE', '_blank')">
+                                    <!-- YouTube Premium Fast-Load Facade (Bypasses Local file:// blocks) -->
+                                    <img src="https://img.youtube.com/vi/M7lc1UVf-VE/maxresdefault.jpg"
+                                        alt="Video Thumbnail"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <div
+                                            class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(220,38,38,0.6)] group-hover:scale-110 transition-transform">
+                                            <i class="fas fa-play ml-1 text-xl"></i>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold tracking-wider">
+                                        ▶ Watch on YouTube
+                                    </div>
+                                </div>
+                                <div class="p-5 flex-1 flex flex-col">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span
+                                            class="text-[10px] font-mono tracking-wider uppercase px-2 py-1 rounded bg-orange-500/10 text-orange-500 border border-orange-500/20">Lesson
+                                            02</span>
+                                        <span class="text-xs font-mono" style="color: var(--muted);"><i
+                                                class="far fa-clock"></i> 32:15</span>
+                                    </div>
+                                    <h3 class="font-display font-bold text-xl mb-2">Science: Plant Cells</h3>
+                                    <p class="text-sm flex-1 leading-relaxed" style="color: var(--muted);">Deep dive
+                                        into plant biology and cellular structures.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grade 7 Classes -->
+                    <div id="grade7" class="grade-content hidden animate-fade-in">
+                        <div class="mb-6 flex justify-between items-end border-b pb-4 px-2"
+                            style="border-color: var(--border);">
+                            <div>
+                                <h2 class="font-display text-2xl font-bold">Grade 7 Lessons</h2>
+                                <p class="text-sm mt-1" style="color: var(--muted);">Advanced middle-school modules.</p>
+                            </div>
+                            <span class="text-xs font-mono bg-stone-500/20 text-stone-400 px-2 py-1 rounded">1
+                                Video</span>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="card flex flex-col h-full"
+                                style="background: var(--bg-elevated); border-color: var(--border);">
+                                <div class="aspect-video w-full overflow-hidden flex items-center justify-center relative"
+                                    style="background: var(--bg-nav);">
+                                    <i class="fas fa-video-slash text-4xl opacity-20"></i>
+                                    <span class="absolute bottom-4 text-xs font-mono text-stone-500">Video coming
+                                        soon</span>
+                                </div>
+                                <div class="p-5 flex-1 flex flex-col">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span
+                                            class="text-[10px] font-mono tracking-wider uppercase px-2 py-1 rounded bg-orange-500/10 text-orange-500 border border-orange-500/20">Lesson
+                                            01</span>
+                                    </div>
+                                    <h3 class="font-display font-bold text-xl mb-2">History: Ancient Civilizations</h3>
+                                    <p class="text-sm flex-1 leading-relaxed" style="color: var(--muted);">Exploring
+                                        early human settlements and agriculture.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grade 8 Classes -->
+                    <div id="grade8" class="grade-content hidden animate-fade-in">
+                        <div class="py-12 flex flex-col items-center justify-center text-center opacity-70">
+                            <i class="fas fa-layer-group text-5xl mb-4" style="color: var(--accent);"></i>
+                            <h3 class="font-display text-2xl font-bold">Grade 8 Content Uploading</h3>
+                            <p class="text-sm max-w-md mt-2" style="color: var(--muted);">We are actively editing the
+                                video lessons for Grade 8. Check back soon for new uploads and modules!</p>
+                        </div>
+                    </div>
+
+                    <!-- Grade 9 Classes -->
+                    <div id="grade9" class="grade-content hidden animate-fade-in">
+                        <div class="py-12 flex flex-col items-center justify-center text-center opacity-70">
+                            <i class="fas fa-layer-group text-5xl mb-4" style="color: var(--accent);"></i>
+                            <h3 class="font-display text-2xl font-bold">Grade 9 Content Uploading</h3>
+                            <p class="text-sm max-w-md mt-2" style="color: var(--muted);">We are actively editing the
+                                video lessons for Grade 9. Check back soon for new uploads and modules!</p>
+                        </div>
+                    </div>
+
+                    <!-- Grade 10 Classes -->
+                    <div id="grade10" class="grade-content hidden animate-fade-in">
+                        <div class="py-12 flex flex-col items-center justify-center text-center opacity-70">
+                            <i class="fas fa-layer-group text-5xl mb-4" style="color: var(--accent);"></i>
+                            <h3 class="font-display text-2xl font-bold">Grade 10 (O/L) Content Uploading</h3>
+                            <p class="text-sm max-w-md mt-2" style="color: var(--muted);">Ordinary Level preparation
+                                modules are currently in the recording phase.</p>
+                        </div>
+                    </div>
+
+                    <!-- Grade 11 Classes -->
+                    <div id="grade11" class="grade-content hidden animate-fade-in">
+                        <div class="py-12 flex flex-col items-center justify-center text-center opacity-70">
+                            <i class="fas fa-graduation-cap text-5xl mb-4" style="color: var(--accent);"></i>
+                            <h3 class="font-display text-2xl font-bold">Grade 11 (O/L) Content Uploading</h3>
+                            <p class="text-sm max-w-md mt-2" style="color: var(--muted);">Final O/L revision videos and
+                                past paper discussions will be available here.</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </main>
@@ -312,13 +452,34 @@
     <script src="assets/js/chatbot.js"></script>
 
     <script>
-        function notifyMe() {
-            const btn = document.getElementById("notifyBtn");
-            btn.innerHTML = 'Subscribed! <i class="fas fa-check"></i>';
-            btn.style.color = '#22c55e';
-            btn.style.borderColor = '#22c55e';
-            btn.onclick = null;
-        }
+        // Mini-LMS Tab Switching Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.course-tab');
+            const contents = document.querySelectorAll('.grade-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active state from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Set active to clicked tab
+                    tab.classList.add('active');
+
+                    // Hide all contents
+                    contents.forEach(c => {
+                        c.classList.remove('block');
+                        c.classList.add('hidden');
+                    });
+
+                    // Show target content
+                    const targetId = tab.getAttribute('data-grade');
+                    const targetContent = document.getElementById(targetId);
+                    if (targetContent) {
+                        targetContent.classList.remove('hidden');
+                        targetContent.classList.add('block');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
