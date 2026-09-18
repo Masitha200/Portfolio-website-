@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fleet-X — Premium Taxi Booking Platform</title>
+    <meta name="description"
+        content="Fleet-X is a premium website for booking luxury hotels, villas, and holiday rooms in Sri Lanka. Designed for global travelers demanding smooth booking experiences." />
+    <meta name="keywords"
+        content="Fleet-X, hotel booking Sri Lanka, travel website, rent villa Sri Lanka, resort booking platform, Sri Lanka rooms Netlify" />
+    <meta name="author" content="Masitha Bandara" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://masitha200.github.io/Portfolio-website-/lankastays-page.html" />
+    <meta property="og:title" content="Fleet-X — Room Reservation & Travel Booking Platform" />
+    <meta property="og:description"
+        content="Fleet-X is a premium website for booking luxury hotels, villas, and holiday rooms in Sri Lanka. Designed for global travelers demanding smooth booking experiences." />
+    <meta property="og:image" content="https://masitha200.github.io/Portfolio-website-/img/fleetx_bg.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://masitha200.github.io/Portfolio-website-/lankastays-page.html" />
+    <meta property="twitter:title" content="Fleet-X — Room Reservation & Travel Booking Platform" />
+    <meta property="twitter:description"
+        content="Fleet-X is a premium website for booking luxury hotels, villas, and holiday rooms in Sri Lanka. Designed for global travelers demanding smooth booking experiences." />
+    <meta property="twitter:image" content="https://masitha200.github.io/Portfolio-website-/img/fleetx_bg.png" />
+
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Override Theme Accents for Sand/Amber Holiday Aesthetic -->
+    <style>
+        :root[data-theme="dark"] {
+            --accent: #eab308;
+            --accent-hover: #facc15;
+        }
+
+        :root[data-theme="dark"] {
+            --accent: #d97706;
+            --accent-hover: #f59e0b;
+        }
+
+        /* Custom styles for specific elements to match new accent */
+        .btn-primary {
+            background-color: var(--accent) !important;
+            color: #1e1b18 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover) !important;
+        }
+
+        .download-btn {
+            color: var(--accent) !important;
+            border-color: var(--accent) !important;
+        }
+
+        .download-btn:hover {
+            background-color: var(--accent) !important;
+            color: #1e1b18 !important;
+        }
+
+        input:focus {
+            border-color: var(--accent) !important;
+        }
+    </style>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+
+<body class="software-page">
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1" style="background: #f59e0b;"></div>
+    <div class="bg-blob blob-2" style="background: #f97316;"></div>
+    <div class="bg-blob blob-3" style="background: #d97706;"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b"
+        style="background: var(--bg-nav); border-color: var(--border);">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="font-display text-2xl font-bold"
+                style="color: var(--fg); text-decoration: none;">Masitha Bandara <span
+                    style="color: var(--accent);">.</span></a>
+            <a href="work.html" id="navBackWorkBtn" class="btn-outline">Back to Work</a>
+        </div>
+    </nav>
+
+    <main class="min-h-screen flex items-center justify-center px-6 py-32">
+        <div class="max-w-6xl w-full grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
+            <div>
+                <div class="flex flex-col gap-6 mb-6">
+                    <div class="overflow-hidden rounded-2xl border" style="border-color: var(--border);">
+                        <img src="assets/img/fleetx_bg.png" alt="Fleet-X Dashboard"
+                            class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700">
+                    </div>
+                </div>
+
+                <div class="prose prose-invert max-w-none">
+                    <h2 class="font-display text-3xl font-bold mb-4">Smarter Rides. Fixed Fares. Zero Surprises.</h2>
+                    <p style="color: var(--muted);" class="leading-relaxed mb-6">
+                        Fleet-X is Sri Lanka's premier digital transit infrastructure, designed to provide safe,
+                        transparent, and premium level travel nationwide. Whether you need a quick city hop in a budget
+                        hatchback or a long outstation journey in a luxury sedan, Fleet-X delivers reliable mobility
+                        solutions with guaranteed upfront fixed pricing.
+                    </p>
+                    <p style="color: var(--muted);" class="leading-relaxed">
+                        I worked collaboratively with a team to build this platform, taking <strong>sole responsibility
+                            for the entire frontend development</strong>. My goal was to create a sleek, modern, and
+                        highly intuitive user interface that feels premium, incorporating smooth animations, responsive
+                        designs, and a dark-themed luxury aesthetic.
+                    </p>
+                </div>
+
+                <div class="mt-8 space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(234,179,8,0.1); color: var(--accent);">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg font-display">Premium Fleet Services</h3>
+                            <p class="text-sm mt-1 leading-relaxed" style="color: var(--muted);">
+                                Accommodating all ranges of transport: City Rides for quick commutes, FleetX Prime for
+                                VIP events, and Outstation Drops for long-distance family transits.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(234,179,8,0.1); color: var(--accent);">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg font-display">Upfront Fixed Fares</h3>
+                            <p class="text-sm mt-1 leading-relaxed" style="color: var(--muted);">
+                                Integrated fare calculation engine guarantees flat prices before booking, completely
+                                eliminating automated surge pricing anxiety.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                            style="background: rgba(234,179,8,0.1); color: var(--accent);">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg font-display">Luxury Frontend Architecture</h3>
+                            <p class="text-sm mt-1 leading-relaxed" style="color: var(--muted);">
+                                Designed dynamic UI components, engaging animations, and fully responsive layouts across
+                                all mobile, tablet, and desktop devices focusing on high-conversion flow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sticky top-32 flex flex-col gap-6">
+                <div class="p-6 lg:p-8 rounded-2xl border"
+                    style="background: var(--bg-elevated); border-color: var(--border);">
+                    <div class="mb-8">
+                        <span class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">Project
+                            Brief</span>
+                        <h1 class="font-display text-3xl font-bold mt-2">Fleet-X Mobility</h1>
+                        <p class="text-sm mt-3 leading-relaxed" style="color: var(--muted);">
+                            A seamless cab booking system focusing strictly on premium experiences and price
+                            transparency.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex justify-between items-center py-3 border-b"
+                            style="border-color: var(--border);">
+                            <span class="text-sm" style="color: var(--muted);">Role</span>
+                            <span class="font-mono text-sm">Frontend Developer</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b"
+                            style="border-color: var(--border);">
+                            <span class="text-sm" style="color: var(--muted);">Timeline</span>
+                            <span class="font-mono text-sm">2026</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b"
+                            style="border-color: var(--border);">
+                            <span class="text-sm" style="color: var(--muted);">Platform</span>
+                            <span class="font-mono text-sm">Web Application</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b"
+                            style="border-color: var(--border);">
+                            <span class="text-sm" style="color: var(--muted);">Status</span>
+                            <span class="font-mono text-sm text-green-500">Live</span>
+                        </div>
+                    </div>
+
+                    <a href="https://fleet-x.vercel.app/" target="_blank"
+                        class="download-btn w-full justify-center flex items-center gap-2 mb-4">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Visit Live Platform</span>
+                    </a>
+                </div>
+
+                <div class="p-6 rounded-2xl border"
+                    style="background: var(--bg-elevated); border-color: var(--border);">
+                    <h3 class="font-display font-bold mb-4">Core Technology Stack</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag flex items-center gap-1.5">
+                            <img src="https://cdn.simpleicons.org/supabase/3ECF8E" style="width: 14px; height: 14px;"
+                                alt="Supabase"> Supabase Backend
+                        </span>
+                        <span class="tag flex items-center gap-1.5">
+                            <img src="https://cdn.simpleicons.org/vercel/white" style="width: 14px; height: 14px;"
+                                alt="Vercel"> Vercel Hosting
+                        </span>
+                        <span class="tag">HTML5/CSS3</span>
+                        <span class="tag">JavaScript (ES6)</span>
+                        <span class="tag">Tailwind / Custom CSS</span>
+                        <span class="tag">Figma</span>
+                        <span class="tag">Animations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
