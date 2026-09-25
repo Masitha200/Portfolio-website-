@@ -39,7 +39,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 
 <body>
@@ -96,131 +96,819 @@
 
   <section class="py-32 px-6 border-t" style="border-color: var(--border);">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
         <div>
-          <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">01 — Portfolio</span>
-          <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold mt-4">Selected Work</h2>
+          <span class="text-sm font-mono uppercase tracking-widest" style="color: var(--accent);">01 — Workspace</span>
+          <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold mt-4">Selected Work & Tools</h2>
         </div>
         <div class="mt-4 md:mt-0 flex flex-col sm:flex-row items-start gap-3">
-          <p class="max-w-sm" style="color: var(--muted);">A handful of recent projects that showcase my approach to
-            solving problems through design and code.</p>
+          <p class="max-w-sm" style="color: var(--muted);">A handful of recent projects and handy daily utility tools
+            built for the web.</p>
           <a href="software-page.html" class="download-btn inline-flex items-center gap-2">
             <i class="fas fa-box-open"></i>
-            <span>Open Software Page</span>
+            <span>Software Archive</span>
           </a>
         </div>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 items-start">
-        <!-- Project 1 -->
-        <a href="software-page.html" class="card group block cursor-pointer">
-          <div class="overflow-hidden aspect-[4/3]">
-            <img src="assets/img/bench_img.png" alt="CoreBurner X11 PC Benchmark"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-xs font-mono" style="color: var(--muted);">001</span>
-              <div class="flex gap-2"><span class="tag">Desktop</span><span class="tag">Systems</span></div>
-            </div>
-            <h3 class="font-display text-2xl font-bold mb-2">CoreBurner X11</h3>
-            <p style="color: var(--muted);">A standalone Windows PC benchmark and real-time hardware telemetry dashboard
-              with a cyberpunk console aesthetic.</p>
-          </div>
-        </a>
-        <!-- Project 2 -->
-        <a href="aetherpdf-page.html" class="card group block cursor-pointer">
-          <div class="overflow-hidden aspect-[4/3]">
-            <img src="assets/img/aetherpdf_img.svg" alt="AetherPDF Editor"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-xs font-mono" style="color: var(--muted);">002</span>
-              <div class="flex gap-2"><span class="tag">Desktop</span><span class="tag">PDF Editor</span></div>
-            </div>
-            <h3 class="font-display text-2xl font-bold mb-2">AetherPDF</h3>
-            <p style="color: var(--muted);">A premium, lightweight standalone PDF page organizer and layout manager for
-              Windows with offline page layout editing workspaces.</p>
-          </div>
-        </a>
-        <!-- Project 3 -->
-        <a href="lms-page.html" class="card group block cursor-pointer">
-          <div class="overflow-hidden aspect-[4/3] relative">
-            <img src="assets/img/lms_img.svg" alt="AthenaLMS System"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-[#0c0a09]/50 backdrop-blur-[2px] flex items-center justify-center">
-              <span
-                class="px-4 py-2 bg-orange-600/90 text-white font-mono text-xs uppercase tracking-widest rounded-full font-bold border border-orange-500 flex items-center gap-2 shadow-lg">
-                <i class="fas fa-hourglass-half animate-pulse"></i> Coming Soon
-              </span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-xs font-mono" style="color: var(--muted);">003</span>
-              <div class="flex gap-2"><span class="tag">Desktop</span><span class="tag">Management</span></div>
-            </div>
-            <h3 class="font-display text-2xl font-bold mb-2">AthenaLMS</h3>
-            <p style="color: var(--muted);">A premium, lightweight native library management system supporting fast
-              borrowing workflows, real-time book availability, and automated member metrics.</p>
-          </div>
-        </a>
-        <!-- Project 4 -->
-        <a href="lankastays-page.html" class="card group block cursor-pointer">
-          <div class="overflow-hidden aspect-[4/3]">
-            <img src="assets/img/lankastays_preview_1783579192540.png" alt="LankaStay Booking Platform"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-xs font-mono" style="color: var(--muted);">004</span>
-              <div class="flex gap-2"><span class="tag">Web App</span><span class="tag">Hospitality</span></div>
-            </div>
-            <h3 class="font-display text-2xl font-bold mb-2">LankaStay</h3>
-            <p style="color: var(--muted);">A premium room reservation and hotel booking platform in Sri Lanka listing
-              verified properties, booking statistics, and local travel experiences.</p>
-          </div>
-        </a>
-        <!-- Project 5 -->
-        <a href="studyapp-page.html" class="card group block cursor-pointer">
-          <div class="overflow-hidden aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=450&fit=crop"
-              alt="Aether Academic Study Scheduler"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-xs font-mono" style="color: var(--muted);">005</span>
-              <div class="flex gap-2"><span class="tag">Web App</span><span class="tag">Productivity</span></div>
-            </div>
-            <h3 class="font-display text-2xl font-bold mb-2">Aether Academic</h3>
-            <p style="color: var(--muted);">A premium glassmorphism study scheduler, Pomodoro focus engine, and task
-              kanban board built for high-achieving students with offline persistence.</p>
-          </div>
-        </a>
+      <!-- Tab Buttons -->
+      <div class="flex justify-start gap-6 border-b mb-12" style="border-color: var(--border);">
+        <button id="btn-projects-tab" onclick="switchWorkTab('projects')"
+          class="pb-3 text-lg font-display font-medium border-b-2 transition-colors relative"
+          style="border-color: var(--accent); color: var(--fg); outline: none;">
+          Projects & Works
+        </button>
+        <button id="btn-tools-tab" onclick="switchWorkTab('tools')"
+          class="pb-3 text-lg font-display font-medium border-b-2 border-transparent transition-colors hover:text-[var(--fg)]"
+          style="color: var(--muted); outline: none;">
+          Utility Tools
+        </button>
+      </div>
 
-        <!-- Project 6 -->
-        <a href="fleetx-page.html" class="card group block cursor-pointer">
-          <div class="overflow-hidden aspect-[4/3]">
-            <img src="assets/img/fleetx_bg.png" alt="Fleet-X Platform"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-xs font-mono" style="color: var(--muted);">006</span>
-              <div class="flex gap-2"><span class="tag">Web App</span><span class="tag">Transit</span></div>
+      <!-- Tab Content: Projects -->
+      <div id="projects-tab" class="block animate-fade-in">
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+          <!-- Project 1 -->
+          <a href="software-page.html" class="card group block cursor-pointer">
+            <div class="overflow-hidden aspect-[4/3]">
+              <img src="assets/img/bench_img.png" alt="CoreBurner X11 PC Benchmark"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             </div>
-            <h3 class="font-display text-2xl font-bold mb-2">Fleet-X</h3>
-            <p style="color: var(--muted);">A modern, premium digital transit infrastructure and taxi booking platform
-              featuring fixed fares, UI/UX frontend designs, and luxury mobility services.</p>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xs font-mono" style="color: var(--muted);">001</span>
+                <div class="flex gap-2"><span class="tag">Desktop</span><span class="tag">Systems</span></div>
+              </div>
+              <h3 class="font-display text-2xl font-bold mb-2">CoreBurner X11</h3>
+              <p style="color: var(--muted);">A standalone Windows PC benchmark and real-time hardware telemetry
+                dashboard
+                with a cyberpunk console aesthetic.</p>
+            </div>
+          </a>
+          <!-- Project 2 -->
+          <a href="aetherpdf-page.html" class="card group block cursor-pointer">
+            <div class="overflow-hidden aspect-[4/3]">
+              <img src="assets/img/aetherpdf_img.svg" alt="AetherPDF Editor"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xs font-mono" style="color: var(--muted);">002</span>
+                <div class="flex gap-2"><span class="tag">Desktop</span><span class="tag">PDF Editor</span></div>
+              </div>
+              <h3 class="font-display text-2xl font-bold mb-2">AetherPDF</h3>
+              <p style="color: var(--muted);">A premium, lightweight standalone PDF page organizer and layout manager
+                for
+                Windows with offline page layout editing workspaces.</p>
+            </div>
+          </a>
+          <!-- Project 3 -->
+          <a href="lms-page.html" class="card group block cursor-pointer">
+            <div class="overflow-hidden aspect-[4/3] relative">
+              <img src="assets/img/lms_img.svg" alt="AthenaLMS System"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-[#0c0a09]/50 backdrop-blur-[2px] flex items-center justify-center">
+                <span
+                  class="px-4 py-2 bg-orange-600/90 text-white font-mono text-xs uppercase tracking-widest rounded-full font-bold border border-orange-500 flex items-center gap-2 shadow-lg">
+                  <i class="fas fa-hourglass-half animate-pulse"></i> Coming Soon
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xs font-mono" style="color: var(--muted);">003</span>
+                <div class="flex gap-2"><span class="tag">Desktop</span><span class="tag">Management</span></div>
+              </div>
+              <h3 class="font-display text-2xl font-bold mb-2">AthenaLMS</h3>
+              <p style="color: var(--muted);">A premium, lightweight native library management system supporting fast
+                borrowing workflows, real-time book availability, and automated member metrics.</p>
+            </div>
+          </a>
+          <!-- Project 4 -->
+          <a href="lankastays-page.html" class="card group block cursor-pointer">
+            <div class="overflow-hidden aspect-[4/3]">
+              <img src="assets/img/lankastays_preview_1783579192540.png" alt="LankaStay Booking Platform"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xs font-mono" style="color: var(--muted);">004</span>
+                <div class="flex gap-2"><span class="tag">Web App</span><span class="tag">Hospitality</span></div>
+              </div>
+              <h3 class="font-display text-2xl font-bold mb-2">LankaStay</h3>
+              <p style="color: var(--muted);">A premium room reservation and hotel booking platform in Sri Lanka listing
+                verified properties, booking statistics, and local travel experiences.</p>
+            </div>
+          </a>
+          <!-- Project 5 -->
+          <a href="studyapp-page.html" class="card group block cursor-pointer">
+            <div class="overflow-hidden aspect-[4/3]">
+              <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=450&fit=crop"
+                alt="Aether Academic Study Scheduler"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xs font-mono" style="color: var(--muted);">005</span>
+                <div class="flex gap-2"><span class="tag">Web App</span><span class="tag">Productivity</span></div>
+              </div>
+              <h3 class="font-display text-2xl font-bold mb-2">Aether Academic</h3>
+              <p style="color: var(--muted);">A premium glassmorphism study scheduler, Pomodoro focus engine, and task
+                kanban board built for high-achieving students with offline persistence.</p>
+            </div>
+          </a>
+
+          <!-- Project 6 -->
+          <a href="fleetx-page.html" class="card group block cursor-pointer">
+            <div class="overflow-hidden aspect-[4/3]">
+              <img src="assets/img/fleetx_bg.png" alt="Fleet-X Platform"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xs font-mono" style="color: var(--muted);">006</span>
+                <div class="flex gap-2"><span class="tag">Web App</span><span class="tag">Transit</span></div>
+              </div>
+              <h3 class="font-display text-2xl font-bold mb-2">Fleet-X</h3>
+              <p style="color: var(--muted);">A modern, premium digital transit infrastructure and taxi booking platform
+                featuring fixed fares, UI/UX frontend designs, and luxury mobility services.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+  </section>
+
+  <!-- Tab Content: Tools -->
+  <section id="tools-tab" class="py-12 px-6 border-t hidden animate-fade-in" style="border-color: transparent;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+
+        <!-- Tool 1: Scientific Calculator -->
+        <div class="card p-6 border-t-4 shadow-lg flex flex-col h-full" style="border-top-color: var(--accent);">
+          <div class="flex items-center justify-between mb-4 flex-shrink-0">
+             <h3 class="font-display text-xl font-bold">Calculator</h3>
+             <i class="fas fa-calculator text-[var(--accent)]"></i>
           </div>
-        </a>
+          <div class="flex flex-col flex-1 justify-between gap-4">
+            <div class="bg-black/20 p-3 rounded-xl border flex-shrink-0" style="border-color: var(--border);">
+              <input type="text" id="calc-display" class="w-full bg-transparent text-right text-3xl tracking-widest font-mono outline-none min-w-0" style="color: var(--fg); text-shadow: 0 0 10px rgba(0,0,0,0.5);" readonly value="0">
+            </div>
+            <div class="grid grid-cols-4 gap-2 flex-1">
+              <button onclick="calcClear()" class="p-2 rounded-lg border transition-colors font-mono font-bold hover:opacity-80" style="border-color: #ef4444; color: #ef4444; background: rgba(239, 68, 68, 0.1);">C</button>
+              <button onclick="calcOp('/')" class="p-2 rounded-lg border transition-colors font-mono font-bold shadow-sm" style="border-color: var(--border); color: var(--accent); background: var(--bg-nav);">/</button>
+              <button onclick="calcOp('*')" class="p-2 rounded-lg border transition-colors font-mono font-bold shadow-sm" style="border-color: var(--border); color: var(--accent); background: var(--bg-nav);">*</button>
+              <button onclick="calcOp('-')" class="p-2 rounded-lg border transition-colors font-mono font-bold shadow-sm" style="border-color: var(--border); color: var(--accent); background: var(--bg-nav);">-</button>
+              
+              <button onclick="calcNum('7')" class="p-2 rounded-lg border transition-colors font-mono hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">7</button>
+              <button onclick="calcNum('8')" class="p-2 rounded-lg border transition-colors font-mono hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">8</button>
+              <button onclick="calcNum('9')" class="p-2 rounded-lg border transition-colors font-mono hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">9</button>
+              <button onclick="calcOp('+')" class="p-2 rounded-lg border transition-colors row-span-2 font-mono font-bold h-full shadow-sm" style="border-color: var(--border); color: var(--accent); background: var(--bg-nav);">+</button>
+              
+              <button onclick="calcNum('4')" class="p-2 rounded-lg border transition-colors font-mono hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">4</button>
+              <button onclick="calcNum('5')" class="p-2 rounded-lg border transition-colors font-mono hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">5</button>
+              <button onclick="calcNum('6')" class="p-2 rounded-lg border transition-colors font-mono hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">6</button>
+              
+              <button onclick="calcNum('1')" class="p-2 rounded-lg border transition-colors font-mono hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">1</button>
+              <button onclick="calcNum('2')" class="p-2 rounded-lg border transition-colors font-mono hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">2</button>
+              <button onclick="calcNum('3')" class="p-2 rounded-lg border transition-colors font-mono hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">3</button>
+              <button onclick="calcEq()" class="p-2 rounded-lg border transition-colors row-span-2 font-mono font-bold h-full opacity-90 hover:opacity-100 shadow-md" style="background: var(--accent); color: white; border-color: var(--accent);">=</button>
+              
+              <button onclick="calcNum('0')" class="p-2 rounded-lg border transition-colors col-span-2 font-mono hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">0</button>
+              <button onclick="calcNum('.')" class="p-2 rounded-lg border transition-colors font-mono font-bold hover:bg-[var(--border)] shadow-sm" style="border-color: var(--border); color: var(--fg); background: var(--bg-nav);">.</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 2: BMI Calculator -->
+        <div class="card p-6 border-t-4 shadow-lg flex flex-col h-full" style="border-top-color: var(--accent);">
+          <div class="flex items-center justify-between mb-4 flex-shrink-0">
+             <h3 class="font-display text-xl font-bold">BMI Calculator</h3>
+             <i class="fas fa-weight-scale text-[var(--accent)]"></i>
+          </div>
+          <div class="flex flex-col gap-4 flex-1">
+            <div class="flex-shrink-0">
+              <label class="text-sm mb-1 block font-medium" style="color: var(--muted);"><i class="fas fa-dumbbell mr-1"></i> Weight (kg)</label>
+              <input type="number" id="bmi-weight" class="w-full bg-black/20 border rounded-lg px-4 py-3 outline-none min-w-0" style="border-color: var(--border); color: var(--fg); box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" placeholder="e.g. 70">
+            </div>
+            <div class="flex-shrink-0">
+              <label class="text-sm mb-1 block font-medium" style="color: var(--muted);"><i class="fas fa-text-height mr-1"></i> Height (cm)</label>
+              <input type="number" id="bmi-height" class="w-full bg-black/20 border rounded-lg px-4 py-3 outline-none min-w-0" style="border-color: var(--border); color: var(--fg); box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" placeholder="e.g. 175">
+            </div>
+            <div class="mt-auto flex-shrink-0">
+              <button onclick="calculateBMI()" class="btn-primary w-full justify-center border-none py-3 shadow-md">Calculate BMI</button>
+              <div id="bmi-result" class="mt-4 text-center font-mono text-lg hidden p-4 rounded-lg bg-black/20 border transition-all" style="border-color: var(--border);"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 3: Tip Calculator -->
+        <div class="card p-6 border-t-4 shadow-lg flex flex-col h-full" style="border-top-color: var(--accent);">
+          <div class="flex items-center justify-between mb-4 flex-shrink-0">
+             <h3 class="font-display text-xl font-bold">Tip Calculator</h3>
+             <i class="fas fa-coins text-[var(--accent)]"></i>
+          </div>
+          <div class="flex flex-col gap-4 flex-1">
+            <div class="flex-shrink-0">
+              <label class="text-sm mb-1 block font-medium" style="color: var(--muted);"><i class="fas fa-file-invoice-dollar mr-1"></i> Bill Amount ($)</label>
+              <input type="number" id="tip-amount" class="w-full bg-black/20 border rounded-lg px-4 py-3 outline-none min-w-0" style="border-color: var(--border); color: var(--fg); box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" placeholder="0.00">
+            </div>
+            <div class="flex-shrink-0">
+              <label class="text-sm mb-1 block font-medium flex justify-between" style="color: var(--muted);">
+                <span><i class="fas fa-percent mr-1"></i> Tip % (<span id="tip-percent-val" class="font-bold text-[var(--accent)]">15%</span>)</span>
+              </label>
+              <input type="range" id="tip-percent" min="0" max="30" value="15" class="w-full mt-3 h-2 bg-[var(--border)] rounded-lg appearance-none cursor-pointer" oninput="document.getElementById('tip-percent-val').innerText = this.value + '%'">
+            </div>
+            <div class="flex-shrink-0">
+              <label class="text-sm mb-1 block font-medium" style="color: var(--muted);"><i class="fas fa-users mr-1"></i> People</label>
+              <input type="number" id="tip-people" class="w-full bg-black/20 border rounded-lg px-4 py-3 outline-none min-w-0" style="border-color: var(--border); color: var(--fg); box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" value="1" min="1">
+            </div>
+            <div class="mt-auto flex-shrink-0">
+              <button onclick="calculateTip()" class="btn-primary w-full justify-center border-none py-3 shadow-md">Calculate</button>
+              <div id="tip-result" class="mt-2 text-center font-mono text-sm hidden p-4 rounded-lg bg-black/20 border transition-all" style="border-color: var(--border);"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 4: Password Generator -->
+        <div class="card p-6 border-t-4 shadow-2xl relative overflow-hidden group flex flex-col h-full" style="border-top-color: #8b5cf6;">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#8b5cf6]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+          <div class="flex items-center justify-between mb-4 relative z-10 flex-shrink-0">
+             <h3 class="font-display text-xl font-bold">Secure Pass Gen</h3>
+             <i class="fas fa-key text-[#8b5cf6]"></i>
+          </div>
+          <div class="flex flex-col gap-4 relative z-10 flex-1">
+            <div class="bg-black/40 p-3 rounded-xl border flex items-center justify-between flex-shrink-0" style="border-color: var(--border);">
+              <input type="text" id="pass-display" class="w-full bg-transparent font-mono outline-none text-[#8b5cf6] font-bold tracking-wider truncate" readonly value="Click Generate">
+              <button onclick="copyPass()" class="text-[var(--muted)] hover:text-[var(--fg)] transition-colors shrink-0" title="Copy to clipboard"><i class="fas fa-copy"></i></button>
+            </div>
+            <div class="flex-shrink-0">
+              <label class="text-sm mb-1 block font-medium flex justify-between" style="color: var(--muted);"><span>Length</span> <span id="pass-len-val" class="font-bold text-[#8b5cf6]">12</span></label>
+              <input type="range" id="pass-len" min="8" max="32" value="12" class="w-full mt-2 h-2 rounded-lg appearance-none cursor-pointer" style="background: var(--border);" oninput="document.getElementById('pass-len-val').innerText = this.value">
+            </div>
+            <div class="mt-auto flex-shrink-0 mt-4">
+              <button onclick="generatePassword()" class="w-full justify-center py-3 shadow-lg font-bold rounded-lg transition-all hover:-translate-y-1" style="background: #8b5cf6; color: white;">Generate Password</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 5: Color Extractor -->
+        <div class="card p-6 border-t-4 shadow-2xl relative overflow-hidden group flex flex-col h-full" style="border-top-color: #ec4899;">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#ec4899]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+          <div class="flex items-center justify-between mb-4 relative z-10 flex-shrink-0">
+             <h3 class="font-display text-xl font-bold">Palette Studio</h3>
+             <i class="fas fa-palette text-[#ec4899]"></i>
+          </div>
+          <div class="flex flex-col gap-4 relative z-10 flex-1">
+            <div class="flex gap-1 h-[80px] rounded-xl overflow-hidden shadow-inner border flex-shrink-0 w-full" id="color-palette" style="border-color: var(--border);">
+              <div class="flex-1 bg-[#ffbe0b] cursor-pointer transition-transform hover:scale-110" title="Copy #ffbe0b" onclick="navigator.clipboard.writeText('#ffbe0b')"></div>
+              <div class="flex-1 bg-[#fb5607] cursor-pointer transition-transform hover:scale-110" title="Copy #fb5607" onclick="navigator.clipboard.writeText('#fb5607')"></div>
+              <div class="flex-1 bg-[#ff006e] cursor-pointer transition-transform hover:scale-110" title="Copy #ff006e" onclick="navigator.clipboard.writeText('#ff006e')"></div>
+              <div class="flex-1 bg-[#8338ec] cursor-pointer transition-transform hover:scale-110" title="Copy #8338ec" onclick="navigator.clipboard.writeText('#8338ec')"></div>
+              <div class="flex-1 bg-[#3a86ff] cursor-pointer transition-transform hover:scale-110" title="Copy #3a86ff" onclick="navigator.clipboard.writeText('#3a86ff')"></div>
+            </div>
+            <div id="hex-codes" class="text-center font-mono text-xs tracking-widest break-words mt-1 select-all" style="color: var(--muted);">#ffbe0b #fb5607 #ff006e #8338ec #3a86ff</div>
+            
+            <div class="mt-auto flex-shrink-0 pt-2">
+              <button onclick="generatePalette()" class="w-full justify-center py-3 shadow-lg font-bold rounded-lg transition-all hover:-translate-y-1" style="background: #ec4899; color: white;">Generate Random</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 6: Pomodoro Focus -->
+        <div class="card p-6 border-t-4 shadow-2xl relative overflow-hidden group flex flex-col h-full" style="border-top-color: #10b981;">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#10b981]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+          <div class="flex items-center justify-between mb-2 relative z-10 flex-shrink-0">
+             <h3 class="font-display text-xl font-bold">Focus Timer</h3>
+             <i class="fas fa-stopwatch text-[#10b981]"></i>
+          </div>
+          <div class="flex flex-col items-center justify-between gap-4 relative z-10 pt-2 flex-1 w-full">
+            <div class="flex-1 flex items-center justify-center w-full">
+              <div class="relative w-32 h-32 lg:w-40 lg:h-40 rounded-full border-4 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all" id="pomo-ring" style="border-color: #10b981; background: rgba(16,185,129,0.05);">
+                <span id="pomo-time" class="text-4xl font-display font-bold text-[var(--fg)]">25:00</span>
+              </div>
+            </div>
+            <div class="flex gap-4 w-full mt-auto flex-shrink-0 pt-4">
+              <button onclick="startPomodoro()" id="btn-pomo-start" class="flex-1 py-3 rounded-lg font-bold transition-all shadow-md hover:-translate-y-1" style="background: #10b981; color: white;">Start</button>
+              <button onclick="resetPomodoro()" class="flex-1 py-3 rounded-lg font-bold transition-all border shadow-sm hover:-translate-y-1 hover:bg-[var(--border)]" style="border-color: var(--border); color: var(--fg); background: var(--bg-elevated);">Reset</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tool 7: QR Code Generator -->
+        <div class="card p-6 border-t-4 shadow-2xl relative overflow-hidden group flex flex-col h-full" style="border-top-color: #3b82f6;">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+          <div class="flex items-center justify-between mb-4 relative z-10 flex-shrink-0">
+             <h3 class="font-display text-xl font-bold">QR Generator</h3>
+             <i class="fas fa-qrcode text-[#3b82f6]"></i>
+          </div>
+          <div class="flex flex-col gap-4 relative z-10 flex-1 w-full">
+            <div class="flex-1 flex flex-col items-center justify-center border-2 border-dashed rounded-xl p-4 transition-colors bg-black/10" style="border-color: var(--border);" id="qr-container">
+               <i class="fas fa-qrcode text-4xl text-[var(--muted)] opacity-50 mb-2"></i>
+               <span class="text-xs text-[var(--muted)] text-center">Your QR code will appear here</span>
+            </div>
+            <div class="flex-shrink-0">
+              <input type="text" id="qr-input" class="w-full bg-black/20 border rounded-lg px-4 py-3 outline-none min-w-0" style="border-color: var(--border); color: var(--fg);" placeholder="Enter text or URL">
+            </div>
+            <div class="mt-auto flex-shrink-0 pt-2">
+              <button onclick="generateQR()" class="w-full justify-center py-3 shadow-lg font-bold rounded-lg transition-all hover:-translate-y-1" style="background: #3b82f6; color: white;">Create QR Code</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 8: Text-to-Speech -->
+        <div class="card p-6 border-t-4 shadow-2xl relative overflow-hidden group flex flex-col h-full" style="border-top-color: #f59e0b;">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#f59e0b]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+          <div class="flex items-center justify-between mb-2 relative z-10 flex-shrink-0">
+             <h3 class="font-display text-xl font-bold">Voice Reader</h3>
+             <i class="fas fa-microphone-lines text-[#f59e0b]"></i>
+          </div>
+          <div class="flex flex-col gap-4 relative z-10 flex-1 w-full pt-2">
+            <div class="flex-1">
+              <textarea id="tts-input" class="w-full h-full min-h-[120px] bg-black/20 border rounded-lg px-4 py-3 outline-none resize-none" style="border-color: var(--border); color: var(--fg);" placeholder="Enter text to speak out loud..."></textarea>
+            </div>
+            <div class="flex gap-4 w-full mt-auto flex-shrink-0 pt-2">
+              <button onclick="playTTS()" id="btn-tts" class="flex-1 py-3 rounded-lg font-bold transition-all shadow-md hover:-translate-y-1" style="background: #f59e0b; color: white;">Speak</button>
+              <button onclick="stopTTS()" class="w-14 py-3 rounded-lg font-bold transition-all border shadow-sm hover:bg-[var(--border)] flex items-center justify-center" style="border-color: var(--border); color: var(--fg); background: var(--bg-elevated);"><i class="fas fa-stop"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 9: Canvas Background Remover (Chroma key) -->
+        <div class="card p-6 border-t-4 shadow-2xl relative overflow-hidden group flex flex-col h-full" style="border-top-color: #ef4444;">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#ef4444]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+          <div class="flex items-center justify-between mb-4 relative z-10 flex-shrink-0">
+             <h3 class="font-display text-xl font-bold">White BG Eraser</h3>
+             <i class="fas fa-eraser text-[#ef4444]"></i>
+          </div>
+          <div class="flex flex-col gap-4 relative z-10 flex-1 w-full">
+            <div class="flex-1 border-2 border-dashed rounded-xl flex items-center justify-center bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYNgvwMDA/x9O4wWjGoY1DDABTBUDFGEY34Bx1MAoG4Y/oMBwR8h8QA8AuK8aIfR01MIAAAAASUVORK5CYII=')] bg-repeat relative overflow-hidden group-hover:border-[#ef4444] transition-colors" style="border-color: var(--border);">
+               <canvas id="bg-canvas" class="max-w-full max-h-[140px] absolute inset-0 m-auto" style="display:none;"></canvas>
+               <input type="file" id="bg-upload" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" onchange="loadBgImage(event)">
+               <div id="bg-placeholder" class="text-center pointer-events-none z-0 px-2">
+                  <i class="fas fa-cloud-upload-alt text-2xl text-[var(--muted)] mb-1"></i>
+                  <p class="text-xs text-[var(--muted)]">Upload logo to remove white BG</p>
+               </div>
+            </div>
+            <div class="mt-auto flex-shrink-0 flex gap-2 pt-2 relative z-20">
+              <button onclick="removeWhiteBg()" class="flex-1 py-3 shadow-lg font-bold rounded-lg transition-all hover:-translate-y-1 text-sm" style="background: #ef4444; color: white;">Erase BG</button>
+              <button onclick="downloadBgImage()" class="flex-1 py-3 shadow-lg font-bold rounded-lg transition-all hover:-translate-y-1 text-sm border" style="background: var(--bg-elevated); color: var(--fg); border-color: var(--border);"><i class="fas fa-download mr-1"></i> Save</button>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
   </section>
 
+  <script>
+    // System logic for Tools
+    function switchWorkTab(tabId) {
+      const pTab = document.getElementById('projects-tab');
+      const tTab = document.getElementById('tools-tab');
+      const pBtn = document.getElementById('btn-projects-tab');
+      const tBtn = document.getElementById('btn-tools-tab');
+
+      if (tabId === 'projects') {
+        pTab.classList.remove('hidden'); pTab.classList.add('block');
+        tTab.classList.remove('block'); tTab.classList.add('hidden');
+        pBtn.style.borderColor = 'var(--accent)'; pBtn.style.color = 'var(--fg)';
+        tBtn.style.borderColor = 'transparent'; tBtn.style.color = 'var(--muted)';
+      } else {
+        tTab.classList.remove('hidden'); tTab.classList.add('block');
+        pTab.classList.remove('block'); pTab.classList.add('hidden');
+        tBtn.style.borderColor = 'var(--accent)'; tBtn.style.color = 'var(--fg)';
+        pBtn.style.borderColor = 'transparent'; pBtn.style.color = 'var(--muted)';
+      }
+    }
+
+    // Auto-focus styling listeners for inputs
+    document.querySelectorAll('input, select, textarea').forEach(input => {
+      input.addEventListener('focus', () => {
+        if (input.id !== 'calc-display' && input.type !== 'range') input.style.borderColor = 'var(--accent)';
+      });
+      input.addEventListener('blur', () => {
+        if (input.id !== 'calc-display' && input.type !== 'range') input.style.borderColor = 'var(--border)';
+      });
+    });
+
+    // Tool 1: Calc
+    let calcVal = '0'; let calcNew = false;
+    const calcDisplay = document.getElementById('calc-display');
+    function updateCalcDisplay() { calcDisplay.value = calcVal; }
+    function calcNum(n) {
+      if (calcVal === '0' || calcVal === 'Error' || calcNew) { calcVal = n; calcNew = false; } else { calcVal += n; }
+      updateCalcDisplay();
+    }
+    function calcOp(op) { if (calcVal !== 'Error') { calcVal += ` ${op} `; calcNew = false; updateCalcDisplay(); } }
+    function calcClear() { calcVal = '0'; updateCalcDisplay(); }
+    function calcEq() {
+      try {
+        const sanitized = calcVal.replace(/[^0-9+\-*/.]/g, '');
+        if (sanitized) {
+          const res = new Function('return ' + sanitized)();
+          calcVal = Number.isInteger(res) ? res.toString() : parseFloat(res.toFixed(6)).toString();
+        }
+      } catch (e) { calcVal = 'Error'; }
+      calcNew = true; updateCalcDisplay();
+    }
+
+    // Tool 2: BMI
+    function calculateBMI() {
+      const w = parseFloat(document.getElementById('bmi-weight').value);
+      const h = parseFloat(document.getElementById('bmi-height').value) / 100;
+      const resDiv = document.getElementById('bmi-result');
+      if (w > 0 && h > 0) {
+        const bmi = (w / (h * h)).toFixed(1);
+        let status = ''; let color = '';
+        if (bmi < 18.5) { status = 'Underweight'; color = '#3b82f6'; }
+        else if (bmi < 25) { status = 'Normal'; color = '#22c55e'; }
+        else if (bmi < 30) { status = 'Overweight'; color = '#f59e0b'; }
+        else { status = 'Obese'; color = '#ef4444'; }
+
+        resDiv.innerHTML = `BMI: <span style="color:${color}; font-weight:bold; font-size:1.5rem;">${bmi}</span><br><span style="color:${color}; font-weight:600; margin-top:4px; display:block;">${status}</span>`;
+        resDiv.classList.remove('hidden');
+      } else { resDiv.innerHTML = '<span class="text-red-500 font-bold">Invalid input</span>'; resDiv.classList.remove('hidden'); }
+    }
+
+    // Tool 3: Tip
+    function calculateTip() {
+      const amt = parseFloat(document.getElementById('tip-amount').value);
+      const perc = parseFloat(document.getElementById('tip-percent').value);
+      const ppl = parseInt(document.getElementById('tip-people').value);
+      const resDiv = document.getElementById('tip-result');
+      if (amt > 0 && ppl > 0) {
+        const tipTotal = amt * (perc / 100);
+        const total = amt + tipTotal;
+        const perPerson = total / ppl;
+        resDiv.innerHTML = `<div class="flex justify-between w-full"><span>Tip:</span><span class="font-bold">$${tipTotal.toFixed(2)}</span></div><div class="flex justify-between w-full mt-1"><span>Total Bill:</span><span class="font-bold">$${total.toFixed(2)}</span></div><div style="color:var(--accent); font-size:1.1rem; margin-top:12px; font-weight:bold; border-top:1px dashed var(--border); padding-top:8px;" class="flex justify-between w-full"><span>Per Person:</span><span>$${perPerson.toFixed(2)}</span></div>`;
+        resDiv.classList.remove('hidden');
+      } else { resDiv.innerHTML = '<span class="text-red-500 font-bold">Invalid input</span>'; resDiv.classList.remove('hidden'); }
+    }
+
+    // Tool 4: Pass Gen
+    function generatePassword() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+~}{|:;?><,./-=";
+      const len = document.getElementById('pass-len').value;
+      let pass = "";
+      for (let i = 0; i < len; i++) { pass += chars.charAt(Math.floor(Math.random() * chars.length)); }
+      document.getElementById('pass-display').value = pass;
+    }
+    function copyPass() {
+      const pass = document.getElementById('pass-display').value;
+      if (pass && pass !== "Click Generate") {
+        navigator.clipboard.writeText(pass);
+        const icon = document.querySelector('button[onclick="copyPass()"] i');
+        icon.className = "fas fa-check text-[#10b981]";
+        setTimeout(() => icon.className = "fas fa-copy", 2000);
+      }
+    }
+
+    // Tool 5: Palette
+    function generatePalette() {
+      const palette = document.getElementById('color-palette');
+      const hexText = document.getElementById('hex-codes');
+      let colors = []; palette.innerHTML = '';
+      for (let i = 0; i < 5; i++) {
+        const hex = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+        colors.push(hex);
+        palette.innerHTML += `<div class="flex-1 cursor-pointer transition-transform hover:scale-110" style="background:${hex};" title="Copy ${hex}" onclick="navigator.clipboard.writeText('${hex}')"></div>`;
+      }
+      hexText.innerText = colors.join('  ');
+    }
+
+    // Tool 6: Pomodoro
+    let pomoInterval; let pomoTime = 25 * 60; let pomoRunning = false;
+    function updatePomoDisplay() {
+      const min = Math.floor(pomoTime / 60).toString().padStart(2, '0');
+      const sec = (pomoTime % 60).toString().padStart(2, '0');
+      document.getElementById('pomo-time').innerText = `${min}:${sec}`;
+    }
+    function startPomodoro() {
+      const btn = document.getElementById('btn-pomo-start'); const ring = document.getElementById('pomo-ring');
+      if (pomoRunning) {
+        clearInterval(pomoInterval); pomoRunning = false;
+        btn.innerText = "Start"; btn.style.background = "#10b981";
+        ring.style.boxShadow = "0 0 20px rgba(16,185,129,0.3)"; ring.style.borderColor = "#10b981";
+      } else {
+        pomoRunning = true;
+        btn.innerText = "Pause"; btn.style.background = "#f59e0b";
+        ring.style.boxShadow = "0 0 30px rgba(245,158,11,0.5)"; ring.style.borderColor = "#f59e0b";
+        pomoInterval = setInterval(() => {
+          if (pomoTime > 0) { pomoTime--; updatePomoDisplay();
+          } else {
+            clearInterval(pomoInterval); pomoRunning = false;
+            btn.innerText = "Start"; btn.style.background = "#10b981";
+            ring.style.boxShadow = "0 0 40px rgba(239,68,68,0.7)"; ring.style.borderColor = "#ef4444";
+          }
+        }, 1000);
+      }
+    }
+    function resetPomodoro() {
+      clearInterval(pomoInterval); pomoRunning = false; pomoTime = 25 * 60; updatePomoDisplay();
+      document.getElementById('btn-pomo-start').innerText = "Start";
+      document.getElementById('btn-pomo-start').style.background = "#10b981";
+      document.getElementById('pomo-ring').style.boxShadow = "0 0 20px rgba(16,185,129,0.3)";
+      document.getElementById('pomo-ring').style.borderColor = "#10b981";
+    }
+
+    // Tool 7: QR Gen
+    function generateQR() {
+      const val = document.getElementById('qr-input').value;
+      const c = document.getElementById('qr-container');
+      if(val.trim()){
+         c.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(val)}&bgcolor=FFFFFF&color=000000" alt="QR Code" class="w-full max-w-[120px] rounded-md shadow-md animate-fade-in">`;
+         c.classList.remove('bg-black/10');
+      } else {
+         c.innerHTML = `<i class="fas fa-exclamation-circle text-red-500 text-3xl mb-1"></i><span class="text-xs text-red-500">Invalid input</span>`;
+      }
+    }
+
+    // Tool 8: TTS
+    let synth = window.speechSynthesis;
+    function playTTS() {
+      if(synth.speaking) { synth.cancel(); }
+      const text = document.getElementById('tts-input').value;
+      if(text.trim()) {
+        const utterThis = new SpeechSynthesisUtterance(text);
+        utterThis.onend = () => document.getElementById('btn-tts').innerText = "Speak";
+        document.getElementById('btn-tts').innerText = "Speaking...";
+        synth.speak(utterThis);
+      }
+    }
+    function stopTTS() {
+       if(synth.speaking) { synth.cancel(); document.getElementById('btn-tts').innerText = "Speak"; }
+    }
+
+    // Tool 9: White BG Eraser
+    let originalImage = null;
+    function loadBgImage(e) {
+       const file = e.target.files[0];
+       if(!file) return;
+       const reader = new FileReader();
+       reader.onload = function(event) {
+          const img = new Image();
+          img.onload = function() {
+             originalImage = img;
+             const canvas = document.getElementById('bg-canvas');
+             const ctx = canvas.getContext('2d');
+             canvas.width = img.width; canvas.height = img.height;
+             ctx.drawImage(img, 0, 0);
+             canvas.style.display = 'block';
+             document.getElementById('bg-placeholder').style.display = 'none';
+          }
+          img.src = event.target.result;
+       }
+       reader.readAsDataURL(file);
+    }
+    function removeWhiteBg() {
+       if(!originalImage) return;
+       const canvas = document.getElementById('bg-canvas');
+       const ctx = canvas.getContext('2d', { willReadFrequently: true });
+       ctx.drawImage(originalImage, 0, 0);
+       const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+       const data = imgData.data;
+       for (let i = 0; i < data.length; i += 4) {
+          // If pixel is close to white
+          if (data[i] > 200 && data[i+1] > 200 && data[i+2] > 200) {
+              data[i + 3] = 0; // Set alpha to 0 (transparent)
+          }
+       }
+       ctx.putImageData(imgData, 0, 0);
+    }
+    function downloadBgImage() {
+       const canvas = document.getElementById('bg-canvas');
+       if(!originalImage) return;
+       const link = document.createElement('a');
+       link.download = 'erased-bg.png';
+       link.href = canvas.toDataURL('image/png');
+       link.click();
+    }
+  </script>
+
+  <script>
+    // Tab Switching Logic
+    function switchWorkTab(tabId) {
+      const pTab = document.getElementById('projects-tab');
+      const tTab = document.getElementById('tools-tab');
+      const pBtn = document.getElementById('btn-projects-tab');
+      const tBtn = document.getElementById('btn-tools-tab');
+
+      if (tabId === 'projects') {
+        pTab.classList.remove('hidden');
+        pTab.classList.add('block');
+        tTab.classList.remove('block');
+        tTab.classList.add('hidden');
+
+        pBtn.style.borderColor = 'var(--accent)';
+        pBtn.style.color = 'var(--fg)';
+        tBtn.style.borderColor = 'transparent';
+        tBtn.style.color = 'var(--muted)';
+      } else {
+        tTab.classList.remove('hidden');
+        tTab.classList.add('block');
+        pTab.classList.remove('block');
+        pTab.classList.add('hidden');
+
+        tBtn.style.borderColor = 'var(--accent)';
+        tBtn.style.color = 'var(--fg)';
+        pBtn.style.borderColor = 'transparent';
+        pBtn.style.color = 'var(--muted)';
+      }
+    }
+
+    // Calculator Logic
+    let calcVal = '0';
+    let calcNew = false;
+    const calcDisplay = document.getElementById('calc-display');
+
+    // Auto-focus styling listeners for inputs
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('focus', () => {
+        if (input.id !== 'calc-display' && input.type !== 'range') input.style.borderColor = 'var(--accent)';
+      });
+      input.addEventListener('blur', () => {
+        if (input.id !== 'calc-display' && input.type !== 'range') input.style.borderColor = 'var(--border)';
+      });
+    });
+
+    function updateCalcDisplay() {
+      calcDisplay.value = calcVal;
+    }
+
+    function calcNum(n) {
+      if (calcVal === '0' || calcVal === 'Error' || calcNew) {
+        calcVal = n;
+        calcNew = false;
+      } else {
+        calcVal += n;
+      }
+      updateCalcDisplay();
+    }
+
+    function calcOp(op) {
+      if (calcVal !== 'Error') {
+        calcVal += ` ${op} `;
+        calcNew = false;
+        updateCalcDisplay();
+      }
+    }
+
+    function calcClear() {
+      calcVal = '0';
+      updateCalcDisplay();
+    }
+
+    function calcEq() {
+      try {
+        const sanitized = calcVal.replace(/[^0-9+\-*/.]/g, '');
+        if (sanitized) {
+          const res = new Function('return ' + sanitized)();
+          calcVal = Number.isInteger(res) ? res.toString() : parseFloat(res.toFixed(4)).toString();
+        }
+      } catch (e) {
+        calcVal = 'Error';
+      }
+      calcNew = true;
+      updateCalcDisplay();
+    }
+
+    // BMI logic
+    function calculateBMI() {
+      const w = parseFloat(document.getElementById('bmi-weight').value);
+      const h = parseFloat(document.getElementById('bmi-height').value) / 100;
+      const resDiv = document.getElementById('bmi-result');
+      if (w > 0 && h > 0) {
+        const bmi = (w / (h * h)).toFixed(1);
+        let status = '';
+        let color = '';
+        if (bmi < 18.5) { status = 'Underweight'; color = '#3b82f6'; }
+        else if (bmi < 25) { status = 'Normal'; color = '#22c55e'; }
+        else if (bmi < 30) { status = 'Overweight'; color = '#f59e0b'; }
+        else { status = 'Obese'; color = '#ef4444'; }
+
+        resDiv.innerHTML = `BMI: <span style="color:${color}; font-weight:bold; font-size:1.5rem;">${bmi}</span><br><span style="color:${color}; font-weight:600; margin-top:4px; display:block;">${status}</span>`;
+        resDiv.classList.remove('hidden');
+      } else {
+        resDiv.innerHTML = '<span class="text-red-500 font-bold">Invalid input</span>';
+        resDiv.classList.remove('hidden');
+      }
+    }
+
+    // Tip Logic
+    function calculateTip() {
+      const amt = parseFloat(document.getElementById('tip-amount').value);
+      const perc = parseFloat(document.getElementById('tip-percent').value);
+      const ppl = parseInt(document.getElementById('tip-people').value);
+      const resDiv = document.getElementById('tip-result');
+
+      if (amt > 0 && ppl > 0) {
+        const tipTotal = amt * (perc / 100);
+        const total = amt + tipTotal;
+        const perPerson = total / ppl;
+
+        resDiv.innerHTML = `Tip Amount: <span class="font-bold">$${tipTotal.toFixed(2)}</span><br>Total Bill: <span class="font-bold">$${total.toFixed(2)}</span><br><div style="color:var(--accent); font-size:1.2rem; margin-top:12px; font-weight:bold; border-top:1px dashed var(--border); padding-top:8px;">Per Person: $${perPerson.toFixed(2)}</div>`;
+        resDiv.classList.remove('hidden');
+      } else {
+        resDiv.innerHTML = '<span class="text-red-500 font-bold">Invalid input</span>';
+        resDiv.classList.remove('hidden');
+      }
+    }
+
+    // Password Generator
+    function generatePassword() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+~}{|:;?><,./-=";
+      const len = document.getElementById('pass-len').value;
+      let pass = "";
+      for (let i = 0; i < len; i++) {
+        pass += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById('pass-display').value = pass;
+    }
+
+    function copyPass() {
+      const pass = document.getElementById('pass-display').value;
+      if (pass && pass !== "Click Generate") {
+        navigator.clipboard.writeText(pass);
+        const icon = document.querySelector('button[onclick="copyPass()"] i');
+        icon.className = "fas fa-check text-[#10b981]";
+        setTimeout(() => icon.className = "fas fa-copy", 2000);
+      }
+    }
+
+    // Color Palette
+    function generatePalette() {
+      const palette = document.getElementById('color-palette');
+      const hexText = document.getElementById('hex-codes');
+      let colors = [];
+      palette.innerHTML = '';
+      for (let i = 0; i < 5; i++) {
+        const hex = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+        colors.push(hex);
+        palette.innerHTML += `<div class="flex-1 cursor-pointer transition-transform hover:scale-110" style="background:${hex};" title="Copy ${hex}" onclick="navigator.clipboard.writeText('${hex}')"></div>`;
+      }
+      hexText.innerText = colors.join('  ');
+    }
+
+    // Pomodoro Timer
+    let pomoInterval;
+    let pomoTime = 25 * 60;
+    let pomoRunning = false;
+
+    function updatePomoDisplay() {
+      const min = Math.floor(pomoTime / 60).toString().padStart(2, '0');
+      const sec = (pomoTime % 60).toString().padStart(2, '0');
+      document.getElementById('pomo-time').innerText = `${min}:${sec}`;
+    }
+
+    function startPomodoro() {
+      const btn = document.getElementById('btn-pomo-start');
+      const ring = document.getElementById('pomo-ring');
+      if (pomoRunning) {
+        clearInterval(pomoInterval);
+        pomoRunning = false;
+        btn.innerText = "Start";
+        btn.style.background = "#10b981";
+        ring.style.boxShadow = "0 0 20px rgba(16,185,129,0.3)";
+        ring.style.borderColor = "#10b981";
+      } else {
+        pomoRunning = true;
+        btn.innerText = "Pause";
+        btn.style.background = "#f59e0b";
+        ring.style.boxShadow = "0 0 30px rgba(245,158,11,0.5)";
+        ring.style.borderColor = "#f59e0b";
+
+        pomoInterval = setInterval(() => {
+          if (pomoTime > 0) {
+            pomoTime--;
+            updatePomoDisplay();
+          } else {
+            clearInterval(pomoInterval);
+            pomoRunning = false;
+            btn.innerText = "Start";
+            btn.style.background = "#10b981";
+            ring.style.boxShadow = "0 0 40px rgba(239,68,68,0.7)";
+            ring.style.borderColor = "#ef4444";
+          }
+        }, 1000);
+      }
+    }
+
+    function resetPomodoro() {
+      clearInterval(pomoInterval);
+      pomoRunning = false;
+      pomoTime = 25 * 60;
+      updatePomoDisplay();
+
+      const btn = document.getElementById('btn-pomo-start');
+      btn.innerText = "Start";
+      btn.style.background = "#10b981";
+
+      const ring = document.getElementById('pomo-ring');
+      ring.style.boxShadow = "0 0 20px rgba(16,185,129,0.3)";
+      ring.style.borderColor = "#10b981";
+    }
+  </script>
   <script src="assets/js/script.js"></script>
 </body>
 
